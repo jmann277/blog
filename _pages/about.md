@@ -2,7 +2,7 @@
 title: "About"
 permalink: /about/
 header:
-  image: "/images/zakim.jpg"
+  image: "/images/about_header.jpg"
 ---
 
 As a PhD student, I explored interactions between quantum/statistical field theory and geometry.
