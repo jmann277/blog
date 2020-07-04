@@ -9,6 +9,7 @@ Insert what the term "Pure Math" means to me.
 
    category_theory/category_theory_main_page
    homotopy_theory/homotopy_theory_main_page
+   information_theory/information_theory_main_page
    probability_theory/probability_theory_main_page
    geometry/geometry_main_page
    linear_algebra/linear_algebra_main_page
