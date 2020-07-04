@@ -6,15 +6,16 @@
 Welcome to Jeremy's Writing 
 ===========================
 
-A compedium of things I'd rather not forget.
+.. include:: main_page.rst
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   longevity/longevity_main_page
-   pure_math/pure_math_main_page
    learning/learning_main_page
+   pure_math/pure_math_main_page
+   physics/physics_main_page
+   longevity/longevity_main_page
    random/random_main_page
 
 Indices and tables
