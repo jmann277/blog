@@ -1,5 +1,5 @@
 Quantum Physics
-==============
+================
 
 state what you mean by quantum physics.
 

@@ -1,5 +1,5 @@
 Statistical Physics
-==================
+=====================
 
 Say what you mean by statistical physics
 

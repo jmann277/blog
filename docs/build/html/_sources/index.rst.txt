@@ -18,9 +18,3 @@ Welcome to Jeremy's Writing
    longevity/longevity_main_page
    random/random_main_page
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
