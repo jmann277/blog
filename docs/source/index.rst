@@ -16,5 +16,9 @@ Welcome to Jeremy's Writing
    pure_math/pure_math_main_page
    physics/physics_main_page
    longevity/longevity_main_page
+
+.. toctree::
+   :maxdepth: 1
+
    random/random_main_page
 
