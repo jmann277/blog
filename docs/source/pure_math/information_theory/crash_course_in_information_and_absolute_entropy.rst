@@ -30,15 +30,8 @@ For example, "010" contains 3 bits of information
 
 .. warning::
 
-   We will be abusive with which base we take our logarithm with respect to.
+   We will be abusive with which base we take our logarithm with respect to. The choice of a base can be thought of choice of units, and can be recovered by examining the information of obtaining a heads in a fair coin toss. 
 
-   The choice of a base can be thought of choice of units, and can be recovered by examining the information of obtaining a heads in a fair coin toss. 
-
-.. Note:: 
-
-  While an event with probability 1 has no information, an event with probability 0 has an infinite amount of information.
-
-  If obtaining information IRL requires the expenditure of energy, this provides an articulation of "impossible" for the same reason it's "impossible" to go the speed of light. 
 .. note:: 
 
    One should always remember that the notion of information depends explicitly on the probability distribution. Information is very "context-dependent."
@@ -48,16 +41,20 @@ Below is a plot of information of an event as a function of it's likelihood:
 
 .. image:: /_static/probability_vs_information.png
 
-.. note::
+.. Note:: 
 
-   Heuristically, information is dual to likelihood/probability:
+  While an event with probability 1 has no information, an event with probability 0 has an infinite amount of information.
 
-   * High likelihoood events have litle (useful!) information.
-       * Knowing it's not going to rain next saturday has little useful information if you live in a desert.
-       * :math:`2 + 2 = 4` (which we're certain is true) has zero information.
-   * Low likelihood events have a lot of (useful!) information.
-       * Knowing it's going to be sunny next saturday has a lot of useful information if you live in Seattle.
-       * :math:`2 + 2 \neq 4` has an infinite amount of information.
+  If obtaining information IRL requires the expenditure of energy, this provides an articulation of an event being "impossible" in the same sense it is "impossible" to go faster than the speed of light. 
+
+Heuristically, information is dual to likelihood/probability:
+
+* High likelihoood events have litle (useful!) information.
+    * Knowing it's not going to rain next saturday has little useful information if you live in a desert.
+    * :math:`2 + 2 = 4` (which we're certain is true) has zero information.
+* Low likelihood events have a lot of (useful!) information.
+    * Knowing it's going to be sunny next saturday has a lot of useful information if you live in Seattle.
+    * :math:`2 + 2 \neq 4` has an infinite amount of information.
 
 
 Entropy
@@ -96,7 +93,7 @@ Definition of Entropy
 
 .. admonition:: Definition
 
-   The entropy of :math:`\rho` is just the expected amount of information :math:`\rho` contains:
+   The (absolute) entropy of :math:`\rho` is just the expected amount of information :math:`\rho` contains:
 
    .. math::
 
