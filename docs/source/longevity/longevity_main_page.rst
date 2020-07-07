@@ -16,7 +16,7 @@ These two figures are my primary influences.
    I do not view longevity to be an optimization problem.  Occasionally, the language of optimization can be useful. Other times, it's dangerous.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents
 
    metabolic/metabolic_main_page
