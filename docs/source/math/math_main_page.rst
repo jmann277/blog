@@ -1,7 +1,7 @@
-Pure Math
+Math
 =========
 
-Insert what the term "Pure Math" means to me.
+Hopefully writing about mathematics helps me stay connected to mathematics. 
 
 .. toctree::
    :maxdepth: 2

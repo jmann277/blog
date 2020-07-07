@@ -13,7 +13,7 @@ Welcome to Jeremy's Writing
    :caption: Contents:
 
    learning/learning_main_page
-   pure_math/pure_math_main_page
+   math/math_main_page
    physics/physics_main_page
    longevity/longevity_main_page
 
