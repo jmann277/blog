@@ -1,0 +1,155 @@
+Crash Course in Absolute Entropy
+================================
+
+Although information theory is omnipresent in statistical inference/learning, most introductions concentrate on the coding or statistical physics interpretation of information. The goal of these notes is to demonstrate, through theory and example, the power of information theory in machine learning and statistics. 
+
+These notes are highly experimental. We ask the reader to forgive the cold, terse tone of this exposition. Any comments on confusions or mistakes are greatly appreciated.
+
+
+
+Information
+-----------
+
+Gibbs and Shannon taught us that the likelihood of an event (according to a hypothesis) is encapsulated in the amount of useful information (according to a hypothesis) present it's observation. Heuristically, it's "the information in an event scales with the amount of surprise upon it's observation."
+
+Let's imagine you're computing information in bits, and :math:`\rho` was the uniform distribution on binary sequences of length :math:`n`. 
+
+In this case, the information contained in a single string :math:`S` coincides with it's length. This happens to the be: 
+
+.. math::
+
+   \mathcal{I}_\rho(S) = \log_2((.5^n)^{-1}) = -\log_2{(.5^n)} = n
+
+For example, "010" contains 3 bits of information
+
+.. admonition:: Definition
+
+   Given a fixed probability distribution, with density :math:`\rho`, with sample space :math:`\mathscr{X}`. For any :math:`x \in \mathscr{X}`, the **information** in x is:
+   
+   .. math:: 
+   
+      \mathcal{I}_{\rho}(x) = \log\Bigl(\frac{1}{p(x)}\Bigl) = - \log(p(x)) 
+
+The notion of information depends explicitly on the probability distribution. 
+
+.. note:: 
+
+  While an event with probability 1 has no information, an event with probability 0 has an infinite amount of information.
+
+Throughout, we will be abusive with which base we take our logarithm with respect to, according to convenience. The choice of a base can be thought of choice of units, and can be recovered by examining the information of obtaining a heads in a fair coin toss. 
+
+Below is a plot of information of an event as a function of it's likelihood:
+
+.. image:: /_static/probability_vs_information.png
+
+Heuristically, information is dual to likelihood/probability:
+
+* High likelihoood events have litle (useful!) information.
+    * Knowing it's not going to rain next saturday has little useful information if you live in a desert
+    * :math:`2 + 2 = 4` (which we're certain is true) has zero information
+* Low likelihood events have
+    * Knowing it's going to be sunny next saturday has a lot of useful information if you live in Seattle
+    * :math:`2 + 2 \neq 4` has an infinite amount of information
+
+Entropy
+-------
+
+Information is a pairing between events and probability distributions. More formally, it's a function:
+
+.. math::
+
+   \mathrm{Prob}(\mathcal{X}) \times \mathcal{X} \longrightarrow \mathbb{R}
+
+In other words, it gives a random variable for each probability distribution :math:`\rho`:
+
+.. math::
+
+   \mathcal{X} \overset{\mathcal{I}_{\rho}}\longrightarrow \mathbb{R}
+
+whose expectation value provides a numerical invariant of :math:`\rho`, namely it's entropy.
+
+We briefly pause to introduce some
+
+.. admonition:: Notation
+   
+   Given a random variable :math:`X` and a probability distribution :math:`\rho`, we let 
+
+   .. math::
+      
+	  \mathbb{E}_\rho[X] = \langle X \rangle_\rho
+   
+   denote the expectation value of :math:`X` with respect to the distribution :math:`\rho`
+
+We can now state the
+
+Definition of Entropy
+---------------------
+
+.. admonition:: Definition
+
+   The entropy of :math:`\rho` is just the expected amount of information :math:`\rho` contains:
+
+   .. math::
+
+      \mathcal{S}(\rho) =  \langle  \mathcal{I}_{\rho} \rangle_{\rho} 
+
+where,  denotes the expectation value of the function (i.e. 'random variable') :math:`X` with respect to the distribution :math:`\rho`.
+
+Below is the a graph of a the entropy of biased coin toss as function of the probability of heads:
+
+.. image:: /_static/entropy_of_biased_coin.png
+
+.. note::
+
+   The entropy is maximized when the coin is fair! Moreover, entropy is minimized when the coin has no randomness! 
+   This is the first indication that we can think of entropy as quantifying the amount of uncertainty in a system.
+
+.. note::
+
+   An essential feature of this definitions is that :math:`x` goes to 0 much faster than $\log(x)$. In other words,
+   
+   .. math::
+   	
+      \lim_{p \rightarrow 0^+} \bigl(- p \log(p) \bigl) = 0
+
+   This ensures that impossible events do not cause the entropy to be infinite.
+
+Entropy of a Normal Distribution
+--------------------------------
+
+For a(n univariate) normal distribution :math:`\mathcal{N}(\mu, \sigma)`, the amount of information (in "natural units") is easy to compute:
+
+.. math::
+
+   \mathcal{I}_{\mathcal{N}(\mu, \sigma)}(x) = \frac{1}{2} \Bigl(\frac{x - \mu}{\sigma}\Bigl)^2 - \log( \sigma\sqrt{2 \pi})
+
+The entropy of a univariate normal distribution (in bits) is gorgeous:
+
+.. math:: 
+
+   \mathcal{S}\bigl(\mathcal{N}(\mu, \sigma) \bigl)= \log ( \sigma) + \log ( \sqrt{2e\pi})
+
+.. note::
+
+   We see further evidence for the heuristic that entropy quantifies the randomness of the distribution, as it increase monotonically with the standard deviation. 
+
+   Moreover, the entropy does not depend on the expectation value of the dist. 
+
+.. note::
+
+   In general, entropy is translation/permutation invariant. Fortunately, it is not dialation invariant.
+
+
+The formula for a multivariate Gaussian is analagous but more complex. What's most interesting is a manifestation of the curse of dimensionality:
+
+.. math::
+
+   \mathcal{S}\bigl(\mathcal{N}(0, \mathbb{1}_n) \Bigl)= n \cdot \mathcal{S}\big(\mathcal{N}(0, 1) \bigl)
+
+So that the entropy of a unit normal scales linearly with the dimension.
+
+.. note::
+
+   A general fact is that normal distributions maximize the entropy amongst all distributions with a fixed mean and variance.
+
+   More generally, all exponential families (e.g. Boltzman distributions, exponential, multinomial, ...) arise by a similar "Maximum Entropy Principle."

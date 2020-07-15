@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notation For Probability Theory &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Geometry" href="../geometry/geometry_main_page.html" />
+    <link rel="prev" title="Probability Theory" href="probability_theory_main_page.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="notation-for-probability-theory">
+<h1>Notation For Probability Theory<a class="headerlink" href="#notation-for-probability-theory" title="Permalink to this headline">¶</a></h1>
+<p>Personally, I find the notation and language conventionally used in probability theory imprecise to the point of confusion. This becomes especially apparent when discussing the zoo of notions of error in statistical learning. To quote <em>Elements of Statistical Learning</em>:</p>
+<blockquote>
+<div><p>Discussions of error rate estimation can be confusing, because we have to make clear which quantities are ﬁxed and which are random… Indeed, in the ﬁrst edition of our book, this section wasn’t suﬃciently clear.</p>
+</div></blockquote>
+<p>The text below is purely technical, but we hope that making these essential notions explicit justifies the tedium.</p>
+<p>Since we’re talking about probablility, it will be helpful to have notation for probability distributions which have the same, explicit scope.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Given a set <span class="math notranslate nohighlight">\(S\)</span>, we let</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{Prob}(S)\]</div>
+<p>denote the set of probability distributions on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+</div>
+<p>The next two definitions shows us how to use functions between sets to make new probability distributions.</p>
+<div class="admonition-definition-pushforward admonition">
+<p class="admonition-title">Definition: Pushforward</p>
+<p>A map of sets:</p>
+<div class="math notranslate nohighlight">
+\[S_0 \overset{f} \longrightarrow S_1\]</div>
+<p>induces a map of probability distributions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\mathrm{Prob}(S_0) &amp;\overset{f_*} \longrightarrow \mathrm{Prob}(S_1) \\
+\rho \longmapsto&amp; \bigl[U \subset S_0  \mapsto (f_*\rho)(U) := \rho(f^{-1}(U)) \bigl]
+\end{align*}\end{split}\]</div>
+<p>called the pushforward along <span class="math notranslate nohighlight">\(f\)</span>. We call <span class="math notranslate nohighlight">\(f_*(\rho)\)</span> the pushforward of <span class="math notranslate nohighlight">\(\rho\)</span> along <span class="math notranslate nohighlight">\(f\)</span></p>
+</div>
+<p>An example to keep in mind is when <span class="math notranslate nohighlight">\(S\)</span> admits a factorization as:</p>
+<div class="math notranslate nohighlight">
+\[S \simeq X \times Y\]</div>
+<p>and <span class="math notranslate nohighlight">\(f\)</span> is a projection:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+X \times Y &amp;\overset{\pi^Y}\longrightarrow X \\
+(x, y) &amp;\longmapsto x
+\end{align*}\end{split}\]</div>
+<p>In this case, given a probability distribution <span class="math notranslate nohighlight">\(\rho \in \mathrm{Prob}(X \times Y)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\pi^Y_*(\rho)\]</div>
+<p>is commonly referred to as the marginal distribution of X. It is computed through integration:</p>
+<div class="math notranslate nohighlight">
+\[(\pi^Y)_*(\rho)(x) = \int_Y  \rho(x, y) \mathrm{d}y\]</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By convention, when <span class="math notranslate nohighlight">\(X\)</span> is a finite set, integration coincides with summation.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Conventionally, one would indicate that the input of <span class="math notranslate nohighlight">\(\rho\)</span> is a tuple <span class="math notranslate nohighlight">\((x, y) \in X \times Y\)</span> by writing <span class="math notranslate nohighlight">\(\rho(x, y)\)</span>.</p>
+<p>This is problematic, as it is unclear whether one is referring to the distribution <span class="math notranslate nohighlight">\(\rho\)</span> or the number <span class="math notranslate nohighlight">\(\rho(x, y)\)</span>. In other words, it promotes type errors. Explicit is better than implicit.</p>
+</div>
+<p>When <span class="math notranslate nohighlight">\(f\)</span> is an inclusion of a subset, we can generate probability distributions ‘contravariantly’:</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Given an inclusion of a subset:</p>
+<div class="math notranslate nohighlight">
+\[A \overset{\iota_A}\longrightarrow X\]</div>
+<p>we can restrict a probability distribution <span class="math notranslate nohighlight">\(P\)</span> to <span class="math notranslate nohighlight">\(A\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\mathrm{Prob}(S_0) &amp;\overset{\iota_A^*} \longrightarrow \mathrm{Prob}(S_1) \\
+P &amp;\longmapsto (\iota^*P)(A) := P(-|A) =: P|_A
+\end{align*}\end{split}\]</div>
+<p>conventionally referred to as the conditional distribution. We will refer to <span class="math notranslate nohighlight">\(\rho|A\)</span> as <span class="math notranslate nohighlight">\(\rho\)</span> restricted to <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
+<p>As an example of how these can be used, note that entropy intertwines pushforwards with restrictions.</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Jeremy Mann's Writing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../learning/learning_main_page.html">Learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../math_main_page.html">Math</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../category_theory/category_theory_main_page.html">Category Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homotopy_theory/homotopy_theory_main_page.html">Homotopy Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../information_theory/information_theory_main_page.html">Information Theory</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="probability_theory_main_page.html">Probability Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/geometry_main_page.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_algebra/linear_algebra_main_page.html">Linear Algebra</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../physics/physics_main_page.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../longevity/longevity_main_page.html">Longevity</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../random/random_main_page.html">Random Writing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../math_main_page.html">Math</a><ul>
+  <li><a href="probability_theory_main_page.html">Probability Theory</a><ul>
+      <li>Previous: <a href="probability_theory_main_page.html" title="previous chapter">Probability Theory</a></li>
+      <li>Next: <a href="../geometry/geometry_main_page.html" title="next chapter">Geometry</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Jeremy Mann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/math/probability_theory/notation_for_probability_theory.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

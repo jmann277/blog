@@ -4,7 +4,7 @@ Learning
 Insert what the term "Learning" means to me.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents
 
    machine_learning/machine_learning_main_page

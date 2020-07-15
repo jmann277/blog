@@ -4,7 +4,7 @@ Pure Math
 Insert what the term "Pure Math" means to me.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents
 
    category_theory/category_theory_main_page

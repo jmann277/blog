@@ -10,7 +10,6 @@ A few sources of this enjoyment:
 * Fun
    - Vim feels like you're playing an instrument
    - Makes monotonous coding tasks feel like a fun/interesting game
-   - Easier to get into the zone 
 * Longevity
    - Reduces awkward wrist motions responsible for certain chronic myofascial conditions (e.g. carpal tunnel)
    - Engages more parts of the brain
@@ -20,7 +19,9 @@ A few sources of this enjoyment:
    - Makes you feel smarter than you are.
 * Increased Intimacy with Computer 
    - Vim makes your computer feel like an extension of yourself, integrating your hands with your mind with your computer.
-   - GUIs alienate and distance you from your computer, pulling you out of the zone.
-
+   - GUIs alienate you from your computer. 
+* Productivity
+   - Writing experience is seamless.
+   - Easier to acheive and maintain a deep state of concentration.
 
 Oh, Vim also saves time.
