@@ -8,3 +8,4 @@ State what you mean by biopsychosocial
    :caption: Contents
 
    the_teleology_of_emotions
+   emotional_regulation
