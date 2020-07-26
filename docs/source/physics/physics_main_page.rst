@@ -4,7 +4,7 @@ Physics
 Say what you mean by physics
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents
 
    quantum_physics/quantum_physics_main_page
