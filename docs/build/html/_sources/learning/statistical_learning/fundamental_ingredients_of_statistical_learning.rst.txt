@@ -1,0 +1,157 @@
+Fundamental Ingredients of Statistical Learning
+===============================================
+
+The goal of these notes are to establish a basic general framework to discuss learning algorithms.
+
+We begin with a brief discussion of 
+
+Sample Data
+-----------
+
+Usually, sample data is thought of a bunch of tuples :math:`(x_i, y_i)` for all :math:`i=0, \ldots, N`.
+
+In other words, it's a map:
+
+.. math:: 
+
+   I &\overset{S}\longrightarrow \mathcal{X} \times \mathcal{Y} \\
+   i &\longmapsto S_i =: (x_i, y_i)
+
+.. admonition:: Definition
+   
+   Let :math:`\rho_I^\mathrm{unif}` denote the uniform distribution on the set :math:`I`. Pushing this distribution forward along :math:`S` gives a distribution on :math:`\mathcal{X} \times \mathcal{Y}`:
+
+   .. math:: 
+
+      \rho_S = S_* \bigl(\rho_I^\mathrm{unif}\bigl)
+
+   we shall refer to as the *empirical distribution* associated to the sample :math:`S`
+   
+.. note::
+
+   We leave it as an exercise to show that the probability of :math:`(x, y)\in \mathcal{X} \times \mathcal{Y}` is the number of times :math:`(x, y)\in\mathcal{X} \times \mathcal{Y}`` was observed in the sample divided by the number of samples.
+
+   In particular, the empirical distribution is a finite weighted sum of dirac distributions. In other words, it has finite support.
+
+.. note::
+
+   Moreover, different choices for the distribution on :math:`I` yield different "class weights" for the learning problem, and are the basis for boosting algorithms.
+
+For completeness, we introduce some standard, informal terms
+
+.. admonition:: Definition
+
+   We call :math:`\mathcal{X}` the *space of features*, and :math:`\mathcal{Y}` the *space of labels*
+
+Models and Hypotheses
+---------------------
+
+Models in statistical learning come in two flavors: discriminative and generative.
+
+A discriminative model is an assignment, for every feature, a probability distribution on the space of labels. A generative model on the other hand, assigns probability ofns probability of  
+
+The two definitions below make these heuristics precise.
+
+.. admonition:: Definition
+   
+    A *discriminative hypothesis* is a map:
+
+    .. math::
+
+       X &\overset{f}\longrightarrow \mathrm{Prob}(Y) \\
+       x &\longmapsto f_x(y) = "f( - | x)"
+
+.. admonition:: Definition
+   
+   A *generative hypothesis* is a probability distribution on :math:`X \times Y`:
+
+   .. math::
+
+      f \in \mathrm{Prob}(X \times Y)
+
+There are standard ways of going between these two pictures. These usually involve a combination of Bayesian and Maximum Likelihood techniques. 
+
+.. note::
+   The input from Bayesian theory is the equivalence:
+
+   .. math::
+
+      \mathrm{Prob}(X \times Y) \simeq \mathrm{Prob}(X) \times \mathrm{Maps}(X, \mathrm{Prob}(Y))
+
+   Hopefully, reading this equivalence from left to right makes it clear that a generative model is equivalent to specifying a discriminative model and a distribution on X. 
+
+   Going from generative into discriminative amounts to forgetting the marginal distribution on X:
+
+   .. math::
+
+      \mathrm{Prob}(X \times Y) \simeq \mathrm{Prob}(X) \times \mathrm{Maps}(X, \mathrm{Prob}(Y)) &\longrightarrow \mathrm{Maps}(X, \mathrm{Prob}(Y)) \\
+      \rho &\longmapsto \bigl(x \mapsto \rho(- | x)\bigl)
+
+.. note::
+
+   In particular, distributions which maximize entropy subject to predetermined constraints give dictionaries between generative and discriminative models. The standard example comes from uniform distributions on X. 
+
+.. warning::
+   
+   At times we may abusively neglect to say whether we are in a discriminative or generative setting. Hopefully the preceding notes give an idea of how the reader can infer the appropriate context.
+
+.. admonition:: Definition
+
+   We will denote the space of hypotheses as H. 
+
+   More preciesely, in the discriminative setting:
+
+   .. math::
+
+      H := \mathrm{Maps}(X, \mathrm{Prob}(Y))
+
+   while in the generative setting:
+
+   .. math::
+
+      H := \mathrm{Prob}(X \times Y)
+
+It's important to differentiate hypotheses and models thereof. 
+
+Obviously, every model should give a hypothesis. However, it's sometimes helpful to either restrict (impose constraints) or enlarge (factor through a pushfoward) the models we are optimizing over. 
+
+.. admonition:: Definition
+
+   A model space is the data of a *parameter space* :math:`\mathcal{M}` and a map:
+
+   .. math::
+
+      \mathcal{M} &\longrightarrow H \\
+      f &\longmapsto \tilde{f}
+
+   We call :math:`\tilde{f}` the  model's *underlying hypothesis*. M is also referred to as the *parameter space*. 
+
+.. note:: 
+
+   This map need not be surjective. When this is the case, we call the model parametric. I will not use the language of parametric vs nonparametric, as its meaning is either ill-defined or utterly trivial.
+
+.. note::
+
+   This map need not be an embedding. For example, when the model space is the space of weights for a neural network with at least one hidden layer due to weight space symmetries. 
+
+Loss Functions
+--------------
+
+A loss function is a pairing between data and models. In other words, it's a map:
+
+.. admonition:: Definition
+   A loss function for a learning algorithm 
+   .. math:: 
+   
+      \mathrm{Prob}(\mathcal{X}\times\mathcal{Y})\times \mathcal{M} &\overset{\mathscr{L}}\longrightarrow \mathbb{R} \\
+      (\rho, f) &\longmapsto \mathscr{L}_\rho (f)
+
+.. note::
+
+   One might want to say that a loss function is a function of the hypothesis space. This would exlude the possibility of additional regularization terms to the loss function.
+
+.. admonition:: Example
+   
+   Information theory gives powerful loss functions in the form of relative entropy: 
+
+

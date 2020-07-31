@@ -1,0 +1,30 @@
+The Moduli Space of Samples
+===========================
+
+The goal of these notes are to give precise meaning to our somewhat ad hoc usage of the term "moduli space of samples." 
+
+.. warning::
+
+   This definition is not in categorical terms (although we speculate this should be possible). We chose to use a probabilistic definition in order to expedite it's application to statistical learning.
+
+.. warning:: 
+
+   We may abusively replace the term moduli stack with simply spoduli stack with simply space.
+
+action of the symmetric group on samples.
+
+.. admonition:: Definition
+
+   Naive space of samples.
+
+.. note::
+
+   gourpoid connected components of the groupoid
+
+.. note::
+
+   bias/variance argument for not taking into account indistinguishablitiy of quotient. 
+   definition in terms of quotient .
+   our definition of samples probabilistically avoids having to handle this quotient, i.e. a model of this moduli space.
+
+with this in place we can define features of a fixed type as functions on the space of samples.

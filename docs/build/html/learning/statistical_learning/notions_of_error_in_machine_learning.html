@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistical Learning &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <title>Notions and Interrelationships &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Fundamental Ingredients of Statistical Learning" href="fundamental_ingredients_of_statistical_learning.html" />
-    <link rel="prev" title="The Permutation Test" href="../statistical_inference/permutation_test.html" />
+    <link rel="next" title="Data Science" href="../data_science/data_science_main_page.html" />
+    <link rel="prev" title="Fundamental Ingredients of Statistical Learning" href="fundamental_ingredients_of_statistical_learning.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -34,15 +34,66 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="statistical-learning">
-<h1>Statistical Learning<a class="headerlink" href="#statistical-learning" title="Permalink to this headline">¶</a></h1>
-<p>Insert what you mean by “Statistical Learning”, contrasting with statistical inference.</p>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="fundamental_ingredients_of_statistical_learning.html">Fundamental Ingredients of Statistical Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notions_of_error_in_machine_learning.html">Notions and Interrelationships</a></li>
+  <div class="section" id="notions-and-interrelationships">
+<h1>Notions and Interrelationships<a class="headerlink" href="#notions-and-interrelationships" title="Permalink to this headline">¶</a></h1>
+<p>We assemble various notions of error that are useful in machine learning.</p>
+<p>Throughout, we will use a fixed loss function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathrm{Prob}(\mathcal{X}\times\mathcal{Y})\times \mathcal{M} &amp;\overset{\mathscr{L}}\longrightarrow \mathbb{R} \\
+(\rho, f) &amp;\longmapsto \mathscr{L}_\rho (f)\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> is the space of models of our learning algorithm.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Most of these concepts we introduce are shadows (e.g. expectation values) of what the reader should concentrate on. For example, the randomness of splitting between training/validation/test</p>
+</div>
+<ul class="simple">
+<li><p>Conditional Generalization/Test Error</p></li>
+<li><p>Expected Generalization/Test Error</p></li>
+<li><p>Empirical Error</p></li>
+<li><p>In sample error</p></li>
+<li><p>optimism</p></li>
 </ul>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Conditional Test/Generalization Error of a hypothesis. conditioned on fixed training set</p>
+</div>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Absolute Test/Generalization Error. expectation value taken over the training set</p>
+</div>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Expected Error</p>
+</div>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>In sample Error</p>
+</div>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Training Error</p>
+</div>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Optimism</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>VC dimension bound relating training and in sample error pg 239 of ESL</p>
+</div>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Empirical Error.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>how to approximate each of those errors empirically.
+Leave one out gives a better estimate of the relative to data.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The validation error is not the test error.</p>
+<p>Enlightening example.</p>
 </div>
 </div>
 
@@ -68,7 +119,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../learning_main_page.html">Learning</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../machine_learning/machine_learning_main_page.html">Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../statistical_inference/statistical_inference_main_page.html">Statistical Inference</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Statistical Learning</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="statistical_learning_main_page.html">Statistical Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data_science/data_science_main_page.html">Data Science</a></li>
 </ul>
 </li>
@@ -85,8 +136,10 @@
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../learning_main_page.html">Learning</a><ul>
-      <li>Previous: <a href="../statistical_inference/permutation_test.html" title="previous chapter">The Permutation Test</a></li>
-      <li>Next: <a href="fundamental_ingredients_of_statistical_learning.html" title="next chapter">Fundamental Ingredients of Statistical Learning</a></li>
+  <li><a href="statistical_learning_main_page.html">Statistical Learning</a><ul>
+      <li>Previous: <a href="fundamental_ingredients_of_statistical_learning.html" title="previous chapter">Fundamental Ingredients of Statistical Learning</a></li>
+      <li>Next: <a href="../data_science/data_science_main_page.html" title="next chapter">Data Science</a></li>
+  </ul></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -121,7 +174,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/learning/statistical_learning/statistical_learning_main_page.rst.txt"
+      <a href="../../_sources/learning/statistical_learning/notions_of_error_in_machine_learning.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
