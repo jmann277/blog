@@ -1,0 +1,35 @@
+
+I mentioned that you should check out some stuff on the Chevalley-Eilenberg construction, which produces a commutative algebrafrom the data of a Lie algebra. I’d like to make a somewhat crazy sounding assertion that this construction is relevant probability theory, perturbation theory, network theory, and field theory (due to it’s connections with Feynman diagrams).
+
+I’ve been meaning to write up some notes on the subject, so if you’lll permit, I’m going to use this as an opportunity to coerce myself into writing a rough draft. In order for it to not be totally formal, I’d recommend first checking out:
+
+https://www.maths.ed.ac.uk/~v1ranick/papers/tanre.pdf
+
+More specifically, I’d recommend:
+
+1) Section 1.5 The essential part is the definition of the (finite dimensional!!) commutative algebra(*) of (left) invariant forms on a Lie group, as well as a projection map from forms on a (compact) Lie group G by “averaging” over the action of G on itself by left multiplication. 
+
+2) Section 1.6 The main result of this part is to show that these maps are equivalences, giving a finite dimensional representation of the cohomology of G. From there one can examine how one can recover the (dual of) the Lie bracket of the Lie algebra from the deRham differential. This follows from the explicit formula of the deRham differential restricted to left invariant one forms (a.k.a the dual of the Lie algebra). One can check that the d^2=0 encodes (the dual of) the Jacobi identity.
+
+From there,  I’d recommend looking through the (self-contained) section 26.2 of:
+
+which goes through a discussion of the above purely in terms of Lie algebras. What important is how they encode the bracket through the Chevalley-Eilenberg differential (which is a derivation). Personally, I like to think of this operator less invariantly. If I have a Lie algebra with a basis {c_i}, dual basis {c^k}, and structure constants {c_{i,j} ^k}, the chevalley-Eilenberg differential is:
+c_{i,j} ^k c^ic^j \frac{\partial}{\partial c_k}
+Where the c^i, c^j, and \frac{\partial}{\partial c_k} have odd degree, and therefore pick up a sign whenever one is moved past another in a computation. My notation is so that \frac{\partial}{\partial c_k} is a derivation and \frac{\partial}{\partial c_k}(c^l}= \delta_{k, l}.
+
+I don’t think it’s written explicitly in those notes, but one can check that H^2 corresponds to central extensions of Lie algebras (closedness of the bilinear map = jacobi identity). A good family of examples comes from symplectic vector spaces. The vector space forms an Abelian Lie algebra, and the symplectic form gives a central extension, called the Heisenberg Lie algebra. The corresponds to the Heisenberg Lie algebra from quantum mechanics, whose enveloping algebra give the Dirac’s creation/annihilation operator solution to the quantum harmonic oscillator. 
+
+Let me end up with a few cryptic/alluring footnotes, which take a fair amount of homotopy in order to rigorous interpret.
+
+** Cryptic Footnotes**
+
+(*) When I say commutative algebra object in the symmetric monoidal category of chain complexes over R. Some features of this category is that there is a symmetric monoidal functor from the category of spaces + Cartesian product into this category, which preserves colimits (e.g. pushouts from CW-decompositions of topological spaces where the attaching maps are injections) and sends the point to R concentrated in degree zero. In other words, homology with coefficients in R. The image of this functor restricted to discrete spaces is the category of vector spaces with the classical tensor product. A geometric argument + work gives the koszul sign rules. That is:
+
+ab = (-1)^{(degree of a)(degree of b)} ba 
+
+In other words, what I refer to as a commutative R-algebra can be safely taken to mean a commutative differential graded algebra (“cdga”) over R. Note that the derivation property of the differential can be seen from the fact that the multiplication maps of the algebra commute with the differential, i.e. multiplication is “continuous”. 
+
+(**)An augmented commutative algebra is an algebra equipped with a A \rightarrow k (k is the ground field of char 0). One should imagine that A is the algebra of functions of some geometric object, and the augmentation map encodes the evaluation of a function on a point of . The cotangent space of an augmented commutative algebra is the vector space expressible as the kernel of the augmentation map modulo kernel(augmentation map)^2. For example, the cotangent space of a polynomial algebra in n generators evaluated at 0 (i.e. functions on k^n) is an n dimensional vector space spanned by . The natural map from polynomials vanishing at 0 into the cotangent space may be recognized evaluating the derivative of a polynomial at 0. In other words, it’s an invariant definition of reading off the first Taylor coefficient of the polynomial. 
+
+The tangent space is the dual of the cotangent space. One can check that this may be identified with maps of algebra from A to k[\epsilon]/\epsilon^2, which is a vector space, because the target is a vector space in commutative algebras. In other words, tangent space of the comm algebra of left invariant forms of a Lie group is it’s Lie algebra, after a shift corresponding which is categorically equivalent to taking the “loop space” of the tangent space.
+
