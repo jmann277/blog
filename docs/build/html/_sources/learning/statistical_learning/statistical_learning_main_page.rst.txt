@@ -8,5 +8,4 @@ Insert what you mean by "Statistical Learning", contrasting with statistical inf
    :caption: Contents
 
    fundamental_ingredients_of_statistical_learning
-   notions_of_error_in_machine_learning
 
