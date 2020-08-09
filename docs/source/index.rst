@@ -9,7 +9,7 @@ Welcome to Jeremy's Writing
 .. include:: main_page.rst
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    learning/learning_main_page

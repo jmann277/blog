@@ -10,3 +10,4 @@ These notes are highly experimental. We ask the reader to forgive the cold, ters
    :caption: Contents
 
    crash_course_in_information_and_absolute_entropy
+   crash_course_in_relative_entropy_i_mutual_information

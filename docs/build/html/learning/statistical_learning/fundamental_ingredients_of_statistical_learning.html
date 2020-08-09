@@ -47,91 +47,55 @@
 i &amp;\longmapsto S_i =: (x_i, y_i)\end{split}\]</div>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>Let <span class="math notranslate nohighlight">\(\rho_I^\mathrm{unif}\)</span> denote the uniform distribution on the set <span class="math notranslate nohighlight">\(I\)</span>. Pushing this distribution forward along <span class="math notranslate nohighlight">\(S\)</span> gives a distribution on <span class="math notranslate nohighlight">\(\mathcal{X} \times \mathcal{Y}\)</span>:</p>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(\rho_I^\mathrm{unif}\)</span> denote the uniform distribution on the set <span class="math notranslate nohighlight">\(I\)</span>. Viewing the sample as a map allows us to efficiently generate a distribution on <span class="math notranslate nohighlight">\(\mathcal{X} \times \mathcal{Y}\)</span>:</p>
+</div></blockquote>
 <div class="math notranslate nohighlight">
-\[\rho_S = S_* \bigl(\rho_I^\mathrm{unif}\bigl)\]</div>
-<p>we shall refer to as the <em>empirical distribution</em> associated to the sample <span class="math notranslate nohighlight">\(S\)</span></p>
+\[\rho_S = S_* \rho_I\]</div>
+<p>which we shall refer to as the <em>empirical distribution</em> associated to the sample <span class="math notranslate nohighlight">\(S\)</span>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We leave it as an exercise to show that the probability of <span class="math notranslate nohighlight">\((x, y)\in \mathcal{X} \times \mathcal{Y}\)</span> is the number of times <span class="math notranslate nohighlight">\((x, y)\in\mathcal{X} \times \mathcal{Y}\)</span> was observed in the sample divided by the number of samples.</p>
-<p>In particular, the empirical distribution is a finite weighted sum of dirac distributions. In other words, it has finite support.</p>
+<p>In classical information theory, the empirical distribution is refered to as the <em>type</em> of the sample.</p>
+</div>
+<div class="admonition-motivation admonition">
+<p class="admonition-title">Motivation</p>
+<p>In practice, the ordering of a sample has any meaning in terms of the problem at hand. More concretely, no learning algorithm should depend on , as any such dependence would introduce superfluous variance to the model. More importantly, this variance is not offest by any reduction in bias.</p>
+<p>Therefore, if we wanted to count the number of of all possible samples (i.e. the volume of the moduli space of samples), we must not overcount the number of samples by individually counting samples differing by a permutation. In other words, every meaningful feature</p>
+<p>One benefit of the notion of the empirical distribution is that it naturally avoids the quotient process. In other words, it’s a convenient representation of the moduli space of samples.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Moreover, different choices for the distribution on <span class="math notranslate nohighlight">\(I\)</span> yield different “class weights” for the learning problem, and are the basis for boosting algorithms.</p>
+<p>The conciseness of this construction highlights the utility of thinking about a sample as a map. Moreover, different choices for the distribution on <span class="math notranslate nohighlight">\(I\)</span> yield different “class weights” for the learning problem, and are the basis for boosting algorithms.</p>
 </div>
 <p>For completeness, we introduce some standard, informal terms</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>We call <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> the <em>space of features</em>, and <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> the <em>space of labels</em></p>
+<p>We call <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> the <em>space of features</em>, and <span class="math notranslate nohighlight">\(mathcal{Y}\)</span> the <em>space of labels</em></p>
 </div>
 </div>
 <div class="section" id="models-and-hypotheses">
 <h2>Models and Hypotheses<a class="headerlink" href="#models-and-hypotheses" title="Permalink to this headline">¶</a></h2>
-<p>Models in statistical learning come in two flavors: discriminative and generative.</p>
-<p>A discriminative model is an assignment, for every feature, a probability distribution on the space of labels. A generative model on the other hand, assigns probability ofns probability of</p>
-<p>The two definitions below make these heuristics precise.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>A <em>discriminative hypothesis</em> is a map:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}X &amp;\overset{f}\longrightarrow \mathrm{Prob}(Y) \\
-x &amp;\longmapsto f_x(y) = &quot;f( - | x)&quot;\end{split}\]</div>
+<p><em>The</em> Hypothesis Set:</p>
 </div>
+<ul class="simple">
+<li><p>discriminative learning problem</p></li>
+<li><p>generative learning problem</p></li>
+</ul>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>A <em>generative hypothesis</em> is a probability distribution on <span class="math notranslate nohighlight">\(X \times Y\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[f \in \mathrm{Prob}(X \times Y)\]</div>
-</div>
-<p>There are standard ways of going between these two pictures. These usually involve a combination of Bayesian and Maximum Likelihood techniques.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The input from Bayesian theory is the equivalence:</p>
-<div class="math notranslate nohighlight">
-\[\mathrm{Prob}(X \times Y) \simeq \mathrm{Prob}(X) \times \mathrm{Maps}(X, \mathrm{Prob}(Y))\]</div>
-<p>Hopefully, reading this equivalence from left to right makes it clear that a generative model is equivalent to specifying a discriminative model and a distribution on X.</p>
-<p>Going from generative into discriminative amounts to forgetting the marginal distribution on X:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\mathrm{Prob}(X \times Y) \simeq \mathrm{Prob}(X) \times \mathrm{Maps}(X, \mathrm{Prob}(Y)) &amp;\longrightarrow \mathrm{Maps}(X, \mathrm{Prob}(Y)) \\
-\rho &amp;\longmapsto \bigl(x \mapsto \rho(- | x)\bigl)\end{split}\]</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In particular, distributions which maximize entropy subject to predetermined constraints give dictionaries between generative and discriminative models. The standard example comes from uniform distributions on X.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>At times we may abusively neglect to say whether we are in a discriminative or generative setting. Hopefully the preceding notes give an idea of how the reader can infer the appropriate context.</p>
-</div>
-<div class="admonition-definition admonition">
-<p class="admonition-title">Definition</p>
-<p>We will denote the space of hypotheses as H.</p>
-<p>More preciesely, in the discriminative setting:</p>
-<div class="math notranslate nohighlight">
-\[H := \mathrm{Maps}(X, \mathrm{Prob}(Y))\]</div>
-<p>while in the generative setting:</p>
-<div class="math notranslate nohighlight">
-\[H := \mathrm{Prob}(X \times Y)\]</div>
-</div>
-<p>It’s important to differentiate hypotheses and models thereof.</p>
-<p>Obviously, every model should give a hypothesis. However, it’s sometimes helpful to either restrict (impose constraints) or enlarge (factor through a pushfoward) the models we are optimizing over.</p>
-<div class="admonition-definition admonition">
-<p class="admonition-title">Definition</p>
-<p>A model space is the data of a <em>parameter space</em> <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> and a map:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\mathcal{M} &amp;\longrightarrow H \\
-f &amp;\longmapsto \tilde{f}\end{split}\]</div>
-<p>We call <span class="math notranslate nohighlight">\(\tilde{f}\)</span> the  model’s <em>underlying hypothesis</em>. M is also referred to as the <em>parameter space</em>.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This map need not be surjective. When this is the case, we call the model parametric. I will not use the language of parametric vs nonparametric, as its meaning is either ill-defined or utterly trivial.</p>
+<p><em>A</em> Discriminative Model Space</p>
+<p>We call <span class="math notranslate nohighlight">\(\tilde{f}\)</span> the  model’s <em>underlying hypothesis</em>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This map need not be an embedding. For example, when the model space is the space of weights for a neural network with at least one hidden layer due to weight space symmetries.</p>
+</div>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>Logistic Regression modelsspace/hypothesis space</p>
 </div>
 </div>
 <div class="section" id="loss-functions">
