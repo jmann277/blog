@@ -6,3 +6,5 @@ Linear Algebra
  .. toctree::
     :maxdepth: 1
     :caption: Content
+
+    intro_to_homological_algebra_i_motivation 
