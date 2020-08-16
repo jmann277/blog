@@ -1,7 +1,9 @@
 Machine Learning
 ================
 
-Say what you mean by "Machine Learning"
+Personally, machine learning is a technology of producing learners from sample data.
+
+This section shall remain (for the most part) empty, until I've established the basic vocabulary of statistical learning.
 
 .. toctree::
    :maxdepth: 1

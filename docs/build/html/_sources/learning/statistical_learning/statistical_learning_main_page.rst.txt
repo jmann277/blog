@@ -7,5 +7,6 @@ Insert what you mean by "Statistical Learning", contrasting with statistical inf
    :maxdepth: 1
    :caption: Contents
 
-   fundamental_ingredients_of_statistical_learning
-
+   models_hypotheses_and_loss_functions
+   assessing_learners
+   from_samples_to_probability_distributions
