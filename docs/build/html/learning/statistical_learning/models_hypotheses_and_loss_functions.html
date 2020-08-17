@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Models, Hypotheses and Loss Functions &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <title>Hypotheses, Models and Loss Functions &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Statistical Inference" href="../statistical_inference/statistical_inference_main_page.html" />
-    <link rel="prev" title="Assessing Learners" href="assessing_learners.html" />
+    <link rel="next" title="Assessing Learners" href="assessing_learners.html" />
+    <link rel="prev" title="Statistical Learning" href="statistical_learning_main_page.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -34,32 +34,78 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="models-hypotheses-and-loss-functions">
-<h1>Models, Hypotheses and Loss Functions<a class="headerlink" href="#models-hypotheses-and-loss-functions" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="hypotheses-models-and-loss-functions">
+<h1>Hypotheses, Models and Loss Functions<a class="headerlink" href="#hypotheses-models-and-loss-functions" title="Permalink to this headline">¶</a></h1>
 <p>These notes seek to establish a precise notion of losses and functions in statistical learning using a probabilistic framework</p>
 <div class="section" id="models-and-hypotheses">
 <h2>Models and Hypotheses<a class="headerlink" href="#models-and-hypotheses" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>A <strong>generative model</strong> is a space <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>, along with a map:</p>
+<p>We call</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathcal{M} &amp;\overset{\Theta}\longrightarrow \mathrm{Prob}(\mathcal{X}\times\mathcal{Y}) \\
-f &amp;\longmapsto \rho^f\end{split}\]</div>
+\[\mathcal{H}_\mathrm{gen} := \mathrm{Prob}(\mathcal{X}\times\mathcal{Y})\]</div>
+<p>the <strong>space of generative hypotheses</strong></p>
 </div>
+<p>A generative model is a family of generative hypotheses.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>We call <span class="math notranslate nohighlight">\(\mathrm{Prob}(\mathcal{X}\times\mathcal{Y})\)</span> the <strong>space of generative hypotheses</strong></p>
+<p>A <strong>generative model</strong> is a space <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>, along with a map:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{M} &amp;\overset{\Theta}\longrightarrow \mathcal{H}_\mathrm{gen} \\
+f &amp;\longmapsto \rho^f \in \mathrm{Prob}(\mathcal{X}\times\mathcal{Y})\end{split}\]</div>
+</div>
+<p>Discriminative models are similiar to generative models, but are impartial in regard to the distribution of features:</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>We call</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_\mathrm{discr} := \mathrm{Maps}\bigl(\mathcal{X}, \mathrm{Prob}(\mathcal{Y})\bigl)\]</div>
+<p>the <strong>space of discriminative hypotheses</strong></p>
 </div>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <p>A <strong>discriminative model</strong> is a space <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>, along with a map:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathcal{M} &amp;\overset{\Theta}\longrightarrow \mathrm{Maps}\bigl(\mathcal{X}, \mathrm{Prob}(\mathcal{Y})\bigl) \\
-f &amp;\longmapsto \Bigl[x \longmapsto \rho^f_x \Bigl]\end{split}\]</div>
+\[\begin{split}\mathcal{M} &amp;\overset{\Theta}\longrightarrow \mathcal{H}_\mathrm{discr} \\
+f &amp;\mapsto \Bigl[x \longmapsto \rho^f_x \Bigl] \in \mathrm{Maps}\bigl(\mathcal{X},\mathrm{Prob}(\mathcal{Y})\bigl)\end{split}\]</div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In general, <span class="math notranslate nohighlight">\(\Theta\)</span> is not an embedding.</p>
+</div>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>When <span class="math notranslate nohighlight">\(\mathcal{Y} \simeq \mathbb{R}\)</span>, the learning problem is called regression.</p>
+<p>Linear regression may be described as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{M} &amp;\simeq (\mathbb{R}^n)^\vee \longrightarrow \mathcal{H}_\mathrm{discr} \\
+f &amp;\simeq \beta \longmapsto \bigl( x \mapsto \delta_{\beta(x)} \bigl) \in \mathrm{Maps}(\mathbb{R}^n, \mathbb{R})\end{split}\]</div>
+</div>
+<p>Bayes’ Law factors generative models into the data of a discriminative model and a probability distribution on the space of features:</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>There is a natural equivalence:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{H}_\mathrm{discr}\times\mathrm{Prob}(\mathcal{X}) &amp;\overset{\simeq}\longrightarrow \mathcal{H}_\mathrm{gen} \\
+(f, \tilde{\rho}) &amp;\longmapsto \bigl( (x, y) \mapsto \tilde{\rho}(x) \rho_x^f(y) \bigl)\end{split}\]</div>
+</div>
+<p>Learning problems come in two flavors: supervised and unsupervised. We take the somewhat unusual approach, defining unsupervised learning as a special case of supervised learning:</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>We call  <span class="math notranslate nohighlight">\(\mathrm{Maps}\bigl(\mathcal{X}, \mathrm{Prob}(\mathcal{Y})\bigl)\)</span> the <strong>space of discriminative hypotheses</strong></p>
+<p>A learning problem is <strong>unsupervised</strong> if:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{Y} \simeq *\]</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note this means supervised learning problems inherit any construction or property of supervised learning problems.</p>
+<p>However, it may be the case that they become uninteresting in the unsupervised case. For example, there are no interesting discriminative models for unsupervised learning problems.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To deemphasize the difference between supervised and unsupervised, we’ll adopt the notation:</p>
+<div class="math notranslate nohighlight">
+\[\Omega := \mathcal{X}\times\mathcal{Y}\]</div>
 </div>
 </div>
 <div class="section" id="loss-functions">
@@ -67,34 +113,51 @@ f &amp;\longmapsto \Bigl[x \longmapsto \rho^f_x \Bigl]\end{split}\]</div>
 <p>A loss function pairs data and models, producing a number. This both assesses models given data and allows data to act on the space of models via gradient descents.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>A <strong>loss function</strong> is a map.</p>
+<p>A <strong>loss function</strong> is a map:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathrm{Prob}^\mathrm{fin}(\mathcal{X}\times\mathcal{Y})\times \mathcal{M} &amp;\overset{\mathscr{L}}\longrightarrow \mathbb{R} \\
-(\rho^\mathrm{emp}, f) &amp;\longmapsto \mathscr{L}_{\rho^\mathrm{emp}} (f)\end{split}\]</div>
-<p>where we are viewing data, <span class="math notranslate nohighlight">\(\rho^\mathrm{emp}\)</span>, as a finitely support probability distribution on <span class="math notranslate nohighlight">\(\mathcal{X}\times\mathcal{Y}\)</span></p>
+\[\begin{split}\mathfrak{D} \times \mathcal{M} &amp;\overset{\mathscr{L}}\longrightarrow \mathbb{R} \\
+(\rho, f) &amp;\longmapsto \mathscr{L}_{\rho} (f)\end{split}\]</div>
+<p>where we are viewing data, <span class="math notranslate nohighlight">\(\rho\)</span>, as a finitely support probability distribution on <span class="math notranslate nohighlight">\(\Omega\)</span></p>
 </div>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
-<p>A standard example is the relative entropy:</p>
+<p>A standard example comes from relative entropy:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathrm{Prob}^\mathrm{fin}(\mathcal{X}\times\mathcal{Y})\times \mathcal{M} \overset{\mathrm{Id} \times \Theta}\longrightarrow \mathrm{Prob}^\mathrm{fin}&amp;(\mathcal{X}\times\mathcal{Y}) \times \mathrm{Prob}(\mathcal{X}\times\mathcal{Y})\overset{\mathcal{S}( - || - )}\longrightarrow \mathbb{R} \\
-(\rho^\mathrm{emp}, f) &amp;\longmapsto \mathcal{S}(\rho^\mathrm{emp} || \rho^f)\end{split}\]</div>
+\[\begin{split}\mathrm{Prob}(\Omega) \times \mathrm{Prob}(\Omega) &amp;\longrightarrow \mathbb{R} \\
+(\rho_A, \rho_B) &amp;\longmapsto \mathcal{S}(\rho_A || \rho_B)\end{split}\]</div>
+<p>and is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{D}(\Omega) \times \mathcal{M} \overset{\Theta}\longrightarrow &amp;\mathrm{Prob}(\Omega) \times \mathrm{Prob}(\Omega)\overset{S( - || - )}\longrightarrow \mathbb{R} \\
+(\rho^\mathrm{emp}, f) &amp;\longmapsto \mathcal{S}( \rho^\mathrm{emp} || \rho_x)\end{split}\]</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Although relative entropy does not coicide with cross entropy, they differ by a term independent of the model, so that optimizing relative entropy coincides with optimizing cross entropy</p>
+<p>Although relative entropy does not coicide with cross entropy, they differ by a term independent of the model, so that optimizing relative entropy coincides with optimizing cross entropy.</p>
+</div>
+<p>Some loss functions do not depend on the hypothesis of the underlying model. In other words, many may no reference to <span class="math notranslate nohighlight">\(\Theta\)</span>.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>In many instances, there are additional <strong>regularization terms</strong> and <strong>hyperparameters</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{M} \times \Lambda &amp;\overset{g}\longrightarrow \mathbb{R} \\
+f, \lambda &amp;\longmapsto g_\lambda(f)\end{split}\]</div>
+<p>which define a <strong>regularized loss function</strong></p>
+<div class="math notranslate nohighlight">
+\[\mathscr{L}_{\rho, \lambda}(f) : = \mathscr{L}_{\rho}(f) + g_\lambda(f)\]</div>
 </div>
 <div class="admonition-example admonition">
-<p class="admonition-title">Example</p>
-<p>RMSE</p>
+<p class="admonition-title">Example:</p>
+<p>A standard example comes from some linear coordinates:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{M} &amp;\simeq \mathbb{R}^n \\
+f &amp;\mapsto \beta\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(g_\lambda = \lambda \lvert\lvert - \lvert\lvert^2\)</span> comes from a norm with a scaling factor <span class="math notranslate nohighlight">\(\lambda\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathscr{L}_{\rho, \lambda}(f) : = \mathscr{L}_{\rho}(f) + \lambda \lvert \lvert \beta \lvert\lvert^2\]</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Note all loss functions factor through <span class="math notranslate nohighlight">\(\Theta\)</span>.</p>
-<p>In many instances, there are additional <strong>regularization terms</strong> and <strong>hyperparameters</strong></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\mathcal{M} \times \Lambda &amp;\overset{\Omega}\longrightarrow \mathbb{R} \\
-f, \lambda &amp;\longmapsto \Omega_\lambda(f)\end{split}\]</div>
+<p>Regularization alters not only the loss function, but also augments the model. As a rule of thumb, this augmentation should be slight, as one normally optimzes hyperparameters though some randomized search.</p>
 </div>
 </div>
 </div>
@@ -121,9 +184,9 @@ f, \lambda &amp;\longmapsto \Omega_\lambda(f)\end{split}\]</div>
 <li class="toctree-l1 current"><a class="reference internal" href="../learning_main_page.html">Learning</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../machine_learning/machine_learning_main_page.html">Machine Learning</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="statistical_learning_main_page.html">Statistical Learning</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="fundamental_ingredients_of_statistical_learning.html">Fundamental Ingredients of Statistical Learning</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Hypotheses, Models and Loss Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="assessing_learners.html">Assessing Learners</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Models, Hypotheses and Loss Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="from_samples_to_probability_distributions.html">From Samples to Probability Distributions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../statistical_inference/statistical_inference_main_page.html">Statistical Inference</a></li>
@@ -144,8 +207,8 @@ f, \lambda &amp;\longmapsto \Omega_\lambda(f)\end{split}\]</div>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../learning_main_page.html">Learning</a><ul>
   <li><a href="statistical_learning_main_page.html">Statistical Learning</a><ul>
-      <li>Previous: <a href="assessing_learners.html" title="previous chapter">Assessing Learners</a></li>
-      <li>Next: <a href="../statistical_inference/statistical_inference_main_page.html" title="next chapter">Statistical Inference</a></li>
+      <li>Previous: <a href="statistical_learning_main_page.html" title="previous chapter">Statistical Learning</a></li>
+      <li>Next: <a href="assessing_learners.html" title="next chapter">Assessing Learners</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
