@@ -16,8 +16,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Statistical Inference" href="../statistical_inference/statistical_inference_main_page.html" />
-    <link rel="prev" title="Fundamental Ingredients of Statistical Learning" href="fundamental_ingredients_of_statistical_learning.html" />
+    <link rel="next" title="From Samples to Probability Distributions" href="from_samples_to_probability_distributions.html" />
+    <link rel="prev" title="Hypotheses, Models and Loss Functions" href="models_hypotheses_and_loss_functions.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -37,59 +37,64 @@
   <div class="section" id="assessing-learners">
 <h1>Assessing Learners<a class="headerlink" href="#assessing-learners" title="Permalink to this headline">¶</a></h1>
 <p>We assemble various notions of error that are useful in machine learning.</p>
-<p>Throughout these notes, we deal with
-.. warning:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Most</span> <span class="n">of</span> <span class="n">these</span> <span class="n">concepts</span> <span class="n">we</span> <span class="n">introduce</span> <span class="n">are</span> <span class="n">shadows</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">expectation</span> <span class="n">values</span><span class="p">)</span> <span class="n">of</span> <span class="n">what</span> <span class="n">the</span> <span class="n">reader</span> <span class="n">should</span> <span class="n">concentrate</span> <span class="n">on</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">randomness</span> <span class="n">of</span> <span class="n">splitting</span> <span class="n">between</span> <span class="n">training</span><span class="o">/</span><span class="n">validation</span><span class="o">/</span><span class="n">test</span>
-</pre></div>
-</div>
+<p>Throughout these notes, we deal with</p>
+<div class="section" id="to-do">
+<h2>To-Do<a class="headerlink" href="#to-do" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><dl class="simple">
+<dt>Notions of Error</dt><dd><ul>
 <li><p>Conditional Generalization/Test Error</p></li>
 <li><p>Expected Generalization/Test Error</p></li>
 <li><p>Empirical Error</p></li>
 <li><p>In sample error</p></li>
-<li><p>optimism</p></li>
 </ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>optimism</dt><dd><ul>
+<li><p>statements about covariance and optimism</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Is learning possible?</dt><dd><ul>
+<li><p>VC dimension in relating training/in sample error pg 239 of ESL</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="notions-of-error">
+<h2>Notions of Error<a class="headerlink" href="#notions-of-error" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>Conditional Test/Generalization Error of a hypothesis. conditioned on fixed training set</p>
-</div>
-<div class="admonition-definition admonition">
-<p class="admonition-title">Definition</p>
-<p>Absolute Test/Generalization Error. expectation value taken over the training set</p>
-</div>
-<div class="admonition-definition admonition">
-<p class="admonition-title">Definition</p>
-<p>Expected Error</p>
-</div>
-<div class="admonition-definition admonition">
-<p class="admonition-title">Definition</p>
-<p>In sample Error</p>
-</div>
-<div class="admonition-definition admonition">
-<p class="admonition-title">Definition</p>
-<p>Training Error</p>
-</div>
-<div class="admonition-definition admonition">
-<p class="admonition-title">Definition</p>
-<p>Optimism</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>VC dimension bound relating training and in sample error pg 239 of ESL</p>
+<p>Conditional Generalization error</p>
 </div>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>Empirical Error.</p>
+<p>Generalization Error</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>how to approximate each of those errors empirically.
-Leave one out gives a better estimate of the relative to data.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>kdf O</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The validation error is not the test error.</p>
-<p>Enlightening example.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>kdf O</p>
+</div>
+</div>
+<div class="section" id="optimism">
+<h2>Optimism<a class="headerlink" href="#optimism" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>kdf O</p>
+</div>
+</div>
+<div class="section" id="the-possibility-of-learning">
+<h2>The Possibility of Learning<a class="headerlink" href="#the-possibility-of-learning" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -115,8 +120,9 @@ Leave one out gives a better estimate of the relative to data.</p>
 <li class="toctree-l1 current"><a class="reference internal" href="../learning_main_page.html">Learning</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../machine_learning/machine_learning_main_page.html">Machine Learning</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="statistical_learning_main_page.html">Statistical Learning</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="fundamental_ingredients_of_statistical_learning.html">Fundamental Ingredients of Statistical Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models_hypotheses_and_loss_functions.html">Hypotheses, Models and Loss Functions</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Assessing Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="from_samples_to_probability_distributions.html">From Samples to Probability Distributions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../statistical_inference/statistical_inference_main_page.html">Statistical Inference</a></li>
@@ -137,8 +143,8 @@ Leave one out gives a better estimate of the relative to data.</p>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../learning_main_page.html">Learning</a><ul>
   <li><a href="statistical_learning_main_page.html">Statistical Learning</a><ul>
-      <li>Previous: <a href="fundamental_ingredients_of_statistical_learning.html" title="previous chapter">Fundamental Ingredients of Statistical Learning</a></li>
-      <li>Next: <a href="../statistical_inference/statistical_inference_main_page.html" title="next chapter">Statistical Inference</a></li>
+      <li>Previous: <a href="models_hypotheses_and_loss_functions.html" title="previous chapter">Hypotheses, Models and Loss Functions</a></li>
+      <li>Next: <a href="from_samples_to_probability_distributions.html" title="next chapter">From Samples to Probability Distributions</a></li>
   </ul></li>
   </ul></li>
   </ul></li>

@@ -5,58 +5,45 @@ Assessing Learners
 We assemble various notions of error that are useful in machine learning.
 
 Throughout these notes, we deal with 
-.. warning:: 
-   
-   Most of these concepts we introduce are shadows (e.g. expectation values) of what the reader should concentrate on. For example, the randomness of splitting between training/validation/test 
 
-- Conditional Generalization/Test Error
-- Expected Generalization/Test Error
-- Empirical Error
-- In sample error
+To-Do 
+-----
+
+- Notions of Error
+    - Conditional Generalization/Test Error
+    - Expected Generalization/Test Error
+    - Empirical Error
+    - In sample error
 - optimism 
-  
-.. admonition:: Definition
+    - statements about covariance and optimism 
+- Is learning possible?
+   - VC dimension in relating training/in sample error pg 239 of ESL 
 
-   Conditional Test/Generalization Error of a hypothesis. conditioned on fixed training set
-
-.. admonition:: Definition
-
-   Absolute Test/Generalization Error. expectation value taken over the training set
+Notions of Error
+----------------
 
 .. admonition:: Definition
 
-   Expected Error
+   Conditional Generalization error
 
 .. admonition:: Definition
 
-   In sample Error
+   Generalization Error
 
 .. admonition:: Definition
 
-   Training Error
+   kdf O
 
 .. admonition:: Definition
 
-   Optimism
+   kdf O
 
-.. note:: 
-
-   VC dimension bound relating training and in sample error pg 239 of ESL
-
-.. admonition:: Definition
-
-   Empirical Error.
-
-.. note:: 
-
-   how to approximate each of those errors empirically. 
-   Leave one out gives a better estimate of the relative to data.
+Optimism
+--------
 
 .. admonition:: Definition
 
-  
-.. warning:: 
+   kdf O
 
-   The validation error is not the test error. 
-
-   Enlightening example.
+The Possibility of Learning
+---------------------------
