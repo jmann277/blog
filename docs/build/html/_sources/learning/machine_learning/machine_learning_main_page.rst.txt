@@ -9,4 +9,4 @@ This section shall remain (for the most part) empty, until I've established the 
    :maxdepth: 1
    :caption: Contents
 
-   on_assessing_machine_learning_algorithms
+   on_the_assessment_of_machine_learning_algorithms.rst

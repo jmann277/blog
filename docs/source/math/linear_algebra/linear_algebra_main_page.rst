@@ -8,3 +8,4 @@ Linear Algebra
     :caption: Content
 
     intro_to_homological_algebra_i_motivation 
+    intro_to_homological_algebra_iv_maps
