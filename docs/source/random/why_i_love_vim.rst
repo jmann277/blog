@@ -1,3 +1,4 @@
+==============
 Why I Love Vim
 ==============
 
@@ -23,5 +24,7 @@ A few sources of this enjoyment:
 * Productivity
    - Writing experience is seamless.
    - Easier to acheive and maintain a deep state of concentration.
+* Adding additional features requires light problem solving
+   - Although Vim is highly configurable, changes generically some light mental exercise. Fortunately, the vim community has many helpful resources.
 
 Oh, Vim also saves time.
