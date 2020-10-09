@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Topological Data Analysis &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Statistical Learning" href="../statistical_learning/statistical_learning_main_page.html" />
+    <link rel="prev" title="On the “Assessment” of Machine Learning Algorithms" href="on_the_assessment_of_machine_learning_algorithms.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction-to-topological-data-analysis">
+<h1>Introduction to Topological Data Analysis<a class="headerlink" href="#introduction-to-topological-data-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="todo">
+<h2>TODO:<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+<p>[x] Make Goals</p>
+<p>[x] Make Outline</p>
+<p>[x] Make abstract</p>
+<p>[ ] Make Deck text</p>
+<p>[ ] Make Deck drawings</p>
+<p>[ ] Make deck pdf</p>
+</div>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Understand the general “zen” of TDA</p></li>
+<li><p>Understand concrete example(s)</p></li>
+<li><p>Understand a few applications</p></li>
+<li><p>Validation (time permitting)</p></li>
+</ol>
+</div>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>Topological data analysis (TDA) is an ecosystem of (unsupervised) learning
+algorithms based on the ansatz: “Data has shape, shape has meaning.” After a high
+level overview, we present the primary workhorse of TDA (Mapper) and two
+applications to healthcare. Time permitting, I will outline a couple validation
+strategies.</p>
+</div>
+<div class="section" id="outline">
+<h2>Outline:<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Part I: Zen of TDA</p>
+<ol class="arabic simple">
+<li><p>Data -&gt; Space</p></li>
+<li><p>Space -&gt; low dimensional embedding</p></li>
+<li><p>Space -&gt; structured features ((persistent) homology)</p>
+<ol class="arabic simple">
+<li><p>Qualitative/computable features, e.g. number of connected components</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Part II: Examples</p>
+<ol class="arabic simple">
+<li><p>DBSCAN</p></li>
+<li><p>Mapper</p></li>
+<li><p>Example of Mapper on a point cloud from a circle</p>
+<ol class="arabic simple">
+<li><p>circle has two points connected by two qualitatively distinct paths</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Part III: Applications</p>
+<ol class="arabic simple">
+<li><p>Breast Cancer</p></li>
+<li><p>Malaria</p></li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="slides">
+<h2>Slides<a class="headerlink" href="#slides" title="Permalink to this headline">¶</a></h2>
+<p>Loose draft of the contents of my slide deck.</p>
+<div class="section" id="slide-1-title-slide">
+<h3>Slide 1: Title Slide<a class="headerlink" href="#slide-1-title-slide" title="Permalink to this headline">¶</a></h3>
+<p>Title: Introduction to TDA: “Data has shape, shape has meaning”</p>
+<p>Author: Jeremy Mann, PhD</p>
+</div>
+<div class="section" id="slide-2-what-is-tda">
+<h3>Slide 2: What is TDA?<a class="headerlink" href="#slide-2-what-is-tda" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>TDA is the application of homotopy theory to data science, primarily through
+an ecosystem of unsupervised learning algorithms</p></li>
+<li><p>(De)Construction and analysis of “spaces”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘connectivity’</p></li>
+<li><p>‘locality’ (computable via divide-and-conquer)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Examples of spaces: sets, graphs, circles, torii, spheres, solutions to f(x)=0,
+invertible matrices, ….</p></li>
+<li><p>Examples of analysis: number of connected components.</p></li>
+</ul>
+</div>
+<div class="section" id="slide-3-step-i">
+<h3>Slide 3: Step I<a class="headerlink" href="#slide-3-step-i" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>We want something of the form Data –&gt; Insight</p></li>
+<li><p>Idea: break this process into two steps:</p>
+<ol class="arabic">
+<li><p>Data –&gt; Space</p></li>
+<li><p>Space –&gt; Insight</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Space –&gt; Structured data</p></li>
+<li><p>Space –&gt; Low dimensional embedding</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</li>
+<li><p>Homotopy theory (+ML/DL) gives a lot of techniques for #2!</p></li>
+<li><p>I’ll concentrate on #1.</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>Slide 3: Step I<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Idea: given input of some kind (a physical theory, a protein, a point cloud
+of structured data, an image, …) “naturally” construct a shape whose properties
+reflect something interesting about the input.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Family tree, connectivity ~ kinship</p></li>
+<li><p>Gauge theory, connectivity ~ physical indistinguishability</p></li>
+<li><p>DBSCAN, connectivity ~ familial resemblance generated by</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Point: All of these notions of connectivity (and more!) are specified once
+you construct a space!</p></li>
+</ul>
+</div>
+<div class="section" id="slide-5-dbscan">
+<h3>Slide 5: DBSCAN<a class="headerlink" href="#slide-5-dbscan" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>DBSCAN constructs a space (graph) from a point cloud <span class="math notranslate nohighlight">\(\{x_i\}\)</span> and a
+scale parameter <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Points: there is a point for every example</p></li>
+<li><p>Edges: there is an edge between <span class="math notranslate nohighlight">\(x_i\)</span> <span class="math notranslate nohighlight">\(x_j\)</span> whenever they are
+less than <span class="math notranslate nohighlight">\(\epsilon\)</span> units away from each other.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Image of 3 examples</p></li>
+</ul>
+</div>
+<div class="section" id="slide-6-dcscan">
+<h3>Slide 6: DCSCAN<a class="headerlink" href="#slide-6-dcscan" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>output of sklearn’s DBSCAN on example</p></li>
+<li><p>image of 3 examples</p></li>
+</ul>
+</div>
+<div class="section" id="slide-7-mapper">
+<h3>Slide 7: Mapper<a class="headerlink" href="#slide-7-mapper" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Mapper modifies this construction in by integrating two pieces:</p>
+<ul>
+<li><p>Allows for/leverages intersections of subpopulations</p></li>
+<li><p>Integrates the data of a function:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>very interesting feature(s)</p></li>
+<li><p>highest component generated by PCA</p></li>
+<li><p>loss function of a learning  algorithm</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>points ~ subpopulations</p></li>
+<li><p>edges ~ intersections of subpopulations</p></li>
+<li><p>color ~ (average/median) value of original function</p></li>
+</ul>
+</li>
+<li><p>Mapper requires additional data: (overlapping) cover of range of function</p></li>
+</ul>
+</div>
+<div class="section" id="slide-8">
+<h3>Slide 8<a class="headerlink" href="#slide-8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Mapper example</p></li>
+</ul>
+</div>
+<div class="section" id="slide-9-a-note-on-embedding">
+<h3>Slide 9: A Note on embedding<a class="headerlink" href="#slide-9-a-note-on-embedding" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>There are many ways to embed graphs in low dimensions</p></li>
+<li><p>These + mapper gives low dimensional visualizations of the data</p></li>
+</ul>
+</div>
+<div class="section" id="slide-9">
+<h3>Slide 9<a class="headerlink" href="#slide-9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Mapper breast cancer application</p></li>
+<li><p>Interpretation of picture</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Jeremy Mann's Writing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../learning_main_page.html">Learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="machine_learning_main_page.html">Machine Learning</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="on_the_assessment_of_machine_learning_algorithms.html">On the “Assessment” of Machine Learning Algorithms</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Introduction to Topological Data Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../statistical_learning/statistical_learning_main_page.html">Statistical Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../statistical_inference/statistical_inference_main_page.html">Statistical Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_science/data_science_main_page.html">Data Science</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../math/math_main_page.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../physics/physics_main_page.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../longevity/longevity_main_page.html">Longevity</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../random/random_main_page.html">Random Writing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../learning_main_page.html">Learning</a><ul>
+  <li><a href="machine_learning_main_page.html">Machine Learning</a><ul>
+      <li>Previous: <a href="on_the_assessment_of_machine_learning_algorithms.html" title="previous chapter">On the “Assessment” of Machine Learning Algorithms</a></li>
+      <li>Next: <a href="../statistical_learning/statistical_learning_main_page.html" title="next chapter">Statistical Learning</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Jeremy Mann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/learning/machine_learning/introduction_to_tda.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

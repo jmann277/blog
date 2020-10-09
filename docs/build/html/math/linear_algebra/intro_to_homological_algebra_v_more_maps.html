@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Homological Algebra V: More Maps &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Physics" href="../../physics/physics_main_page.html" />
+    <link rel="prev" title="Introduction to Homological Algebra IV: Maps" href="intro_to_homological_algebra_iv_maps.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction-to-homological-algebra-v-more-maps">
+<h1>Introduction to Homological Algebra V: More Maps<a class="headerlink" href="#introduction-to-homological-algebra-v-more-maps" title="Permalink to this headline">¶</a></h1>
+<p>This is a loose script of a screencast posted to my channel on Youtube.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">1. Introduction</a></p></li>
+<li><p><a class="reference internal" href="#fundamental-class-of-a-2-sphere" id="id2">2. Fundamental Class of a 2-Sphere</a></p></li>
+<li><p><a class="reference internal" href="#duality-pairing" id="id3">3. Duality Pairing</a></p></li>
+<li><p><a class="reference internal" href="#maps-out-of-disks" id="id4">4. Maps out of Disks</a></p></li>
+<li><p><a class="reference internal" href="#boundaries" id="id5">5. Boundaries</a></p></li>
+<li><p><a class="reference internal" href="#cocycles-vanish-on-boundaries" id="id6">6. Cocycles Vanish on Boundaries</a></p></li>
+<li><p><a class="reference internal" href="#maps-into-disks-and-coboundaries" id="id7">7. Maps into Disks and Coboundaries</a></p></li>
+<li><p><a class="reference internal" href="#coboundaries-vanish-on-cycles" id="id8">8. Coboundaries vanish on Cycles</a></p></li>
+<li><p><a class="reference internal" href="#exercise" id="id9">9. Exercise</a></p></li>
+<li><p><a class="reference internal" href="#cofiber-of-a-matrix-and-gaussian-elimination" id="id10">10. Cofiber of a Matrix and Gaussian Elimination</a></p></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id1">1. Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p><strong>1</strong></p>
+<p>Hello! In this lecture, we introduce even more examples of maps.</p>
+</div>
+<div class="section" id="fundamental-class-of-a-2-sphere">
+<h2><a class="toc-backref" href="#id2">2. Fundamental Class of a 2-Sphere</a><a class="headerlink" href="#fundamental-class-of-a-2-sphere" title="Permalink to this headline">¶</a></h2>
+<p>I’ll begin with a geometric example.</p>
+<p><strong>1 —&gt; 2</strong></p>
+<p>Recall that we constructed a chain complex representing the linearization of a 2-sphere, by gluing together chains on the northern hemisphere and southern hemisphere along the equator.</p>
+<p>Although both the northern and southern hemispheres have a nonzero boundary, their difference has no boundary.</p>
+<p>In other words, it’s a cycle of degree 2, i.e. it is corepresented by a map out of R[2].</p>
+<p>Although the two halves of the equator are connected by hemispheres, they’re connected in two distinct ways. The difference between these two ways of connecting each half of the equator forms something meaningful: a cycle one degree higher that the dimension of the equator.</p>
+<p><strong>2 —&gt; 3</strong></p>
+<p>This cycle is conventionally referred to as the fundamental class of the 2-sphere.</p>
+<p>Although this doesn’t totally make sense at this point, I recommend thinking of R[k] as a k dimensional sphere.</p>
+</div>
+<div class="section" id="duality-pairing">
+<h2><a class="toc-backref" href="#id3">3. Duality Pairing</a><a class="headerlink" href="#duality-pairing" title="Permalink to this headline">¶</a></h2>
+<p>I’ll now describe one way you can produce ordinary numbers from this theory.</p>
+<p><strong>3 —&gt; 4</strong></p>
+<p>The necessary input will be a cycle v and a cocycle phi. We will produce a numerical invariant from this data by pairing the cocyle with the cycle.</p>
+<p><strong>4 —&gt; 5</strong></p>
+<p>I’ll do so composing the cocycle with the cycle, obtaining a map from R[k] to itself. In other words, their composition produces an endomorphism of R[k].</p>
+<p><strong>5 —&gt; 6</strong></p>
+<p>Note that if I have a number, I have an endomorphism of R[k], via multiplication. In fact, all endomorphisms of R[k] are given by multiplication by some number. In other words, there’s an equivalence between endomorphisms of R[k] and numbers.</p>
+<p>In particular, a cocycle evaluated on a cycle is just a number.</p>
+<p>In many instances, this number admits a clear geometric interpretation. For the sake of laziness, let me just outline this example from complex analysis. Don’t worry if you can’t follow this, just concentrate on the conclusion.</p>
+<p><strong>6 —&gt; 7</strong></p>
+<p>The cycle will consist of the 1/z dz, and the cocyle will be 1 over 2 pi i times the integral along a loop gamma. I’m thinking of both of these objects as living on the complex plane with the origin removed. This is reflected in the fact that 1/z dz has an essential singularity at 0 and I don’t want gamma to avoid this singularity.</p>
+<p>A classic result in complex analysis states that this pairing counts the number of times gamma winds around the origin.</p>
+<p>Note that this number is a “qualitative” invariant of the path, in the sense that it doensn’t change if I perturb the path.</p>
+</div>
+<div class="section" id="maps-out-of-disks">
+<h2><a class="toc-backref" href="#id4">4. Maps out of Disks</a><a class="headerlink" href="#maps-out-of-disks" title="Permalink to this headline">¶</a></h2>
+<p>Before moving to our next class of examples, let me introduce yet another important chain complex: D bracket k.</p>
+<p><strong>7 —&gt; 8</strong></p>
+<p>This complex is just R in dimensions k and k-1, and zero everywhere else. The boundary operator is just the identity.</p>
+<p>As before, let’s try to unravel the data of a map out of D[k] into a general chain complex V.</p>
+<p><strong>8 —&gt; 9</strong></p>
+<p>It’s not hard to see that such a map coincides with the data of a vector w of degree k and a vector v of degree k-1.</p>
+<p>These two pieces of data must fit together continuously. In this instance, this means that you can compute v by applying the boundary of w.</p>
+<p>Note that in particular, there’s really only one piece of data, as v determines w.</p>
+<p>Diagrammatically, the continuity condition also means that the following square must “commute”. Just to be clear, the filled-in part of this square indicate thats going right and down coincides with going down and right. More formally, the composition of the top and the right map equals the composition of the left and the bottom map. Pictures like these are a common way to visually unravel these objects.</p>
+<p><strong>9 —&gt; 10</strong></p>
+<p>Here are two basic examples.</p>
+<p>First, note that D[k+1] has a cycle of degree k.</p>
+<p>This is conventionally imagined as modeling the inclusion of a circle into a disk. In particular, the D is for disk.</p>
+<p>Second, note that D[k+1] has a cocycle of degree k.</p>
+<p>This can be visualized as making a sphere out of a disk by collapsing the boundary of the disk into a point.</p>
+<p><strong>10 —&gt; 11</strong></p>
+</div>
+<div class="section" id="boundaries">
+<h2><a class="toc-backref" href="#id5">5. Boundaries</a><a class="headerlink" href="#boundaries" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say we’re given a cycle of degree k. We can endeavor to “extend” this cycle to D[k+1]. More formally we want to factor the cycle through the map from R[k] to D[k+1]. This factoring is commonly referred to as an “extension problem.”</p>
+<p>I’ll leave it as an exercise to show that this factoring is exactly the data of a vector of degree k+1 whose boundary is the original cycle.</p>
+<p>When we can solve this extension problem, we call the cycle a boundary.</p>
+<p>Note that although the the cycle is determined by w, the converse is not true.</p>
+<p><strong>11 —&gt; 12</strong></p>
+<p>We can obtain a cycle from every boundary, by restricting it’s associated map to it’s cycle. You should picture this composition as taking the boundary of the disk inside of V.</p>
+<p>You can also make sense of this algebraically, using the fact that the boundary operator squares to zero.</p>
+<p><strong>12 —&gt; 13</strong></p>
+<p>Fortunately, not every cycle is a boundary, e.g. fundamental class of the two sphere.</p>
+<p>Another example of a cycle is a circle in the complex plane. This cycle is a boundary when considered as a loop inside all the of complex numbers. However, it’s not a boundary if I remove the origin, introducing a “hole”.</p>
+<p>A word of caution: the common intuition of cycles that aren’t boundaries as holes can be problematic for a number of reasons. For one, its meaning is totally vague and unclear. In some sense, it’s based on a clumsy understanding of Alexander Duality. But for now, it’s a useful heuristic.</p>
+<p><strong>13 —&gt; 14</strong></p>
+</div>
+<div class="section" id="cocycles-vanish-on-boundaries">
+<h2><a class="toc-backref" href="#id6">6. Cocycles Vanish on Boundaries</a><a class="headerlink" href="#cocycles-vanish-on-boundaries" title="Permalink to this headline">¶</a></h2>
+<p>Note that all maps from D[k+1] into R[k] are 0. Try picturing what this is saying in terms of the pictures we’ve drawn of D[k+1] and R[k].</p>
+<p>Let’s imagine we’re given a cocycle and a cycle of V of the same degree.</p>
+<p><strong>14 —&gt; 15</strong></p>
+<p>If we further assume that v is a boundary, this means that the composition of v and phi factors through a map from D[k+1] to R[k]. In particular, phi of v factors through the zero map, and is therefore zero.</p>
+<p>In other words, cocycles evaluate to zero on all boundaries.</p>
+<p>This derivation might feel a little queasy. I recommend showing this vanishing in a more algebraic/point-set fashion.</p>
+</div>
+<div class="section" id="maps-into-disks-and-coboundaries">
+<h2><a class="toc-backref" href="#id7">7. Maps into Disks and Coboundaries</a><a class="headerlink" href="#maps-into-disks-and-coboundaries" title="Permalink to this headline">¶</a></h2>
+<p>Next, let’s examine maps into D[k]. As with maps into R[k], these have a more algebraic feel.</p>
+<p><strong>15 —&gt; 16</strong></p>
+<p>I’ll leave it as an exercise to convince yourself that a map into D[k] is the data of a linear map phi_k tilde from V_k to R and a map phi_k-1 tilde from V_k-1 into R.</p>
+<p>These two pieces of data must fit together continuously. In this instance, this means that you can compute the value of phi_k tilde on v by applying the boundary of v and then applying phi_k-1 tilde.</p>
+<p>In particular, there’s really only one piece of data, as phi_k tilde is determined by phi_k-1 tilde and the boundary operator.</p>
+<p><strong>16 —&gt; 17</strong></p>
+<p>Given a cocycle phi, we can endeavor to “lift” this cocycle to a coboundary phi tilde. More formally we want to factor the cocycle through the map from R[k] to D[k] we constructed previously. This factoring is commonly referred to as an “lifting problem.”</p>
+<p>When we can solve this lifting problem, we call the cocycle a coboundary.</p>
+<p>Note that although the the cocycle is determined by phi tilde, the converse is not true.</p>
+</div>
+<div class="section" id="coboundaries-vanish-on-cycles">
+<h2><a class="toc-backref" href="#id8">8. Coboundaries vanish on Cycles</a><a class="headerlink" href="#coboundaries-vanish-on-cycles" title="Permalink to this headline">¶</a></h2>
+<p><strong>17 —&gt; 18</strong></p>
+<p>Note that all maps from R[k] into D[k] are 0. Try picturing this in terms of the pictures we’ve drawn of R[k] and D[k].</p>
+<p>Let’s imagine we’re given a cocycle and a cycle of V of the same degree.</p>
+<p><strong>17 —&gt; 18</strong></p>
+<p>If we further assume that phi is a coboundary, this means that the composition of v and phi factors through a map from R[k] to D[k]. In particular, phi of v factors through the zero map, and is therefore zero.</p>
+<p>In other words, coboundaries evaluate to zero on all cycles.</p>
+<p>This derivation might feel a little queezy. I recommend showing this vanishing in a more algebraic/point-set fashion.</p>
+</div>
+<div class="section" id="exercise">
+<h2><a class="toc-backref" href="#id9">9. Exercise</a><a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p><strong>18 —&gt; 19</strong></p>
+<p>As an exercise, I suggest using a region which bounds a loop gamma in three dimensions to produce a coboundary of integrating along gamma.</p>
+</div>
+<div class="section" id="cofiber-of-a-matrix-and-gaussian-elimination">
+<h2><a class="toc-backref" href="#id10">10. Cofiber of a Matrix and Gaussian Elimination</a><a class="headerlink" href="#cofiber-of-a-matrix-and-gaussian-elimination" title="Permalink to this headline">¶</a></h2>
+<p><strong>19 —&gt; 20</strong></p>
+<p>We can use a n by n+k matrix A to construct a chain complex: the cofiber of A. For simplicty, we’ll assume that the rank of A is n.</p>
+<p>For example, A could be iota_n, a matrix in reduced row echelon form. Geometrically, this is the inclusion of an n dimensional space into a n plus k dimensional space as the first n coordinates.</p>
+<p><strong>20 —&gt; 21</strong></p>
+<p>In coming lectures, I’ll go deeply into the cofiber construction. For now, just note that the data of a map from D[1] into the cofiber of A can be identified with inhomogenous linear systems of equations Av=w.</p>
+<p><strong>21 —&gt; 22</strong></p>
+<p>A final cryptic note: a consequence of Gaussian elimination is the construction of a map from the cofiber of A into the cofiber of iota_n which is a bijection on each component. This isn’t entirely obvious: you’ll have to give a fair bit of thought if you want to see how this works.</p>
+<p>Aaaaaaand that’s all I have for today. Have a nice day!</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Jeremy Mann's Writing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../learning/learning_main_page.html">Learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../math_main_page.html">Math</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../category_theory/category_theory_main_page.html">Category Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homotopy_theory/homotopy_theory_main_page.html">Homotopy Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../information_theory/information_theory_main_page.html">Information Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probability_theory/probability_theory_main_page.html">Probability Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/geometry_main_page.html">Geometry</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="linear_algebra_main_page.html">Linear Algebra</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro_to_homological_algebra_i_motivation.html">Introduction to Homological Algebra I: Motivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro_to_homological_algebra_iv_maps.html">Introduction to Homological Algebra IV: Maps</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Introduction to Homological Algebra V: More Maps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../physics/physics_main_page.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../longevity/longevity_main_page.html">Longevity</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../random/random_main_page.html">Random Writing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../math_main_page.html">Math</a><ul>
+  <li><a href="linear_algebra_main_page.html">Linear Algebra</a><ul>
+      <li>Previous: <a href="intro_to_homological_algebra_iv_maps.html" title="previous chapter">Introduction to Homological Algebra IV: Maps</a></li>
+      <li>Next: <a href="../../physics/physics_main_page.html" title="next chapter">Physics</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Jeremy Mann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/math/linear_algebra/intro_to_homological_algebra_v_more_maps.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

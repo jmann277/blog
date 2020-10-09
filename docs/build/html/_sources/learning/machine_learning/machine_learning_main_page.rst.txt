@@ -9,4 +9,5 @@ This section shall remain (for the most part) empty, until I've established the 
    :maxdepth: 1
    :caption: Contents
 
-   on_the_assessment_of_machine_learning_algorithms.rst
+   on_the_assessment_of_machine_learning_algorithms
+   introduction_to_tda

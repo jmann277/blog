@@ -1,0 +1,12 @@
+============================
+Analysis of Variance (ANOVA)
+============================
+
+.. contents::
+   :local:
+
+Primary Question
+----------------
+
+
+Hypothesis Test

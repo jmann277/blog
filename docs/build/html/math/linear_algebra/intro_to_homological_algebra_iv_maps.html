@@ -16,7 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Physics" href="../../physics/physics_main_page.html" />
+    <link rel="next" title="Introduction to Homological Algebra V: More Maps" href="intro_to_homological_algebra_v_more_maps.html" />
     <link rel="prev" title="Introduction to Homological Algebra I: Motivation" href="intro_to_homological_algebra_i_motivation.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -36,119 +36,138 @@
             
   <div class="section" id="introduction-to-homological-algebra-iv-maps">
 <h1>Introduction to Homological Algebra IV: Maps<a class="headerlink" href="#introduction-to-homological-algebra-iv-maps" title="Permalink to this headline">¶</a></h1>
-<p>The following is a loose script of the following screencast</p>
-<div class="contents local topic" id="contents">
-<ul class="simple">
-<li><p><a class="reference internal" href="#introduction" id="id1">1. Introduction</a></p></li>
-<li><p><a class="reference internal" href="#maps-of-graphs" id="id2">2. Maps of Graphs</a></p></li>
-<li><p><a class="reference internal" href="#the-definition-of-a-map-of-chain-complexes" id="id3">3. The Definition of a Map of Chain Complexes</a></p></li>
-<li><p><a class="reference internal" href="#a-map-between-linearizations-of-graphs" id="id4">4. A Map Between Linearizations of Graphs</a></p></li>
-<li><p><a class="reference internal" href="#concatenation-addition-of-graphs" id="id5">5. Concatenation/Addition of Graphs</a></p></li>
-<li><p><a class="reference internal" href="#co-cycles" id="id6">6. (Co)Cycles</a></p></li>
-<li><p><a class="reference internal" href="#examples-from-calculus" id="id7">7. Examples From Calculus</a></p></li>
-<li><p><a class="reference internal" href="#outrodution" id="id8">8. Outrodution</a></p></li>
-</ul>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>In this lecture, I give the definition of a map of chain complexes, along with a few illuminating examples.</p>
+<p>A video of this lecture may be found on my youtube page.</p>
 </div>
 <div class="section" id="introduction">
-<h2><a class="toc-backref" href="#id1">1. Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Hello. In this lecture, I’ll present a central definition of this theory. Namely, I’ll discuss how to manage the complexities of a chain complexes by leveraging their interrelationships, and without getting buried in technical details.</p>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p><strong>1</strong>
+Hello. In this lecture, I’ll present a central definition of this theory. Namely, I’ll discuss how to manage the complexities of chain complexes by leveraging their interrelationships, and without getting buried in technical details.</p>
 <p>The shelf life of many backend implementations of structures are surprisingly short. Personally, I don’t want to have to change my conceptualization every time someone figures out a better way of accomplishing the same task.</p>
 <p>Mortals need to develop a high level language to manage complexity. Chain complexes are no exception. However, we need to be careful: we cannot go so high level that we can’t see the linear algebra that is occurring in the backend.</p>
-<p>In this lecture, I’ll present one of the main tools in this theory: the notion of a map of chain complexes. This articulates and leverages relationships between chain complexes. This will allow us to talk about things like observable properties, subobjects, and diagonalizations.</p>
-<p>In some sense, this is an instance of a “categorical” approach to structural complexity. These methods help us see a chain complex as a unified geometric object with a rich algebraic structure. These geometric properties in turn help us generate new ideas, applications, and guesses. The linear, algebraic structures allows us to test guesses and scaleably implement applications.</p>
-<p>However, to minimize prerequisites, I won’t explicitly use the language of category theory. Instead, I’ll give a somewhat bizarre introduction to maps of chain complexes that will hopefully streamline the transition to a categorical approach to the subject. If you want to use these methods for anything beyond cookie-cutter-off-the-shelf applications, you have to learn how to integrate categorical thinking into your understanding.</p>
+<p>In this lecture, I’ll present an essential tool: the notion of a map of chain complexes. Reflecting the algebraic and geometric nature of chain complexes, these maps can be thought of as both continuous and linear. These maps will allow us to talk about things like observable properties, subobjects, and diagonalizations.</p>
+<p>In some sense, this is an instance of a “categorical” approach to structural complexity. This approach will help us see a chain complex as a unified geometric object with a rich algebraic structure. The geometric properties will help us generate new ideas, applications, and guesses. The linear, algebraic structures allows us to test guesses and scaleably implement applications.</p>
+<p>However, to minimize prerequisites, I won’t explicitly use the language of category theory. Instead, I’ll give a somewhat bizarre introduction that will hopefully streamline the transition to a categorical approach to the subject. If you want to use these methods for anything beyond cookie-cutter-off-the-shelf applications, you have to learn how to integrate categorical thinking into your understanding.</p>
 <p>As before, I’ll begin with a motivational example.</p>
-</div>
-<div class="section" id="maps-of-graphs">
-<h2><a class="toc-backref" href="#id2">2. Maps of Graphs</a><a class="headerlink" href="#maps-of-graphs" title="Permalink to this headline">¶</a></h2>
-<p>Recall I can linearize (aka one-hot-encode) any map of sets. This gives matrix whose ijth entry is one if the map sends i to j and zero otherwise.</p>
-<p>I’d like to do a similar maneuver, but with a map of directed graphs. First I should remind y’all what a map of directed graphs is.</p>
-<p>A map of directed graphs, f, is the data of a map between their set of vertices and a map between their sets of edges. Moreover, f evaluated on the source of an edge e must coincide with the source of the f(e). Similarly, f evaluated on the target of an edge e must coincide with the target of f(e).</p>
-<p>Note that these conditions give something like a finite criteria for continuity, as a failure to satisfy this condition is like saying you’re ripping an edge in half. Ripping is definitely not continuous.</p>
+<p><strong>1-&gt;2</strong>
+1. Maps of Graphs
+—————–</p>
+<p>Recall I can linearize (aka one-hot-encode) any map of sets. This gives matrix whose ijth entry is 1 if the map sends i to j and zero otherwise.</p>
+<p>I’d like to do a similar maneuver, but with a map of directed graphs. First, I should remind y’all what a map of directed graphs is.
+<strong>2-&gt;3</strong>
+A map, f, from Gamma to Gamma tilde, f, is two pieces of data: a map between their set of vertices and a map between their sets of edges.</p>
+<p>These two maps must interact in a particular way. Namely, f evaluated on the source of an edge e must coincide with the source of the f(e). Similarly, f evaluated on the target of an edge e must coincide with the target of f(e).</p>
+<p>Note that these conditions give something akin to a finite criteria for continuity, as failing to satisfy this condition is like saying you’re ripping an edge in half. Ripping is definitely not continuous.</p>
 <p>A nice exercise is to figure out how to see the data of a node or a edge or a clique or a node with valency 5 or a bipartite structure as a map of graphs. It’s incredible how many things you can think of in this manner. Moreover, it’s not a theory of anything, as this perspective allows you leverage this common ground by thinking about composition of maps.</p>
 <p>But I digress.</p>
-<p>As in the case of sets, we’d like to construct a map on the linearizations of these graphs.</p>
-<p>We do this by repeating the same procedure to the set of vertices and the set of edges.</p>
-<p>Note that the boundary of f of an edge = f of it’s boundary.</p>
+<p>As in the case of sets, we’d like to construct a map on the linearizations of these graphs.
+<strong>3-&gt;4</strong>
+We do this by one-hot-encoding the maps between the vertices and edges.
+<strong>4-&gt;5</strong>
+Note that the boundary of f of an edge = f of it’s boundary.</p>
 <p>In other words, f “commutes” with the boundary maps.</p>
-<p>In summary, f extends to a map which is linear, and “continuous”. This continuity condition is that f commutes with the boundary map, and held because the map of graphs was continuous.</p>
+<p>In summary, f extends to a map which is linear, and “continuous”. This continuity condition is modeled with the condition that f commutes with the boundary map, and held because the map of graphs was continuous. I like to think of this map as the derivative.
+<strong>5-&gt;6</strong></p>
 </div>
 <div class="section" id="the-definition-of-a-map-of-chain-complexes">
-<h2><a class="toc-backref" href="#id3">3. The Definition of a Map of Chain Complexes</a><a class="headerlink" href="#the-definition-of-a-map-of-chain-complexes" title="Permalink to this headline">¶</a></h2>
-<p>So now let me enumerate the data and conditions present in a general map of chain complexes:</p>
-<p>A map of chain complexes f, from V to W is the data of linear maps between from each V_i to W_i.</p>
-<p>Note that it sends vectors of V of degree k to vectors of W of degree k.</p>
-<p>Moreover, f must send the boundary of v in V to the boundary of f of v in W.</p>
-<p>As with graphs, I interpret this condition as a continuity condition, so that I think of a map of chain complexes as a continuous linear map.</p>
-</div>
-<div class="section" id="a-map-between-linearizations-of-graphs">
-<h2><a class="toc-backref" href="#id4">4. A Map Between Linearizations of Graphs</a><a class="headerlink" href="#a-map-between-linearizations-of-graphs" title="Permalink to this headline">¶</a></h2>
+<h2>3. The Definition of a Map of Chain Complexes<a class="headerlink" href="#the-definition-of-a-map-of-chain-complexes" title="Permalink to this headline">¶</a></h2>
+<p>So now let me enumerate the data and conditions present in a general map of chain complexes:
+<strong>6-&gt;7</strong>
+A map of chain complexes f, from V to W is the data of linear maps between from each V_i to W_i for every i.</p>
+<p>In particular, it sends vectors of degree k in V to vectors of degree k in W .
+<strong>7-&gt;8</strong>
+Moreover, f must send the boundary of v in V to the boundary of f of v in W.
+<strong>8-&gt;9</strong>
+As with graphs, I interpret this condition as a continuity condition, so that I think of a map of chain complexes as a continuous linear map.
+<strong>9-10</strong>
+4. A Map Between Linearizations of Graphs
+—————————————–</p>
 <p>Not all matrices come from one hot encoding/linearizations maps of finite sets. The same is true for maps between linearizations of chain complexes. Here is an example, coming from concatenation.</p>
-<p>This will be a map f between the following two graphs. The source of f is just an edge, and the target is two edges glued together along a vertex. The edges are oriented from left to right.</p>
+<p>This is a map f between chains on the following two graphs. The source of f is just an edge, and the target is two edges glued together along a vertex. The edges are oriented from left to right.</p>
 <p>F sends the outer vertices to outer vertices, and the edge to the sum of the two edges of the target graph.</p>
-<p>We can depict f in terms of cell diagrams as follows.</p>
-<p>I claim that this is a map of chain complexes. To show this, it suffices to perform a simple computation. Feel free to pause the video and see if you can do the computation yourself.</p>
-<p>Aaaaaand here it is. Note that this map was “continuous” due to a beautiful cancellation.</p>
-<p>A final exercise is to try to convince yourself that this cannot be constructed as a linearization of a map of graphs.</p>
-</div>
-<div class="section" id="concatenation-addition-of-graphs">
-<h2><a class="toc-backref" href="#id5">5. Concatenation/Addition of Graphs</a><a class="headerlink" href="#concatenation-addition-of-graphs" title="Permalink to this headline">¶</a></h2>
-<p>So let’s begin with a question: what is the data of a map out of the linearization of an edge?</p>
-<p>Well, it’s two elements in V_0, and an element of V_1. However, these maps need to be sufficiently continuous, which means that the boundary of the element of V_1 must be the difference between these two elements of V_0.</p>
-<p>Hence, we should think of this data as a path.</p>
-<p>As an aside, let’s say we’re given two “paths” in a general chain complex V, so that the start of one is the end of another.</p>
-<p>This is precisely the data of a map out of the source of the graph I constructed above.</p>
-<p>I’ll leave it as an exercise to convince yourself that it makes sense to compose maps of chain complexes in the obvious way.</p>
-<p>I can precompose this map with the map I constructed on the previous slide.</p>
-<p>Note that this is simulatenously adding and concantenating the edges! This gives a more geometric interpretation of addition.</p>
-<p>This extends to higher dimensions. I won’t get into that, since mortals need the theory of operads to formally make sense of concatenation in higher dimensions. In higher dimensions there’s a very interesting space of concatenations. For example, in dimension two it’s the circle. Numpy’s axis attribute for it’s concatenation method is a shadow of this fact.</p>
-</div>
-<div class="section" id="co-cycles">
-<h2><a class="toc-backref" href="#id6">6. (Co)Cycles</a><a class="headerlink" href="#co-cycles" title="Permalink to this headline">¶</a></h2>
+<p>I claim that this is a map of chain complexes. To show this, it suffices to perform a simple computation. Feel free to pause the video and see if you can do the computation yourself.
+<strong>10-&gt;11</strong>
+Aaaaaand here it is. Note that this map was “continuous” due to a beautiful cancellation.
+<strong>11-&gt;12</strong>
+A final exercise is to try to convince yourself that this cannot be constructed as a linearization of a map of graphs.
+5. Concatenation/Addition of Graphs
+———————————–</p>
+<p>So let’s begin with a question: what is the data of a map out of the linearization of an edge?
+<strong>12-&gt;13</strong>
+Well, it’s two elements in V_0, and an element of V_1. However, these maps need to be sufficiently continuous, which means that the boundary of the element of V_1 must be the difference between these two elements of V_0.
+<strong>13-&gt;14</strong>
+Hence, we should think of this data as a path.
+<strong>14-&gt;15</strong>
+Let’s say we’re given two “paths” in a general chain complex V, so that the start of one is the end of another.</p>
+<p>This is precisely the data of a map out of the source of the graph I constructed above.
+<strong>15-&gt;16</strong>
+I can precompose this map with the map I constructed on the previous slide.</p>
+<p>I’ll leave it as an exercise to convince yourself that it makes sense to compose maps of chain complexes in the obvious way.
+<strong>16-&gt;17</strong>
+Notice that this is simulatenously adding and concantenating the edges! This gives a more geometric interpretation of addition.
+<strong>17-&gt;18</strong>
+This extends to higher dimensions. I won’t get into that, since mortals need the theory of operads to formally make sense of concatenation in higher dimensions. In higher dimensions there’s a very interesting space of concatenations. For example, in dimension two it’s the circle. Numpy’s axis attribute for it’s concatenation method is a shadow of this fact.
+<strong>18-&gt;19</strong>
+6. (Co)Cycles
+————-</p>
 <p>Before going into the next example, I need to introduce one of the most important chain complexes, R bracket k.</p>
 <p>In degree k it’s just R, so that the degree k piece is one dimensional. Aaaand it’s zero in every degree not equal to k.</p>
 <p>Note that this means that the boundary operator is forced to be zero.</p>
-<p>Since this lecture is about maps, let’s see if we can understand the data of a map from R[k] to a general chain complex V.</p>
-<p>Note that the only possible nonzero linear map must go from the degree k piece of R[k] to the degree k piece of V.</p>
+<p>Since this lecture is about maps, let’s see if we can understand the data of a map from R[k] to a general chain complex V.
+<strong>19-&gt;20</strong>
+Note that the only possible nonzero linear map must go from the degree k piece of R[k] to the degree k piece of V.</p>
 <p>As R[k] is one dimensional, this linear map is determined by it’s value, v, at quote 1, which is a vector in V_k. As the boundary of 1 inside R[k] is zero, the boundary of v must be zero.</p>
-<p>In other words, there is a one-to-one correspondence between the set of maps from R k to V and vectors in V of degree k whose boundary is zero.</p>
-<p>We call such a map a cycle of V of degree k, and say that R[k] “corepresents” the data of a cycle of degree k.</p>
+<p>In other words, there is a one-to-one correspondence between the set of maps from R k to V and vectors in V of degree k whose boundary is zero.
+<strong>20-&gt;21</strong>
+We call such a map a cycle of V of degree k, and say that R[k] “corepresents” the data of a cycle of degree k.</p>
 <p>You should think that if k =1 and V were chains on a graph, a loop in the graph (or linear combinations thereof) determines a cycle of degree 1.</p>
-<p>What about maps out of R[k]?</p>
-<p>So I’ll leave it as an exercise to convince yourself that there is a bijection between maps from V to R[k] into the set of linear functions on V_k satisfying the following condition:</p>
+<p>What about maps out of R[k]?
+<strong>21-&gt;22</strong>
+So I’ll leave it as an exercise to convince yourself that there is a bijection between maps from V to R[k] into the set of linear functions on V_k satisfying the following condition:</p>
 <p>Namely, it has to send v and v plus the boundary of tilde v to the same value. Note that as this map was linear, this is equivalent to the condition that it sends anything expressible as the boundary of something to zero.</p>
-<p>As above, we’ll call such a map a cocycle of degree k, as it’s like a cycle, but in the opposite direction.</p>
-<p>For example, let’s say that we have a cocyle phi of degree 0 on graph Gamma, and two vertices v_0 and v_1 connected by an edge e.</p>
-<p>Then the equivalence above shows us that, as phi was a cocycle, phi of v zero equals phi of v one.</p>
+<p>As above, we’ll call such a map a cocycle of degree k, as it’s like a cycle, but in the opposite direction.
+<strong>22-&gt;23</strong>
+For example, let’s say that we have a cocyle phi of degree 0 on graph Gamma, and two vertices v_0 and v_1 connected by an edge e.
+<strong>23-&gt;24</strong>
+Then the equivalence above shows us that, as phi was a cocycle, phi of v zero equals phi of v one.</p>
 <p>Therefore, the function phi doesn’t vary as one moves along the edges of the graph.</p>
 <p>However phi need not be constant, as it can take on different values along different connected components of the graph. Instead, it’s only “locally constant.”</p>
-<p>Moreover, any such map is determined by its value when evaluated at 1, which is an vector of degree k.</p>
 </div>
 <div class="section" id="examples-from-calculus">
-<h2><a class="toc-backref" href="#id7">7. Examples From Calculus</a><a class="headerlink" href="#examples-from-calculus" title="Permalink to this headline">¶</a></h2>
-<p>This notion of a linear map packages a lot stuff you might be familiar with from calculus. Let’s see this in a concrete example.</p>
-<p>Let’s say we’re given a path, gamma, in Euclidean space.</p>
-<p>We can integrate vector fields along this path, thus obtaining a number. This operation is commonly referred to as a ”line integral along the path gamma’ and interacts with the curl in a very particular way.</p>
-<p>Recall that we packaged the linear objects of multivariable calculus: vector fields, smooth functions, gradient, curl and divergence, into a single chain complex, written as omega superscript bullet of R^3. The identities between these operators precisely state that this data is in fact a chain complex.</p>
+<h2>7. Examples From Calculus<a class="headerlink" href="#examples-from-calculus" title="Permalink to this headline">¶</a></h2>
+<p>This notion of a linear map packages a lot stuff you might be familiar with from calculus. Let’s see this in a concrete example.
+<strong>24-&gt;25</strong>
+Let’s say we’re given a path, gamma, in Euclidean space.</p>
+<p>We can integrate vector fields along this path, obtaining a number. This operation is commonly referred to as a ”line integral along the path gamma’ and interacts with the curl in a very particular way.
+<strong>25-&gt;26</strong>
+Recall that we packaged the linear objects of multivariable calculus: vector fields, smooth functions, gradient, curl and divergence, into a single chain complex, written as omega superscript bullet of R^3. The identities between these operators precisely state that this data is in fact a chain complex.</p>
 <p>In this particular example, we’ll focus on the piece of this complex corresponding to vector fields situated in degree minus one.</p>
 <p>I want to think of the process of taking a line integral as a map from this chain complex into R[k]. As we’re focusing on vector fields situated in degree minus one, and maps of chain complexes need to preserve the degree, this should be R bracket -1.</p>
-<p>This whole degree business probably seems opaque right now, but it’s not random. Eventually you’ll develop an intuition.</p>
-<p>With this data in place, we can ask the question: When is integrating along gamma a map of chain complexes?</p>
-<p>By our previous identification of maps into R blacket k, we only need to ask when the following equation holds:</p>
-<p>Recall that the fundamental theorem of calculus relates an integral of the derivative of a function over a region to an integral of that function along the boundary of the region.</p>
-<p>Therefore, integration is a map of chain complexes whenever gamma has no boundary. In other words, when it’s a closed loop.</p>
-<p>Although this articulation might seem unnecessarily complex, it definitely constitutes a best practice. On a side note, I find it hilarious how particular CS people are to the details of their code and documentation, while being irresponsibly imprecise and ambivalent about their mathematical documentation. But I digress.</p>
-<p>Here’s a standard example of when this complexity becomes useful: namely, the gauge theories underlying the standard model and many condensed matter systems. In this language, A is referred to as a quote ‘gauge field’, and constitutes the degrees of freedom of the system of interest.</p>
-<p>As everything we’re doing here is linear, A is in particular an abelian gauge field. Photons are examples of abelian gauge field.</p>
-<p>In this language, f is a ‘gauge transformation.’ Recall that changing the energy function of a system by a constant number doesn’t affect any measurable quantities of the system, as the forces are in terms of gradients of potentials.</p>
-<p>Similarly, in gauge theory there’s no measurable difference between a system in state A and a system is state A + df. It’s merely a convenient representation of our description, not the physical system we’re attempting to model.</p>
-<p>Therefore, if this operation is to model a physically meaningful observable, it must give the same number on A and A + df. In other words, the integration must occur over a loop.</p>
+<p>This whole degree business probably seems opaque right now, but it’s not random. Eventually you’ll develop an intuition.
+<strong>26-&gt;27</strong>
+With this data in place, we can ask the question: When is integrating along gamma a map of chain complexes?</p>
+<p>By our previous identification of maps into R blacket k, we only need to ask when the following equation holds:
+<strong>27-&gt;28</strong>
+Recall that the fundamental theorem of calculus relates an integral of the derivative of a function over a region to an integral of that function along the boundary of the region.
+<strong>28-&gt;29</strong>
+Therefore, integration is a map of chain complexes whenever gamma has no boundary. In other words, when it’s a closed loop.</p>
+<p>Although this articulation might seem unnecessarily complex, it definitely constitutes a best practice.</p>
+<p>Here’s a standard example of when this complexity becomes useful: namely, the gauge theories underlying the standard model and many condensed matter systems. In this language, A is referred to as a quote ‘gauge field’, and constitutes the degrees of freedom of the system of interest.
+<strong>29-&gt;30</strong>
+As everything we’re doing here is linear, A is in particular an abelian gauge field. Photons are examples of abelian gauge field.
+<strong>30-&gt;31</strong>
+In this language, f is a ‘gauge transformation.’ Recall that changing the energy function of a system by a constant number doesn’t affect any measurable quantities of the system, as the forces are in terms of gradients of potentials.</p>
+<p>Similarly, in gauge theory there’s no measurable difference between a system in state A and a system is state A + df. It’s merely a convenient representation of our description, not the physical system we’re attempting to model.
+<strong>31-&gt;32</strong>
+Therefore, if this operation is to model a physically meaningful observable, it must give the same number on A and A + df. In other words, the integration must occur over a loop.</p>
 <p>Therefore, the condition of being a map of chain complexes is protecting us from making physically meaningless distinctions which might mess up counts of degrees of freedom.</p>
 <p>Ken Wilson introduced a mild variant of this to quantum field theory in an attempt to explain the formation of hadrons from quarks. It’s called the Wilson Loop observable.</p>
-<p>Of course, Wilson was interested in nonabelian theories, but whatever. This is a significantly easier example to solve, and hopefully gives some idea of why this area is useful in systems whose interpretation is subtle.</p>
-</div>
-<div class="section" id="outrodution">
-<h2><a class="toc-backref" href="#id8">8. Outrodution</a><a class="headerlink" href="#outrodution" title="Permalink to this headline">¶</a></h2>
+<p>Of course, Wilson was interested in nonabelian theories, but whatever. This is a significantly easier example to solve, and hopefully gives some idea of why this area is useful in systems whose interpretation is subtle.
+<strong>32-&gt;33</strong>
+8. Outrodution
+————–</p>
 <p>I’ll end with a picture of a higher dimensional example of a map, obtained as the linearization of the map which collapses an edge of a triangle into a single segment.</p>
 <p>First, try to see if you can write down this map explicitly.</p>
 <p>Then, see if you can intuit how that formal thing you wrote down corresponds to the picture on the right, and how this picture encodes the fact that this map was quote continuous</p>
@@ -185,6 +204,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="linear_algebra_main_page.html">Linear Algebra</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="intro_to_homological_algebra_i_motivation.html">Introduction to Homological Algebra I: Motivation</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Introduction to Homological Algebra IV: Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro_to_homological_algebra_v_more_maps.html">Introduction to Homological Algebra V: More Maps</a></li>
 </ul>
 </li>
 </ul>
@@ -203,7 +223,7 @@
   <li><a href="../math_main_page.html">Math</a><ul>
   <li><a href="linear_algebra_main_page.html">Linear Algebra</a><ul>
       <li>Previous: <a href="intro_to_homological_algebra_i_motivation.html" title="previous chapter">Introduction to Homological Algebra I: Motivation</a></li>
-      <li>Next: <a href="../../physics/physics_main_page.html" title="next chapter">Physics</a></li>
+      <li>Next: <a href="intro_to_homological_algebra_v_more_maps.html" title="next chapter">Introduction to Homological Algebra V: More Maps</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
