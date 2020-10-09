@@ -11,9 +11,12 @@ Below is how I organize my "daily" notebooks:
 #. To Do List
 
    - Write this first before any code/exposition
+   - Not everything on the todo list will be completed. Don't remove items that 
+     weren't successfully done. If there's an important reason for not 
+     completing an item, record it in the take-aways section.
 #. Take-Aways
 
-   - Most exposition comes here, can be 
+   - Most exposition comes here.
 #. Closed Questions
 
    - These should have both the questions and the answers. Having this section
