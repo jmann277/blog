@@ -8,3 +8,4 @@ This section contains my thoughts on Data Science.
    :caption: Contents
 
    constituent_ingredients_of_data_science
+   structure_of_my_ipynbs
