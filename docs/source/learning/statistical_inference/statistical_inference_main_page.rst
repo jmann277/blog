@@ -8,3 +8,6 @@ State what you mean by "Statistical Inference"
    :caption: Contents
 
    permutation_test
+   survival_analysis
+   anova
+   mle

@@ -38,7 +38,7 @@ TODO: list which principle(s) each practice is justified by.
           to determine chronotype.
     - Maintain consistency on weekends
     - Experiment with alarms to help maintain consistency
-#. **Avoid exercise > 2 hours of bedtime**
+#. **Avoid exercise > 2 hours of bedtime** 
 #. **Switch off lights > 1.5 hours before bedtime**
     - Prefer red light to blue light
 #. **Set bedroom temp to 65-67**:math:`^\circ` **F**

@@ -45,10 +45,9 @@
 <li><p><a class="reference internal" href="#maps-out-of-disks" id="id4">4. Maps out of Disks</a></p></li>
 <li><p><a class="reference internal" href="#boundaries" id="id5">5. Boundaries</a></p></li>
 <li><p><a class="reference internal" href="#cocycles-vanish-on-boundaries" id="id6">6. Cocycles Vanish on Boundaries</a></p></li>
-<li><p><a class="reference internal" href="#maps-into-disks-and-coboundaries" id="id7">7. Maps into Disks and Coboundaries</a></p></li>
-<li><p><a class="reference internal" href="#coboundaries-vanish-on-cycles" id="id8">8. Coboundaries vanish on Cycles</a></p></li>
-<li><p><a class="reference internal" href="#exercise" id="id9">9. Exercise</a></p></li>
-<li><p><a class="reference internal" href="#cofiber-of-a-matrix-and-gaussian-elimination" id="id10">10. Cofiber of a Matrix and Gaussian Elimination</a></p></li>
+<li><p><a class="reference internal" href="#coboundaries-vanish-on-cycles" id="id7">8. Coboundaries vanish on Cycles</a></p></li>
+<li><p><a class="reference internal" href="#exercise" id="id8">9. Exercise</a></p></li>
+<li><p><a class="reference internal" href="#cofiber-of-a-matrix-and-gaussian-elimination" id="id9">10. Cofiber of a Matrix and Gaussian Elimination</a></p></li>
 </ul>
 </div>
 <div class="section" id="introduction">
@@ -60,7 +59,7 @@
 <h2><a class="toc-backref" href="#id2">2. Fundamental Class of a 2-Sphere</a><a class="headerlink" href="#fundamental-class-of-a-2-sphere" title="Permalink to this headline">¶</a></h2>
 <p>I’ll begin with a geometric example.</p>
 <p><strong>1 —&gt; 2</strong></p>
-<p>Recall that we constructed a chain complex representing the linearization of a 2-sphere, by gluing together chains on the northern hemisphere and southern hemisphere along the equator.</p>
+<p>Recall that we constructed a chain complex representing the linearization of a 2-sphere, by gluing together chains on the northern hemisphere and chains on the southern hemisphere along the equator.</p>
 <p>Although both the northern and southern hemispheres have a nonzero boundary, their difference has no boundary.</p>
 <p>In other words, it’s a cycle of degree 2, i.e. it is corepresented by a map out of R[2].</p>
 <p>Although the two halves of the equator are connected by hemispheres, they’re connected in two distinct ways. The difference between these two ways of connecting each half of the equator forms something meaningful: a cycle one degree higher that the dimension of the equator.</p>
@@ -80,7 +79,7 @@
 <p>In particular, a cocycle evaluated on a cycle is just a number.</p>
 <p>In many instances, this number admits a clear geometric interpretation. For the sake of laziness, let me just outline this example from complex analysis. Don’t worry if you can’t follow this, just concentrate on the conclusion.</p>
 <p><strong>6 —&gt; 7</strong></p>
-<p>The cycle will consist of the 1/z dz, and the cocyle will be 1 over 2 pi i times the integral along a loop gamma. I’m thinking of both of these objects as living on the complex plane with the origin removed. This is reflected in the fact that 1/z dz has an essential singularity at 0 and I don’t want gamma to avoid this singularity.</p>
+<p>The cycle will consist of the 1/z dz, and the cocyle will be 1 over 2 pi i times the integral along a loop gamma. I’m thinking of both of these objects as living on the complex plane with the origin removed. This is reflected in the fact that 1/z dz has an essential singularity at 0 and I want gamma to avoid this singularity.</p>
 <p>A classic result in complex analysis states that this pairing counts the number of times gamma winds around the origin.</p>
 <p>Note that this number is a “qualitative” invariant of the path, in the sense that it doensn’t change if I perturb the path.</p>
 </div>
@@ -94,7 +93,7 @@
 <p>It’s not hard to see that such a map coincides with the data of a vector w of degree k and a vector v of degree k-1.</p>
 <p>These two pieces of data must fit together continuously. In this instance, this means that you can compute v by applying the boundary of w.</p>
 <p>Note that in particular, there’s really only one piece of data, as v determines w.</p>
-<p>Diagrammatically, the continuity condition also means that the following square must “commute”. Just to be clear, the filled-in part of this square indicate thats going right and down coincides with going down and right. More formally, the composition of the top and the right map equals the composition of the left and the bottom map. Pictures like these are a common way to visually unravel these objects.</p>
+<p>Diagrammatically, the continuity condition also means that the following square must “commute”. Just to be clear, the filled-in part of this square indicates that going right and down coincides with going down and right. More formally, the composition of the top and the right map equals the composition of the left and the bottom map. Pictures like these are a common way to visually unravel these objects.</p>
 <p><strong>9 —&gt; 10</strong></p>
 <p>Here are two basic examples.</p>
 <p>First, note that D[k+1] has a cycle of degree k.</p>
@@ -126,21 +125,22 @@
 <p>If we further assume that v is a boundary, this means that the composition of v and phi factors through a map from D[k+1] to R[k]. In particular, phi of v factors through the zero map, and is therefore zero.</p>
 <p>In other words, cocycles evaluate to zero on all boundaries.</p>
 <p>This derivation might feel a little queasy. I recommend showing this vanishing in a more algebraic/point-set fashion.</p>
-</div>
-<div class="section" id="maps-into-disks-and-coboundaries">
-<h2><a class="toc-backref" href="#id7">7. Maps into Disks and Coboundaries</a><a class="headerlink" href="#maps-into-disks-and-coboundaries" title="Permalink to this headline">¶</a></h2>
+<p>The contrapositive of this statement is super useful, namely that a cycle is not a boundary
+if you can find a cocyle that has a nonzero pairing with that cycle. I invite y’all to think through what this is saying in the complex analysis example I present in the previous slides.
+7. Maps into Disks and Coboundaries
+———————————–</p>
 <p>Next, let’s examine maps into D[k]. As with maps into R[k], these have a more algebraic feel.</p>
 <p><strong>15 —&gt; 16</strong></p>
 <p>I’ll leave it as an exercise to convince yourself that a map into D[k] is the data of a linear map phi_k tilde from V_k to R and a map phi_k-1 tilde from V_k-1 into R.</p>
 <p>These two pieces of data must fit together continuously. In this instance, this means that you can compute the value of phi_k tilde on v by applying the boundary of v and then applying phi_k-1 tilde.</p>
 <p>In particular, there’s really only one piece of data, as phi_k tilde is determined by phi_k-1 tilde and the boundary operator.</p>
 <p><strong>16 —&gt; 17</strong></p>
-<p>Given a cocycle phi, we can endeavor to “lift” this cocycle to a coboundary phi tilde. More formally we want to factor the cocycle through the map from R[k] to D[k] we constructed previously. This factoring is commonly referred to as an “lifting problem.”</p>
+<p>Given a cocycle phi, we can endeavor to “lift” this cocycle to a coboundary phi tilde. More formally, we want to factor the cocycle through the map from R[k] to D[k]. This factoring is commonly referred to as an “lifting problem.”</p>
 <p>When we can solve this lifting problem, we call the cocycle a coboundary.</p>
 <p>Note that although the the cocycle is determined by phi tilde, the converse is not true.</p>
 </div>
 <div class="section" id="coboundaries-vanish-on-cycles">
-<h2><a class="toc-backref" href="#id8">8. Coboundaries vanish on Cycles</a><a class="headerlink" href="#coboundaries-vanish-on-cycles" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">8. Coboundaries vanish on Cycles</a><a class="headerlink" href="#coboundaries-vanish-on-cycles" title="Permalink to this headline">¶</a></h2>
 <p><strong>17 —&gt; 18</strong></p>
 <p>Note that all maps from R[k] into D[k] are 0. Try picturing this in terms of the pictures we’ve drawn of R[k] and D[k].</p>
 <p>Let’s imagine we’re given a cocycle and a cycle of V of the same degree.</p>
@@ -150,17 +150,17 @@
 <p>This derivation might feel a little queezy. I recommend showing this vanishing in a more algebraic/point-set fashion.</p>
 </div>
 <div class="section" id="exercise">
-<h2><a class="toc-backref" href="#id9">9. Exercise</a><a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">9. Exercise</a><a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p><strong>18 —&gt; 19</strong></p>
 <p>As an exercise, I suggest using a region which bounds a loop gamma in three dimensions to produce a coboundary of integrating along gamma.</p>
 </div>
 <div class="section" id="cofiber-of-a-matrix-and-gaussian-elimination">
-<h2><a class="toc-backref" href="#id10">10. Cofiber of a Matrix and Gaussian Elimination</a><a class="headerlink" href="#cofiber-of-a-matrix-and-gaussian-elimination" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">10. Cofiber of a Matrix and Gaussian Elimination</a><a class="headerlink" href="#cofiber-of-a-matrix-and-gaussian-elimination" title="Permalink to this headline">¶</a></h2>
 <p><strong>19 —&gt; 20</strong></p>
 <p>We can use a n by n+k matrix A to construct a chain complex: the cofiber of A. For simplicty, we’ll assume that the rank of A is n.</p>
 <p>For example, A could be iota_n, a matrix in reduced row echelon form. Geometrically, this is the inclusion of an n dimensional space into a n plus k dimensional space as the first n coordinates.</p>
 <p><strong>20 —&gt; 21</strong></p>
-<p>In coming lectures, I’ll go deeply into the cofiber construction. For now, just note that the data of a map from D[1] into the cofiber of A can be identified with inhomogenous linear systems of equations Av=w.</p>
+<p>In coming lectures, I’ll go deeply into the cofiber construction. For now, just note that the data of a map from D[1] into the cofiber of A can be identified with inhomogenous linear systems of equations Ax=y.</p>
 <p><strong>21 —&gt; 22</strong></p>
 <p>A final cryptic note: a consequence of Gaussian elimination is the construction of a map from the cofiber of A into the cofiber of iota_n which is a bijection on each component. This isn’t entirely obvious: you’ll have to give a fair bit of thought if you want to see how this works.</p>
 <p>Aaaaaaand that’s all I have for today. Have a nice day!</p>

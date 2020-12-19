@@ -14,30 +14,34 @@ These habits/rules of thumb are not independent.
    For example, personal data shows it's not effective at increasing 
    relevant sleep metric, or one isn't practicing them for behavioral reasons.
 
+A Few Basic Principles
+----------------
+
+Most of the practices below are justified by one of the following principles:
+
+#. Decrease core body temperature
+#. Increase sympathetic tone
+#. Be consistent
+#. Increase Melatonin
+#. Increase Adenosine
+
+
 Sleep Practices
 ---------------
 
-#. **Decrease core body temperature**
-    - Decrease core body temp before bed
-    - Set ambient temp :math:`^~65^\circ\mathrm{F}` 
-    - Give body ability to dissipate heat, e.g. bedding, PJs, etc.
-    - Expose body to hot water, e.g. face wash, hot shower, etc. 
+TODO: list which principle(s) each practice is justified by.
+
 #. **Stop eating > 3 hours before bedtime**
-    - Reduce risk of disruptive acid reflux
-    - Avoid increases body temperature from catabolism
-#. **Maintain regular bedtimes/wake up times**
-    - Go to sleep according to chronotype, complete `MEQ <https://www.cet-surveys.com/index.php?sid=61524>`_
+#. **Maintain regular bed/wake up times**
+    - Go to sleep according to chronotype,
+        - Complete `MEQ <https://www.cet-surveys.com/index.php?sid=61524>`_
+          to determine chronotype.
     - Maintain consistency on weekends
     - Experiment with alarms to help maintain consistency
-    - Protect against sleep onset and maintenance insomnia 
-#. **Avoid exercise > 2 hours of bedtime**
-    - Avoid prolonged increases core body temperature 
-    - Avoid changes in hormones, e.g. stress response.
+#. **Avoid exercise > 2 hours of bedtime** 
 #. **Switch off lights > 1.5 hours before bedtime**
-    - Avoid communicating body to release melatonin which initiates sleep
-    - Avoid blue light more than red light
+    - Prefer red light to blue light
 #. **Set bedroom temp to 65-67**:math:`^\circ` **F**
-    - Facilitate decrease core body temp
     - Wear socks to invite blood flow to feet, dissipating heat from core.
 #. **Hot Shower/Sauna before bed**
     - Invite blood flow to the surface of body, dissipating heat from core 
@@ -47,31 +51,28 @@ Sleep Practices
     - `Paired muscle relaxation <https://www.youtube.com/watch?v=Dn__nO3Clog>`_
     - Light myofascial release
     - Journaling 
-        - Write down concerns, expressions of metta.
+        - Write down concerns, expressions of metta, etc.
 #. **Go to bed only when sleepy, avoid lying awake in bed > 10-15 minutes**
     - Mind needs to associate the bed with sleep
         - Exit bed(room), relaxing, return to bed when sleep
 #. **Don’t nap after ~3pm, avoid daytime napping if having trouble sleeping**
-    - Naps decreases circulating adenosine hormone required for onset of sleep.
 #. **Learn to mentally decelerate before bed**
-    - Avoid potentially anxiety-inducing stimuli, thoughts
+    - Avoid potentially anxiety-inducing stimuli/thoughts
         - e.g. social media/communication, art, etc.
 #. **Remove visible clock faces, technology, etc.**
     - Avoid anything eliciting ruminative/projective anxiety
 #. **Avoid alcohol, THC, caffeine, etc. before bed**
     - Causes frequent wake ups, sleep fragmentation, etc. 
-        - potentially without awareness of the disruptive
+        - potentially without awareness of the disruption
 #. **Don’t go to bed too hungry**
-    - hunger increases sympathetic tone
 #. **Morning/Daylight sun exposure**
-    - Regulates/callibrates circadian rhythm
 #. **Sleep alone**
-    - Sleep partners can be unintentionally disruptive
+    - Sleep partners can be (un)intentionally disruptive
 
 Standard Exceptions
 -------------------
 
 #. Forces out of our control regular coerce violations of #3, e.g. travel, social obligations, etc.
-#. Compliance with #2 may require violation of #14.
+#. Compliance with #1 may require violation of #13.
     - The opposite should be avoided when possible.
 #. You may have to violate #16 during prolonged fasts

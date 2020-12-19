@@ -21,7 +21,7 @@ I'll begin with a geometric example.
 
 **1 ---> 2**
 
-Recall that we constructed a chain complex representing the linearization of a 2-sphere, by gluing together chains on the northern hemisphere and southern hemisphere along the equator.
+Recall that we constructed a chain complex representing the linearization of a 2-sphere, by gluing together chains on the northern hemisphere and chains on the southern hemisphere along the equator.
 
 Although both the northern and southern hemispheres have a nonzero boundary, their difference has no boundary.
 
@@ -58,7 +58,7 @@ In many instances, this number admits a clear geometric interpretation. For the 
 
 **6 ---> 7**
 
-The cycle will consist of the 1/z dz, and the cocyle will be 1 over 2 pi i times the integral along a loop gamma. I'm thinking of both of these objects as living on the complex plane with the origin removed. This is reflected in the fact that 1/z dz has an essential singularity at 0 and I don't want gamma to avoid this singularity.
+The cycle will consist of the 1/z dz, and the cocyle will be 1 over 2 pi i times the integral along a loop gamma. I'm thinking of both of these objects as living on the complex plane with the origin removed. This is reflected in the fact that 1/z dz has an essential singularity at 0 and I want gamma to avoid this singularity.
 
 A classic result in complex analysis states that this pairing counts the number of times gamma winds around the origin.
 
@@ -83,7 +83,7 @@ These two pieces of data must fit together continuously. In this instance, this 
 
 Note that in particular, there's really only one piece of data, as v determines w.
 
-Diagrammatically, the continuity condition also means that the following square must "commute". Just to be clear, the filled-in part of this square indicate thats going right and down coincides with going down and right. More formally, the composition of the top and the right map equals the composition of the left and the bottom map. Pictures like these are a common way to visually unravel these objects.
+Diagrammatically, the continuity condition also means that the following square must "commute". Just to be clear, the filled-in part of this square indicates that going right and down coincides with going down and right. More formally, the composition of the top and the right map equals the composition of the left and the bottom map. Pictures like these are a common way to visually unravel these objects.
 
 **9 ---> 10**
 
@@ -137,10 +137,12 @@ Let's imagine we're given a cocycle and a cycle of V of the same degree.
 
 If we further assume that v is a boundary, this means that the composition of v and phi factors through a map from D[k+1] to R[k]. In particular, phi of v factors through the zero map, and is therefore zero.
 
-In other words, cocycles evaluate to zero on all boundaries.
+In other words, cocycles evaluate to zero on all boundaries. 
 
 This derivation might feel a little queasy. I recommend showing this vanishing in a more algebraic/point-set fashion.
 
+The contrapositive of this statement is super useful, namely that a cycle is not a boundary
+if you can find a cocyle that has a nonzero pairing with that cycle. I invite y'all to think through what this is saying in the complex analysis example I present in the previous slides.  
 7. Maps into Disks and Coboundaries
 -----------------------------------
 
@@ -156,7 +158,7 @@ In particular, there's really only one piece of data, as phi_k tilde is determin
 
 **16 ---> 17**
 
-Given a cocycle phi, we can endeavor to "lift" this cocycle to a coboundary phi tilde. More formally we want to factor the cocycle through the map from R[k] to D[k] we constructed previously. This factoring is commonly referred to as an "lifting problem."
+Given a cocycle phi, we can endeavor to "lift" this cocycle to a coboundary phi tilde. More formally, we want to factor the cocycle through the map from R[k] to D[k]. This factoring is commonly referred to as an "lifting problem."
 
 When we can solve this lifting problem, we call the cocycle a coboundary.
 
@@ -187,7 +189,7 @@ This derivation might feel a little queezy. I recommend showing this vanishing i
 As an exercise, I suggest using a region which bounds a loop gamma in three dimensions to produce a coboundary of integrating along gamma.
 
 10. Cofiber of a Matrix and Gaussian Elimination
------------------------------------------------
+------------------------------------------------
 
 **19 ---> 20**
 
@@ -197,7 +199,7 @@ For example, A could be iota_n, a matrix in reduced row echelon form. Geometrica
 
 **20 ---> 21**
 
-In coming lectures, I'll go deeply into the cofiber construction. For now, just note that the data of a map from D[1] into the cofiber of A can be identified with inhomogenous linear systems of equations Av=w.
+In coming lectures, I'll go deeply into the cofiber construction. For now, just note that the data of a map from D[1] into the cofiber of A can be identified with inhomogenous linear systems of equations Ax=y.
 
 **21 ---> 22**
 

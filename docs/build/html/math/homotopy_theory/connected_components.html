@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Connected Components of a Space &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Information Theory" href="../information_theory/information_theory_main_page.html" />
+    <link rel="prev" title="The Chevalley-Eilenberg Construction" href="chevalley_eilenberg_construction.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="the-connected-components-of-a-space">
+<h1>The Connected Components of a Space<a class="headerlink" href="#the-connected-components-of-a-space" title="Permalink to this headline">¶</a></h1>
+<p>The goal is to define the notion of the connected components of a space</p>
+<p>Intuitively, the connected components of a space is the best approximation of
+the space by a “set”.</p>
+<p>Our definition of a set deviates from many classical definitions (e.g. ZFC),
+so we briefly pause to establish terminology:</p>
+<div class="section" id="sets">
+<h2>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h2>
+<p>A set is a space satisfying a property, namely that it lacks any interesting
+geometry: it’s just a bunch of points.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A <em>set</em> is a space equivalent to a (potentially infinite) disjoint union
+of points.</p>
+</div>
+<div class="admonition-technical-note admonition">
+<p class="admonition-title">Technical Note</p>
+<p>Sets form a subcategory of spaces which is closed under coproducts and
+limits. It is not closed under colimits (e.g. pushouts)</p>
+</div>
+</div>
+<div class="section" id="nice-properties">
+<h2>Nice Properties<a class="headerlink" href="#nice-properties" title="Permalink to this headline">¶</a></h2>
+<p>For now, we will blackbox the definition of the connected components. Suffice
+it to say that the connected components of <span class="math notranslate nohighlight">\(X\)</span> is a very special (continuous)
+labelling of points in <span class="math notranslate nohighlight">\(X\)</span> by points in a very special set <span class="math notranslate nohighlight">\(\pi_0(X)\)</span>:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[X \longrightarrow \pi_0(X)\]</div>
+</div></blockquote>
+<p>The number of connected components of a space is the cardinality of this very
+special, yet to be defined space <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>The connected components of a space satisfy two very useful properties:</p>
+<div class="admonition-lemma admonition">
+<p class="admonition-title">Lemma</p>
+<p>Every every point of <span class="math notranslate nohighlight">\(X\)</span> can be connected to every other point, then
+<span class="math notranslate nohighlight">\(X\)</span> has a single connected component</p>
+<div class="math notranslate nohighlight">
+\[\Bigl[ X \overset{!}\longrightarrow *  \Bigl] \simeq
+\Bigl[X \rightarrow \pi_0(X) \Bigl]\]</div>
+</div>
+<p>The statement below asserts that the connected components is “monoidal”:</p>
+<div class="admonition-lemma admonition">
+<p class="admonition-title">Lemma</p>
+<p>The connected components of a bunch of spaces <span class="math notranslate nohighlight">\(\{X_i\}_{i\in I}\)</span> is
+the sum of the connected components of each space in the bunch:</p>
+<div class="math notranslate nohighlight">
+\[\pi_0 \Bigl( \sum_{i \in I} X_i \Bigl) \simeq
+\sum_{i \in I} \pi_0\bigl(X_i\big)\]</div>
+</div>
+<p>Putting these together we can see that a set is it’s own connected components:</p>
+<div class="admonition-corollary admonition">
+<p class="admonition-title">Corollary</p>
+<p>There is a natural equivalence:</p>
+<div class="math notranslate nohighlight">
+\[\bigl[ S \rightarrow \pi_0\bigl(S\bigl) \bigl] \simeq
+\bigl[ S \overset{1_S}\longrightarrow S \bigl]\]</div>
+</div>
+<p>Hopefully it’s clear how to compute the connected components of a space. Break it
+into a sum of spaces,</p>
+<p>In some sense, these propertize characterize the connected components
+construction, and therefore may be reasonably presented as a definition.
+However, there is a more conceptual definition as the solution of an constrained
+optimization problem.</p>
+<p>This is conventionally referred to as</p>
+</div>
+<div class="section" id="the-defining-universal-property">
+<h2>The Defining Universal Property<a class="headerlink" href="#the-defining-universal-property" title="Permalink to this headline">¶</a></h2>
+<p>As stated in the introduction, the connected components of a space are the best
+approximation of the space by a set. This heuristic suggests that we should be
+able to define it as the solution to a constrained optimization problem.</p>
+<p>However, unlike classical optimization theory, these constraints are expressed
+in terms of additional structure.</p>
+<p>In this case, the additional structure is a continuous map:</p>
+<div class="math notranslate nohighlight">
+\[X \longrightarrow S\]</div>
+<p>which we invite the reader to think of as a labelling of point in <span class="math notranslate nohighlight">\(X\)</span>
+by points in <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The continuity condition (in this case) states that any two points that can be
+connected by a path must be labelled by the same element in <span class="math notranslate nohighlight">\(S\)</span>.</p>
+</div>
+<p>The constraint takes the form of a unique lifting property. If you’re not familiar
+with these sorts of definitions, my apologies. There is a more consolidated definition,
+but this requires additional background in category theory.</p>
+<p>This universal propery says that it’s the largest</p>
+<div class="admonition-universal-property admonition">
+<p class="admonition-title">Universal Property</p>
+<p>Every map into any set <span class="math notranslate nohighlight">\(S\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[X \longrightarrow S\]</div>
+<p>admits a unique factorization through the connected components of <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[X \longrightarrow \pi_0(X) \rightarrow S\]</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you were to add a point to <span class="math notranslate nohighlight">\(\pi_0(X)\)</span>, then you would have multiple
+ways to factor a map <span class="math notranslate nohighlight">\(X \rightarrow S\)</span>.</p>
+<p>In other words, the uniqueness property encodes a minimization property.</p>
+</div>
+<p>We invite the reader to show that the identifications stated earlier follow from
+this definition. This boils down to showing that each side of the equation
+satsifies the defining universal property.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Jeremy Mann's Writing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../learning/learning_main_page.html">Learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../math_main_page.html">Math</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../category_theory/category_theory_main_page.html">Category Theory</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="homotopy_theory_main_page.html">Homotopy Theory</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="chevalley_eilenberg_construction.html">The Chevalley-Eilenberg Construction</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">The Connected Components of a Space</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../information_theory/information_theory_main_page.html">Information Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probability_theory/probability_theory_main_page.html">Probability Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/geometry_main_page.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_algebra/linear_algebra_main_page.html">Linear Algebra</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../physics/physics_main_page.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../longevity/longevity_main_page.html">Longevity</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../random/random_main_page.html">Random Writing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../math_main_page.html">Math</a><ul>
+  <li><a href="homotopy_theory_main_page.html">Homotopy Theory</a><ul>
+      <li>Previous: <a href="chevalley_eilenberg_construction.html" title="previous chapter">The Chevalley-Eilenberg Construction</a></li>
+      <li>Next: <a href="../information_theory/information_theory_main_page.html" title="next chapter">Information Theory</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Jeremy Mann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/math/homotopy_theory/connected_components.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

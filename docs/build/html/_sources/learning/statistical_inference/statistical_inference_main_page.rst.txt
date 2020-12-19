@@ -10,3 +10,4 @@ State what you mean by "Statistical Inference"
    permutation_test
    survival_analysis
    anova
+   mle

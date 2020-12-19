@@ -36,67 +36,121 @@
             
   <div class="section" id="from-samples-to-probability-distributions">
 <h1>From Samples to Probability Distributions<a class="headerlink" href="#from-samples-to-probability-distributions" title="Permalink to this headline">¶</a></h1>
-<p>The goal of these notes are to show how to think of sample data as probability distributions satisfying a finite support condition.</p>
+<p>The goal of these notes are to show how to think of sample data as probability
+distributions satisfying a finite support condition.</p>
 <div class="section" id="the-empirical-distribution">
 <h2>The Empirical Distribution<a class="headerlink" href="#the-empirical-distribution" title="Permalink to this headline">¶</a></h2>
-<p>Usually, sample data is thought of a bunch of tuples <span class="math notranslate nohighlight">\(z_i\)</span> for all <span class="math notranslate nohighlight">\(i=0, \ldots, N\)</span>.</p>
+<p>Usually, sample data is thought of a bunch of tuples <span class="math notranslate nohighlight">\(z_i\)</span> for all
+<span class="math notranslate nohighlight">\(i=0, \ldots, N\)</span>.</p>
 <p>In other words:</p>
-<div class="admonition-definition admonition">
+<div class="admonition-definition admonition" id="probabilistic-notation">
 <p class="admonition-title">Definition</p>
 <p><strong>Sample data</strong> is the data of a map:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}I &amp;\overset{S}\longrightarrow \Omega \\
 i &amp;\longmapsto S_i =: z_i\end{split}\]</div>
-<p>for some finite indexing set <span class="math notranslate nohighlight">\(I\)</span>. We also adopt the following notation:</p>
+<p>for some finite indexing set <span class="math notranslate nohighlight">\(I\)</span>. We also adopt the following
+notation:</p>
 <div class="math notranslate nohighlight">
 \[S \in \Omega^I\]</div>
 </div>
-<p>This factorization of data has a name:</p>
-<div class="admonition-definition admonition">
-<p class="admonition-title">Definition</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>We review how the technology of tabular data fits into this perspective.
+For simplicity, we’ll consider the case of a table with two columns.
+Let’s say there is a column with a string type. As we’re speaking on a very
+general level, we’ll identify strings with some hashing:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\mathrm{String} \simeq \mathbb{N}\]</div>
+</div></blockquote>
+<p>Furthermmore, let’s say the second column is a float, i.e. a element of
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.  In this case,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\Omega \simeq \mathbb{N}\times \mathbb{R}\]</div>
+</div></blockquote>
+<p>Let’s further assume that our table is indexed by some set of
+“surrogate keys” <span class="math notranslate nohighlight">\(I\)</span>.</p>
+<dl>
+<dt>This this case, the formal definition of sample data:</dt><dd><div class="math notranslate nohighlight">
+\[I \rightarrow \mathbb{N} \times \mathbb{R}\]</div>
+</dd>
+</dl>
+<p>is the data of, for every <span class="math notranslate nohighlight">\(i \in I\)</span>, a string and a float.
+This is, in particular, the data of a table with two columns. The general
+situation follows, mutatis mutandi.</p>
+<div class="admonition-to-do admonition">
+<p class="admonition-title">To Do</p>
+<p>Write notes on how joins fit into this perspective.</p>
+</div>
+</div>
+<div class="admonition-digression admonition">
+<p class="admonition-title">Digression</p>
 <p>It’s common to factor <span class="math notranslate nohighlight">\(\Omega\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[\Omega \simeq \mathcal{X} \times \mathcal{Y}\]</div>
-<p>and call <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> the <strong>space of features</strong>, and <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> the <strong>space of labels</strong>.</p>
+<p>and call <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> the <strong>space of features</strong>, and
+<span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> the <strong>space of labels</strong>.</p>
+<p>The choice of a factorization establishes a supervised learning problem.</p>
+<p>We view the “supervision” of a learning to be a structure. The
+distinction between the features and labels (which we can think of as columns
+in a table) is a choice we make or context gives. We view the situation</p>
 </div>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
 <p>Standard examples to keep in mind are:</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(\mathcal{Y} = \{0, 1\}\)</span> corresponds to binary classification problem</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathcal{Y} = J\)</span>, for a finite set <span class="math notranslate nohighlight">\(J\)</span>,  corresponds to multiclass classification problem</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{Y} = J\)</span>, for a finite set <span class="math notranslate nohighlight">\(J\)</span>, corresponds to multiclass classification problem</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathcal{Y} = P(J)\)</span> corresponds to a labelling problem. Here <span class="math notranslate nohighlight">\(P(-)\)</span> denotes the power set construction.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathcal{Y} = \mathbb{R}\)</span> corresponds to a regression problem</p></li>
 </ol>
 </div>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>Let <span class="math notranslate nohighlight">\(\rho_I^\mathrm{unif}\)</span> denote the uniform distribution on the set <span class="math notranslate nohighlight">\(I\)</span>. Viewing the sample as a map allows us to efficiently generate a distribution on <span class="math notranslate nohighlight">\(\Omega\)</span>:</p>
+<p>Let <span class="math notranslate nohighlight">\(\rho_I^\mathrm{unif}\)</span> denote the uniform distribution on the set
+<span class="math notranslate nohighlight">\(I\)</span>. Viewing the sample as a map allows us to efficiently generate a
+distribution on <span class="math notranslate nohighlight">\(\Omega\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\rho_S := S_*(\rho_I^\mathrm{unif}) = \frac{1}{n} \sum_{i=1}^n \delta_{x_i}\]</div>
-<p>which we shall refer to as the <strong>empirical distribution</strong> associated to the sample <span class="math notranslate nohighlight">\(S\)</span>.</p>
+\[\rho_S := S_*(\rho_I^\mathrm{unif}) = \frac{1}{n} \sum_{i=1}^n
+\delta_{x_i}\]</div>
+<p>which we shall refer to as the <strong>empirical distribution</strong> associated to the
+sample <span class="math notranslate nohighlight">\(S\)</span>.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>These notes assume a familiarity with notation reviewed in the section on probabilistic notation</p>
+<p>These notes assume a familiarity with notation reviewed in
+<span class="xref std std-ref">probalistic-notation</span>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is construction is implicit in the construction of a histogram from data.</p>
+<p>This is construction is implicit in the construction of a histogram from
+data.</p>
 </div>
 <div class="admonition-motivation admonition">
 <p class="admonition-title">Motivation</p>
-<p>In practice, the ordering of a sample has any meaning in terms of the problem at hand. More concretely, no learning algorithm should depend on any ordering of the data, as any such dependence would introduce superfluous variance to the model, without any reciprocal reduction in bias.</p>
-<p>Therefore, if we wanted to count the number of of all possible samples, we must not overcount the number of samples by individually counting samples differing by a permutation.</p>
-<p>One benefit of the notion of the empirical distribution is that it naturally avoids the quotient process. In other words, it’s a convenient representation of the moduli space of samples.</p>
+<p>In practice, the ordering of a sample has any meaning in terms of the
+problem at hand. More concretely, no learning algorithm should depend on any
+ordering of the data, as any such dependence would introduce superfluous
+variance to the model, without any reciprocal reduction in bias.</p>
+<p>Therefore, if we wanted to count the number of of all possible samples, we
+must not overcount the number of samples by individually counting samples
+differing by a permutation.</p>
+<p>One benefit of the notion of the empirical distribution is that it naturally
+avoids the quotient process. In other words, it’s a convenient
+representation of the moduli space of samples.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Moreover, different choices for the distribution on <span class="math notranslate nohighlight">\(I\)</span> yield different “class weights” for the learning problem. This forms the basis for boosting algorithms.</p>
+<p>Moreover, different choices for the distribution on <span class="math notranslate nohighlight">\(I\)</span> yield
+different “class weights” for the learning problem. This forms the basis for
+boosting algorithms.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In classical information theory, the empirical distribution is referred to as the <strong>type</strong> of the sample.</p>
+<p>In classical information theory, the empirical distribution is referred to
+as the <strong>type</strong> of the sample.</p>
 </div>
 </div>
 <div class="section" id="probability-distributions-with-finite-support">
@@ -104,25 +158,31 @@ i &amp;\longmapsto S_i =: z_i\end{split}\]</div>
 <p>Below is a property which, in some sense, characterizes data probabilistically:</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>A <strong>probability distribution with finite support</strong> is a probability distribution of the form:</p>
+<p>A <strong>probability distribution with finite support</strong> is a probability
+distribution of the form:</p>
 <div class="math notranslate nohighlight">
-\[(I \overset{S}\longrightarrow \Omega)_*\rho_I = \sum_{i=1}^n \rho_i \delta_{x_i}\]</div>
+\[(I \overset{S}\longrightarrow \Omega)_*\rho_I = \sum_{i=1}^n \rho_i
+\delta_{x_i}\]</div>
 <p>for some sample <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(\rho_I\in\mathrm{Prob}(I)\)</span>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In other words, when the distribution has finite support, only finitely many points have nonzero probability.</p>
+<p>In other words, when the distribution has finite support, only finitely many
+points have nonzero probability.</p>
 </div>
-<p>We introduce the following notation to invite the reader to imagine sample data as forming a geometric object.</p>
+<p>We introduce the following notation to invite the reader to imagine sample data
+as forming a geometric object.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <p>The <strong>space of sample data</strong>:</p>
 <div class="math notranslate nohighlight">
 \[\mathfrak{D}(\Omega) := \mathrm{Prob}^\mathrm{fin}(\Omega)\]</div>
 <p>is defined as the space of finitely supported probability distributions.</p>
-<p>At times, we may abusively omit reference to <span class="math notranslate nohighlight">\(\Omega\)</span> and simply write <span class="math notranslate nohighlight">\(\mathfrak{D}\)</span>.</p>
+<p>At times, we may abusively omit reference to <span class="math notranslate nohighlight">\(\Omega\)</span> and simply write
+<span class="math notranslate nohighlight">\(\mathfrak{D}\)</span>.</p>
 </div>
-<p>The space of sample data admits a filtration/stratification by cardinality. Below are the strata of this stratification.</p>
+<p>The space of sample data admits a filtration/stratification by cardinality.
+Below are the strata of this stratification.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <p>We denote:</p>
@@ -141,29 +201,40 @@ i &amp;\longmapsto S_i =: z_i\end{split}\]</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Note that the empirical distribution can be considering as a point in the space of samples, in that there is a natural factorization:</p>
+<p>Note that the empirical distribution can be considering as a point in the
+space of samples, in that there is a natural factorization:</p>
 <div class="math notranslate nohighlight">
-\[\Omega^I \rightarrow \mathfrak{D}(\Omega) \rightarrow \mathrm{Prob}(\Omega)\]</div>
+\[\Omega^I \rightarrow \mathfrak{D}(\Omega) \rightarrow
+\mathrm{Prob}(\Omega)\]</div>
 </div>
 </div>
 <div class="section" id="large-samples-approximation-of-distributions">
 <h2>Large Samples Approximation of Distributions<a class="headerlink" href="#large-samples-approximation-of-distributions" title="Permalink to this headline">¶</a></h2>
-<p>Fix a probability distribution <span class="math notranslate nohighlight">\(\rho \in \mathrm{Prob}(\Omega)\)</span>. This in turn generates a distribution</p>
+<p>Fix a probability distribution <span class="math notranslate nohighlight">\(\rho \in \mathrm{Prob}(\Omega)\)</span>. This in
+turn generates a distribution</p>
 <div class="math notranslate nohighlight">
-\[\rho^{\times n} \in \mathrm{Prob}(\Omega^n)\]</div>
+\[\rho^{\otimes n} \in \mathrm{Prob}(\Omega^n)\]</div>
 <p>for every <span class="math notranslate nohighlight">\(n\)</span> in the standard fashion.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This distribution satisfies a maximum entropy principle: it maximizes entropy subject to the condition that it’s marginals coincides with <span class="math notranslate nohighlight">\(\rho\)</span>:</p>
+<p>This distribution satisfies a maximum entropy principle: it maximizes
+entropy subject to the condition that it’s marginals coincides with
+<span class="math notranslate nohighlight">\(\rho\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[(\Omega^{\times n} \overset{\pi^i}\longrightarrow \Omega)_*\tilde{\rho} = \rho\]</div>
+\[(\Omega^{\times n} \overset{\pi^i}\longrightarrow \Omega)_*\tilde{\rho} =
+\rho\]</div>
 <p>for every <span class="math notranslate nohighlight">\(i\)</span>.</p>
 </div>
-<p>The following theorem is essentially the inferential interpretation of probability (i.e. outcomes of repeated trials generate the probability distribution):</p>
+<p>The following theorem is essentially the inferential interpretation of
+probability (i.e. outcomes of repeated trials generate the probability
+distribution):</p>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <div class="math notranslate nohighlight">
-\[\bigl(\Omega^n \rightarrow \mathfrak{D}_{\leq n} \rightarrow \mathrm{Prob}(\Omega)\bigl)_* \rho^{\times n} \overset{n\rightarrow \infty}\longrightarrow \delta_{\rho} \in \mathrm{Prob}\bigl( \mathrm{Prob}(\Omega) \bigl)\]</div>
+\[\bigl(\Omega^n \rightarrow \mathfrak{D}_{\leq n} \rightarrow
+\mathrm{Prob}(\Omega)\bigl)_* \rho^{\otimes n}
+\overset{n\rightarrow \infty}\longrightarrow
+\delta_{\rho} \in \mathrm{Prob}\bigl(\mathrm{Prob}(\Omega) \bigl)\]</div>
 </div>
 </div>
 </div>
@@ -190,7 +261,7 @@ i &amp;\longmapsto S_i =: z_i\end{split}\]</div>
 <li class="toctree-l1 current"><a class="reference internal" href="../learning_main_page.html">Learning</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../machine_learning/machine_learning_main_page.html">Machine Learning</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="statistical_learning_main_page.html">Statistical Learning</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="models_hypotheses_and_loss_functions.html">Models, Hypotheses and Loss Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models_hypotheses_and_loss_functions.html">Hypotheses, Models and Loss Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="assessing_learners.html">Assessing Learners</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">From Samples to Probability Distributions</a></li>
 </ul>
