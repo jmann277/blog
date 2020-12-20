@@ -11,3 +11,6 @@ State what you mean by "Statistical Inference"
    survival_analysis
    anova
    mle
+   intro_to_mles
+   fundamental_theorem_of_mles
+   mle_computations

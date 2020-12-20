@@ -58,7 +58,7 @@ In other words:
     
    .. admonition:: To Do 
    
-       Write notes on how joins fit into this perspective.
+      Write notes on how joins fit into this perspective.
 
 .. admonition:: Digression
 
@@ -76,8 +76,6 @@ In other words:
    We view the "supervision" of a learning to be a structure. The
    distinction between the features and labels (which we can think of as columns
    in a table) is a choice we make or context gives. We view the situation
-
-
 
 .. admonition:: Example
 
@@ -105,7 +103,7 @@ In other words:
 .. warning::
 
    These notes assume a familiarity with notation reviewed in
-   :ref:`probalistic-notation`.
+   :ref:`probabilistic-notation`.
 
 .. note::
 
