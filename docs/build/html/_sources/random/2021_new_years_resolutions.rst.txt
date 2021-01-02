@@ -1,0 +1,11 @@
+New Years Resolutions
+---------------------
+
+.. admonition:: Computers
+   
+    #. Use less proprietary software
+        - Exclusively use brave
+        - Minimize reliance on apple messages, transition to Signal
+    #.  
+
+

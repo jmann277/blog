@@ -15,7 +15,7 @@ These habits/rules of thumb are not independent.
    relevant sleep metric, or one isn't practicing them for behavioral reasons.
 
 A Few Basic Principles
-----------------
+----------------------
 
 Most of the practices below are justified by one of the following principles:
 
@@ -75,4 +75,4 @@ Standard Exceptions
 #. Forces out of our control regular coerce violations of #3, e.g. travel, social obligations, etc.
 #. Compliance with #1 may require violation of #13.
     - The opposite should be avoided when possible.
-#. You may have to violate #16 during prolonged fasts
+#. You may have to violate #13 during prolonged fasts

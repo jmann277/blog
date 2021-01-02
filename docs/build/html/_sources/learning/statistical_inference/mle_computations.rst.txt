@@ -3,11 +3,6 @@ Asymptotic Computations of MLEs
 
 We apply the Fundamental Theorem of MLEs to a few computations
 
-.. admonition:: To Do 
-    
-   Make a page computing relative entropies so you don't have to compute a 
-   bunch of things
-
 .. admonition:: Exercise
 
    The relative entropy of the empirical distribution and  distributions on a
@@ -35,7 +30,6 @@ We apply the Fundamental Theorem of MLEs to a few computations
          
    where the last term is the entropy of the empirical distribution, and 
    does not depend on :math:`\rho_\theta`.
-
    
 .. admonition:: Example
    
@@ -52,8 +46,8 @@ We apply the Fundamental Theorem of MLEs to a few computations
          &= p(1-p)
          \end{align*}
          
-   find normal coordinates of the hessian
-   say something interesting
+   This recovers a result which is commonly justified using the central limit
+   theorem. I prefer this derivation.
 
 .. admonition:: Exercise
 
@@ -69,10 +63,23 @@ We apply the Fundamental Theorem of MLEs to a few computations
 
 .. admonition:: Exercise
 
-   The relative entropy of the empirical distribution and  
+   Recall the standard coordinates on the space of normal distributions
+   on :math:`\mathbb{R}` in terms of it's first two cumulants: the 
+   expected value and squared standard deviation.
    
+      .. math::
+          \begin{align*}
+             \mathcal{D}(\rho_0 || \rho_1) &= \frac{1}{2} \Bigl(
+             \log \bigl( \frac{}{}  \bigl)
+          \end{align*}
+      
+   Here, we are working in units in which:
+   
+      .. math::
+         \mu_0 = 0, \sigma_0 = 1
+
 .. admonition:: Example
-   
+
    normal distribution with fixed standard distibution
    compute the hessian
    find normal coordinates of the hessian
@@ -115,6 +122,3 @@ We apply the Fundamental Theorem of MLEs to a few computations
    
    these are spherical and hyperbolic metrics
 
-.. admonition:: To Do 
-   
-   write a note which interprets those covariance matrices geometrically

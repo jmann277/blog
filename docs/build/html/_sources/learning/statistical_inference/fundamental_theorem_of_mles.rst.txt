@@ -1,11 +1,89 @@
-Fundamental Theorem of MLEs
----------------------------
+The Statement of Fundamental Theorem of MLEs
+--------------------------------------------
 
-The fundamental theorem of Maximum Likehood Esimators is:
+Loosely, the Fundamental Theorem of Maximum Likelihood Estimators states:
 
 .. admonition:: Theorem
    
-   Maximum likelihood estimators are consistent and asymptotically normal.
+   Maximum likelihood estimators are asymptotically normal.
+
+Making precise sense of this requires considerable work.
+
+Recollections
+=============
+
+We begin with a brief review.
+
+.. note::
+   
+   Recall that, given a parametric family:
+   
+      .. math::
+         \Theta \overset{\theta}\longrightarrow \mathrm{Prob}(\Omega),
+
+   maximum likelihood estimation provides a map:
+   
+      .. math::
+         \begin{align*}
+         \mathfrak{D}(\Omega) &\overset{\mathrm{MLE}_\Theta}\longrightarrow 
+         \mathrm{Prob}(\Omega) \\
+         \rho_X &\longmapsto \hat{\rho}_\theta(X) 
+         =: \mathrm{MLE_\Theta}(\rho_x)
+         \end{align*}
+
+    When the data is drawn from a probability distribution, 
+    :math:`\rho \in \mathrm{Prob}(\Omega)`, the MLE map gives a probability
+    distribution on the space of probability distributions:
+    
+       .. math::
+          \mathrm{MLE}_*(\rho_\theta) := 
+          \hat{\rho_\theta} \in \mathrm{Prob}(\Omega)
+
+.. warning::
+   
+   Although :math:`\hat{\rho}` is "random" (in the sense that it is a
+   a probability distribution) it is not a "random variable". This subtle, 
+   technical point is meant to emphasize the intrinsic nature of MLEs.
+   
+   However, a choice of coordinates allows us to consider :math:`\hat{\rho}` 
+   a random variable.
+
+Geometric Preliminaries
+=======================
+
+Given a smooth function on a manifold e.g. (:math:`\mathbb{R}^n`):
+
+   .. math::
+      M \overset{f}\longrightarrow \mathbb{R}
+
+along with a "dummy" metric, :math:`g`, we can construct a symmetric quadratic 
+form, the Hessian of :math:`f`:
+
+   .. math::
+      \mathrm{Hess}_g(f) \in \mathrm{Sym}^2(\mathrm{T}^*M)
+
+which can be computed as second derivatives in coordinates.
+
+In general, this form depends on the dummy metric. However, if:
+
+   .. math::
+      \mathrm{d}f|_p = 0 
+
+then 
+
+   .. math::
+      \mathrm{Hess}_g(f)|_p \in \mathrm{Sym}^2(\mathrm{T}^*_p M) 
+
+is independent of the dummy metric independent of the dummy metric.
+
+Moreover, if :math:`f` is convex, :math:`\mathrm{Hess}_g(f)|_p` is a
+positive definite symmetric quadratic form on :math:`\mathrm{T}_p M`.
+
+Given coordinates :math:`\varphi`, this can be computed as:
+
+   .. math::
+      (\partial_i \partial_j \varphi^*f)(p) \in \mathbb{R}
+
 
 Moreover, one can explicitly compute the covariance matrix using the following
 construction:
@@ -14,6 +92,7 @@ construction:
   
    The covariance matrix is hessian of the entropy relative to the empirical
    distribution associated to data.
+
 .. note::
    
    As will be seen in the next sections, the relative entropy is a
