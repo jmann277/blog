@@ -37,11 +37,13 @@ In other words:
    For simplicity, we'll consider the case of a table with two columns.
    Let's say there is a column with a string type. As we're speaking on a very
    general level, we'll identify strings with some hashing:
+    
       .. math::
          \mathrm{String} \simeq \mathbb{N}
 
    Furthermmore, let's say the second column is a float, i.e. a element of
    :math:`\mathbb{R}`.  In this case, 
+   
       .. math::
          \Omega \simeq \mathbb{N}\times \mathbb{R}
 
@@ -56,10 +58,6 @@ In other words:
    This is, in particular, the data of a table with two columns. The general
    situation follows, mutatis mutandi.
     
-   .. admonition:: To Do 
-   
-      Write notes on how joins fit into this perspective.
-
 .. admonition:: Digression
 
    It's common to factor :math:`\Omega` as:
@@ -103,7 +101,7 @@ In other words:
 .. warning::
 
    These notes assume a familiarity with notation reviewed in
-   :ref:`probalistic-notation`.
+   :ref:`probabilistic-notation`.
 
 .. note::
 

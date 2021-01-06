@@ -24,7 +24,8 @@ Since we're talking about probablilities, we should have notation for probabilit
 
 .. warning:: 
 
-   Throughout this discussion, we will abusively (and hypocritically) conflate a probability distribution with some associate density.
+   Throughout this discussion, we will abusively (and hypocritically) conflate
+   a probability distribution with some associate density.
 
 
 Pushforward & Restrictions

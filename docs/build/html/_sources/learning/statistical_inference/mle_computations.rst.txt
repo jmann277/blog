@@ -23,7 +23,7 @@ We apply the Fundamental Theorem of MLEs to a few computations
       .. math::
          \begin{align*}
          \mathcal{D}(\rho_X || \rho_\theta) &\approx 
-         \mathcal{D}(\rho_X || \rho_\theta) \\
+         \mathcal{D}(\rho || \rho_\theta) \\
          &= - \bigl(\rho \log\rho_\theta + (1-\rho)\log(1 - \rho_\theta) \bigl)
          + \mathcal{S}(\rho)
          \end{align*}
@@ -33,14 +33,14 @@ We apply the Fundamental Theorem of MLEs to a few computations
    
 .. admonition:: Example
    
-   We now compute the standard devation of :math:`\hat{rho}_\theta`, using
+   We now compute the standard devation of :math:`\hat{\rho}_\theta`, using
    the computation above and the fundamental theorem. As we are in dimension
    1, the hessian is just a second derivative:
    
       .. math::
          \begin{align*}
          \sigma_\theta &= 
-         \partial^2_{p_\theta} \mathcal{D}(\rho_X || \rho_\theta)
+         \partial^2_{p_\theta} \mathcal{D}(\rho || \rho_\theta)
          \lvert_{\rho_\theta = \rho} \\
          &= \bigl( \frac{1}{p} + \frac{1}{1-p} \bigl)^{-1} \\
          &= p(1-p)

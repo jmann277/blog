@@ -8,3 +8,4 @@ Writing I don't really feel like coherently organizing
    :caption: Contents
 
    why_i_love_vim
+   2021_new_years_resolutions

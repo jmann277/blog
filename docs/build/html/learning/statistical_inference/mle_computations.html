@@ -56,7 +56,7 @@ distribtion <span class="math notranslate nohighlight">\(\rho\)</span> and a dis
 <div><div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \mathcal{D}(\rho_X || \rho_\theta) &amp;\approx
-\mathcal{D}(\rho_X || \rho_\theta) \\
+\mathcal{D}(\rho || \rho_\theta) \\
 &amp;= - \bigl(\rho \log\rho_\theta + (1-\rho)\log(1 - \rho_\theta) \bigl)
 + \mathcal{S}(\rho)
 \end{align*}\end{split}\]</div>
@@ -66,14 +66,14 @@ does not depend on <span class="math notranslate nohighlight">\(\rho_\theta\)</s
 </div>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
-<p>We now compute the standard devation of <span class="math notranslate nohighlight">\(\hat{rho}_\theta\)</span>, using
+<p>We now compute the standard devation of <span class="math notranslate nohighlight">\(\hat{\rho}_\theta\)</span>, using
 the computation above and the fundamental theorem. As we are in dimension
 1, the hessian is just a second derivative:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \sigma_\theta &amp;=
-\partial^2_{p_\theta} \mathcal{D}(\rho_X || \rho_\theta)
+\partial^2_{p_\theta} \mathcal{D}(\rho || \rho_\theta)
 \lvert_{\rho_\theta = \rho} \\
 &amp;= \bigl( \frac{1}{p} + \frac{1}{1-p} \bigl)^{-1} \\
 &amp;= p(1-p)

@@ -44,13 +44,29 @@
 <p>Making precise sense of this requires considerable work.</p>
 <div class="section" id="recollections">
 <h2>Recollections<a class="headerlink" href="#recollections" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>The relative entropy:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\mathcal{D}(\rho_A || \rho_B) &amp;= \langle I_{\rho_B} - I_{\rho_A} \rangle_{\rho_A} \\
+&amp;= \langle I_{\rho_B} \rangle_{\rho_A} - \mathcal{S}(\rho_A)
+\end{align*}\end{split}\]</div>
+</div></blockquote>
+<p>where <span class="math notranslate nohighlight">\(I_\rho\)</span> is the information associated to the distibution
+<span class="math notranslate nohighlight">\(\rho_A\)</span></p>
+</div>
 <p>We begin with a brief review.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Recall that, given a parametric family:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
-\[\Theta \overset{\theta}\longrightarrow \mathrm{Prob}(\Omega),\]</div>
+\[\begin{split}\begin{align*}
+\Theta &amp;\overset{\theta}\longrightarrow \mathrm{Prob}(\Omega) \\
+\theta &amp;\longmapsto \rho_\theta
+\end{align*}\end{split}\]</div>
 </div></blockquote>
 <p>maximum likelihood estimation provides a map:</p>
 <blockquote>
@@ -60,7 +76,8 @@
 \mathfrak{D}(\Omega) &amp;\overset{\mathrm{MLE}_\Theta}\longrightarrow
 \mathrm{Prob}(\Omega) \\
 \rho_X &amp;\longmapsto \hat{\rho}_\theta(X)
-=: \mathrm{MLE_\Theta}(\rho_x)
+= \mathrm{MLE_\Theta}(\rho_x) := \
+\mathrm{argmin}_\theta \mathfrak{D}(\rho_X || \rho_\theta
 \end{align*}\end{split}\]</div>
 </div></blockquote>
 <p>When the data is drawn from a probability distribution,
@@ -80,6 +97,11 @@ a probability distribution) it is not a “random variable”. This subtle,
 technical point is meant to emphasize the intrinsic nature of MLEs.</p>
 <p>However, a choice of coordinates allows us to consider <span class="math notranslate nohighlight">\(\hat{\rho}\)</span>
 a random variable.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stein’s Lemma interprets the function MLEs are trying to minimize
+interpretation in terms of hypothesis testing.</p>
 </div>
 </div>
 <div class="section" id="geometric-preliminaries">
@@ -116,10 +138,59 @@ positive definite symmetric quadratic form on <span class="math notranslate nohi
 </div></blockquote>
 <p>Moreover, one can explicitly compute the covariance matrix using the following
 construction:</p>
+</div>
+<div class="section" id="back-to-statistics">
+<h2>Back to Statistics<a class="headerlink" href="#back-to-statistics" title="Permalink to this headline">¶</a></h2>
+<p>In the setting of MLE, the dictionary is:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+ \Theta &amp;:= M \\
+ f(\rho) &amp;:= \mathcal{D}(\rho_\theta || \rho) \in \mathrm{C}^\infty(\Theta)
+\end{align*}\end{split}\]</div>
+</div></blockquote>
+<p>As we vary <span class="math notranslate nohighlight">\(\theta\)</span>, we obtain an element of:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[f_\theta \in \Theta \times \mathrm{C}^\infty(\Theta)\]</div>
+</div></blockquote>
+<p>In other words, the function which MLEs are trying to minimize gives
+a positive definite quadratic form on the tangent space of
+<span class="math notranslate nohighlight">\(\hat{\rho}_\theta\)</span>.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>The Fisher information metric is defined as:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\mathbb{I}_\Theta = \left.
+\mathrm{Hess} \bigl( \mathcal{D}(\rho_\theta || \rho) \bigl)
+\right\vert_{\rho = \rho_\theta}
+\in \mathrm{Sym}^2(\mathrm{T}^*\Theta)\]</div>
+</div></blockquote>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As this metric is positive definite and symmetric, it defines a Riemannian
+metric on <span class="math notranslate nohighlight">\(\Theta\)</span>, conventionally referred to as the Fisher-Rao
+metric</p>
+</div>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
-<p>The covariance matrix is hessian of the entropy relative to the empirical
-distribution associated to data.</p>
+<p>When <span class="math notranslate nohighlight">\(g \in \mathrm{Im}(\theta)\)</span>, in the limit of
+<span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\hat{\rho}_\theta \sim
+\mathcal{N} \bigl(
+g, (n \cdot \mathbb{I}|_{\hat{\rho}_\theta)})^{-1}
+\bigl)\]</div>
+</div></blockquote>
+<p>where:</p>
+</div>
+<div class="admonition-lemma admonition">
+<p class="admonition-title">Lemma</p>
+<p>When <span class="math notranslate nohighlight">\(g \in \mathrm{Im}(\theta)\)</span> (i.e. the model is correctly
+“specified”, MLE’s are consistent.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -167,6 +238,7 @@ identical standard deviations.</p>
 <li class="toctree-l3"><a class="reference internal" href="intro_to_mles.html">An Introduction to MLE’s</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">The Statement of Fundamental Theorem of MLEs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mle_computations.html">Asymptotic Computations of MLEs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relative_entropy_of_gaussians.html">Relative Entropy of Gaussian Distributions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../data_science/data_science_main_page.html">Data Science</a></li>

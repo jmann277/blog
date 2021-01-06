@@ -4,6 +4,10 @@ Why I Love Vim
 
 I've started using Vim as a text editor. I never really invested time in an IDE, so the transition wasn't that much of an investment. I still use JupyterLab, as it offers many benefits Vim can't touch. As the title suggests, I've been really enjoying the experience. 
 
+.. admonition:: Update
+    
+    As of 2021, I no longer ever use JupyterLab in any capacity.
+
 Since I'm  in the newlywed phase, I'm feeling pretty evangelical about this tool.
 
 A few sources of this enjoyment:
@@ -14,7 +18,7 @@ A few sources of this enjoyment:
 * Longevity
    - Reduces awkward wrist motions responsible for certain chronic myofascial conditions (e.g. carpal tunnel)
    - Engages more parts of the brain
-   - I hypothesize that vim has the some of the beneficial effects on brain health as playing an instrument
+   - I hypothesize that Vim has the some of the beneficial effects on brain health as playing an instrument
 * Sense of (Continuous) (Perpetual) Mastery
    - Salient mastery and improvement feels great.
    - Makes you feel smarter than you are.
@@ -23,8 +27,8 @@ A few sources of this enjoyment:
    - GUIs alienate you from your computer. 
 * Productivity
    - Writing experience is seamless.
-   - Easier to acheive and maintain a deep state of concentration.
+   - Easier to achieve and maintain a deep state of concentration.
 * Adding additional features requires light problem solving
-   - Although Vim is highly configurable, changes generically some light mental exercise. Fortunately, the vim community has many helpful resources.
+   - Although Vim is highly configurable, changes generically require some light mental exercise. Fortunately, the Vim community has many helpful resources.
 
 Oh, Vim also saves time.

@@ -12,6 +12,20 @@ Making precise sense of this requires considerable work.
 Recollections
 =============
 
+.. admonition:: Definition
+    
+    The relative entropy:
+    
+       .. math::
+           \begin{align*}
+           \mathcal{D}(\rho_A || \rho_B) &= \langle I_{\rho_B} - I_{\rho_A} \rangle_{\rho_A} \\
+           &= \langle I_{\rho_B} \rangle_{\rho_A} - \mathcal{S}(\rho_A)
+           \end{align*}
+       
+
+    where :math:`I_\rho` is the information associated to the distibution 
+    :math:`\rho_A`
+
 We begin with a brief review.
 
 .. note::
@@ -19,7 +33,11 @@ We begin with a brief review.
    Recall that, given a parametric family:
    
       .. math::
-         \Theta \overset{\theta}\longrightarrow \mathrm{Prob}(\Omega),
+          \begin{align*}
+          \Theta &\overset{\theta}\longrightarrow \mathrm{Prob}(\Omega) \\
+          \theta &\longmapsto \rho_\theta
+          \end{align*}
+          
 
    maximum likelihood estimation provides a map:
    
@@ -28,7 +46,8 @@ We begin with a brief review.
          \mathfrak{D}(\Omega) &\overset{\mathrm{MLE}_\Theta}\longrightarrow 
          \mathrm{Prob}(\Omega) \\
          \rho_X &\longmapsto \hat{\rho}_\theta(X) 
-         =: \mathrm{MLE_\Theta}(\rho_x)
+         = \mathrm{MLE_\Theta}(\rho_x) := \
+         \mathrm{argmin}_\theta \mathfrak{D}(\rho_X || \rho_\theta
          \end{align*}
 
     When the data is drawn from a probability distribution, 
@@ -47,6 +66,11 @@ We begin with a brief review.
    
    However, a choice of coordinates allows us to consider :math:`\hat{\rho}` 
    a random variable.
+
+.. note::
+   
+   Stein's Lemma interprets the function MLEs are trying to minimize
+   interpretation in terms of hypothesis testing.
 
 Geometric Preliminaries
 =======================
@@ -88,10 +112,59 @@ Given coordinates :math:`\varphi`, this can be computed as:
 Moreover, one can explicitly compute the covariance matrix using the following
 construction:
 
+Back to Statistics
+==================
+
+In the setting of MLE, the dictionary is:
+
+    .. math::
+        \begin{align*}
+         \Theta &:= M \\
+         f(\rho) &:= \mathcal{D}(\rho_\theta || \rho) \in \mathrm{C}^\infty(\Theta)
+        \end{align*}
+   
+As we vary :math:`\theta`, we obtain an element of:
+
+   .. math::
+      f_\theta \in \Theta \times \mathrm{C}^\infty(\Theta)
+
+In other words, the function which MLEs are trying to minimize gives
+a positive definite quadratic form on the tangent space of 
+:math:`\hat{\rho}_\theta`.
+
+.. admonition:: Definition
+    
+    The Fisher information metric is defined as:
+
+       .. math::
+          \mathbb{I}_\Theta = \left.
+          \mathrm{Hess} \bigl( \mathcal{D}(\rho_\theta || \rho) \bigl) 
+          \right\vert_{\rho = \rho_\theta} 
+          \in \mathrm{Sym}^2(\mathrm{T}^*\Theta)
+
+.. note::
+
+    As this metric is positive definite and symmetric, it defines a Riemannian
+    metric on :math:`\Theta`, conventionally referred to as the Fisher-Rao
+    metric
+    
 .. admonition:: Theorem
   
-   The covariance matrix is hessian of the entropy relative to the empirical
-   distribution associated to data.
+    When :math:`g \in \mathrm{Im}(\theta)`, in the limit of
+    :math:`n \rightarrow \infty`:
+    
+       .. math::
+          \hat{\rho}_\theta \sim
+          \mathcal{N} \bigl(
+          g, (n \cdot \mathbb{I}|_{\hat{\rho}_\theta)})^{-1}
+          \bigl)
+
+    where:
+
+.. admonition:: Lemma
+   
+    When :math:`g \in \mathrm{Im}(\theta)` (i.e. the model is correctly
+    "specified", MLE's are consistent.
 
 .. note::
    

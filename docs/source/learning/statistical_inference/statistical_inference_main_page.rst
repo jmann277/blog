@@ -9,8 +9,8 @@ State what you mean by "Statistical Inference"
 
    permutation_test
    survival_analysis
-   anova
    mle
    intro_to_mles
    fundamental_theorem_of_mles
    mle_computations
+   relative_entropy_of_gaussians
