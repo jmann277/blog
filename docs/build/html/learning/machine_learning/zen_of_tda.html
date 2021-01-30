@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Zen of TDA &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Statistical Learning" href="../statistical_learning/statistical_learning_main_page.html" />
+    <link rel="prev" title="Machine Learning Researchers Suck at Math" href="machine_learning_researchers_suck_at_math.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="the-zen-of-tda">
+<h1>The Zen of TDA<a class="headerlink" href="#the-zen-of-tda" title="Permalink to this headline">¶</a></h1>
+<p>In general, data science wants a strategy of the form:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\mathrm{Data} \overset{\mathrm{ML}}
+\longrightarrow \mathrm{Insight}\]</div>
+</div></blockquote>
+<p>Traditional methods use probabilities:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\mathrm{Data} &amp;\overset{\mathrm{Stats}}\longrightarrow
+\mathrm{Probabilities} \overset{\mathrm{Prob\ Theory}}
+\longrightarrow \mathrm{Insight} \\
+\mathrm{sample} &amp;\longmapsto \mathrm{(reg.)\ MLE}
+\longmapsto \mathrm{descriptive\ statistic}
+\end{align*}\end{split}\]</div>
+</div></blockquote>
+<p>TDA uses spaces:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\mathrm{Data} \longrightarrow \mathrm{Spaces}
+\longrightarrow \mathrm{Insight}\]</div>
+</div></blockquote>
+<p>It’s based on the simple</p>
+<div class="admonition-hypothesis admonition">
+<p class="admonition-title">Hypothesis</p>
+<p>Data has shape:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+&amp;\mathrm{Data} \longrightarrow \mathrm{Spaces}
+\end{align*}\]</div>
+<p>and shape has meaning:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{align*}
+\mathrm{Spaces} \longrightarrow \mathrm{Insight}
+\end{align*}\]</div>
+</div></blockquote>
+</div>
+<p>In other words, TDA uses spaces to understand data.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>We can use a sample to build a graph:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\mathrm{sample} \longmapsto \mathrm{graph}\]</div>
+</div></blockquote>
+<p>and draw that graph:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{graph} \longmapsto \mathrm{pretty\ picture}\]</div>
+<p>or say something about the graph:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{graph} \longmapsto \mathrm{number\ of\ connected\ components}\]</div>
+</div>
+<p>Here is a loose</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>TDA is the application of (de)constructions and analyses of spaces to
+data science</p>
+</div>
+<p>The theory behind this has a name.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Homotopy theory is the (de)construction and analysis of spaces</p>
+</div>
+<p>This gives a more concise definition of TDA:</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>TDA uses homotopy theory to understand data.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unless you have a very strong (e.g. graduate level) background in
+mathematics, don’t try to learn this stuff by (only)
+reading a textbook.</p>
+<ol class="arabic simple">
+<li><p>Find someone to talk to about it who already knows about it. For
+example, go to a conference.</p></li>
+<li><p>Find a project to use this stuff in.</p></li>
+<li><p>Combine them.</p></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Jeremy Mann's Writing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../learning_main_page.html">Learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="machine_learning_main_page.html">Machine Learning</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="on_the_assessment_of_machine_learning_algorithms.html">On the “Assessment” of Machine Learning Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction_to_tda.html">Introduction to Topological Data Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machine_learning_researchers_suck_at_math.html">Machine Learning Researchers Suck at Math</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">The Zen of TDA</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../statistical_learning/statistical_learning_main_page.html">Statistical Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../statistical_inference/statistical_inference_main_page.html">Statistical Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_science/data_science_main_page.html">Data Science</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../math/math_main_page.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../physics/physics_main_page.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../longevity/longevity_main_page.html">Longevity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/software_main_page.html">Software Stuff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../to_do.html">To Do List</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../random/random_main_page.html">Random Writing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../learning_main_page.html">Learning</a><ul>
+  <li><a href="machine_learning_main_page.html">Machine Learning</a><ul>
+      <li>Previous: <a href="machine_learning_researchers_suck_at_math.html" title="previous chapter">Machine Learning Researchers Suck at Math</a></li>
+      <li>Next: <a href="../statistical_learning/statistical_learning_main_page.html" title="next chapter">Statistical Learning</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Jeremy Mann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/learning/machine_learning/zen_of_tda.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

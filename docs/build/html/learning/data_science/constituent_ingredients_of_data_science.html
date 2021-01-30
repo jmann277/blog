@@ -4,15 +4,14 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Constituent Ingredients of Data Science &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -37,25 +36,43 @@
   <div class="section" id="constituent-ingredients-of-data-science">
 <h1>Constituent Ingredients of Data Science<a class="headerlink" href="#constituent-ingredients-of-data-science" title="Permalink to this headline">¶</a></h1>
 <p>The following is my eccentric opinion on what makes up the cross
-disciplinary subject of data science, along with a nonexhaustive list of
+disciplinary subject of data science, along with a non-exhaustive list of
 subconstituents.</p>
 <ol class="arabic simple">
 <li><dl class="simple">
-<dt>Experimental Method</dt><dd><ul class="simple">
-<li><p>Controlled Trials</p></li>
-<li><p>Causal Inference</p></li>
-<li><p>Random sampling/selection</p></li>
-<li><p>AB testing</p></li>
+<dt>Math</dt><dd><ul class="simple">
+<li><p>Probability theory</p></li>
+<li><dl class="simple">
+<dt>Statistical Learning/Inference</dt><dd><ul>
+<li><p>Maximum Likelihood</p></li>
+<li><p>Probably Approximately Correct</p></li>
+<li><p>Hypothesis Testing</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Software Engineering</dt><dd><ul class="simple">
+<dt>Optimization</dt><dd><ul>
+<li><p>Calculus</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Linear Algebra/Sheaf theory</dt><dd><ul>
+<li><p>Arrays</p></li>
+<li><p>Signal Processing</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Software Development</dt><dd><ul class="simple">
 <li><p>Documentation</p></li>
-<li><p>Fluently reading/writing in high Level programming language(s)</p></li>
-<li><p>Using/creating code libraries, APIs, open source software, etc.</p></li>
-<li><p>Test/Contract Driven Development</p></li>
 <li><dl class="simple">
 <dt>Text Editing</dt><dd><ul>
 <li><p>IDE, Vim, etc.</p></li>
@@ -63,45 +80,46 @@ subconstituents.</p>
 </dd>
 </dl>
 </li>
-<li><p>AGILE methods</p></li>
-<li><p>SCRUM</p></li>
-<li><p>Continuous integration</p></li>
-<li><p>UNIX philosophy</p></li>
-<li><p>Version/dependency control</p></li>
+<li><p>Fluently reading/writing in high Level programming language(s)</p></li>
+<li><p>Using/creating libraries, APIs, open source software, etc.</p></li>
+<li><dl class="simple">
+<dt>Development practices</dt><dd><ul>
+<li><p>Test Driven Development</p></li>
+<li><p>AGILE</p></li>
+<li><p>Continuous integration/delivery</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Math</dt><dd><ul class="simple">
-<li><p>Probability theory</p></li>
-<li><dl class="simple">
-<dt>Statistical Learning/Inference</dt><dd><ul>
-<li><p>Maximum Likelihood Framework</p></li>
-<li><p>Probably Approximately Correct Framework</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>Optimization</p></li>
-<li><p>Calculus</p></li>
-<li><p>Linear Algebra/Sheaf theory</p></li>
-<li><p>Signal Processing</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Decision Theory</dt><dd><ul class="simple">
+<li><p>Version control</p></li>
 <li><p>Effective communication</p></li>
 <li><p>Identification/construction of key performance indicators</p></li>
 <li><p>Product sense</p></li>
-<li><p>Expected Value Framework</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Subject Matter Expertise</dt><dd><ul class="simple">
+<li><p>“Know the data”</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I used to have decision making as a section. This has been subsumed
+under the software development.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I used to have a section on the experimental method. I’ve subsumed
+this into the category of statistics, which fits into math.
+This is questionable. What I mean is that the aspects of the
+experimental method which are relevant to data science fit into
+statistics, and therefore math.</p>
+</div>
 </div>
 
 
@@ -137,6 +155,8 @@ subconstituents.</p>
 <li class="toctree-l1"><a class="reference internal" href="../../math/math_main_page.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../physics/physics_main_page.html">Physics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../longevity/longevity_main_page.html">Longevity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/software_main_page.html">Software Stuff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../to_do.html">To Do List</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../random/random_main_page.html">Random Writing</a></li>
@@ -181,7 +201,7 @@ subconstituents.</p>
       &copy;2020, Jeremy Mann.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

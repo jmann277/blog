@@ -11,3 +11,5 @@ This section shall remain (for the most part) empty, until I've established the 
 
    on_the_assessment_of_machine_learning_algorithms
    introduction_to_tda
+   machine_learning_researchers_suck_at_math
+   zen_of_tda

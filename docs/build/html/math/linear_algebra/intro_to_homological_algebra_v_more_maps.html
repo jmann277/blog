@@ -4,15 +4,14 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to Homological Algebra V: More Maps &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -37,26 +36,18 @@
   <div class="section" id="introduction-to-homological-algebra-v-more-maps">
 <h1>Introduction to Homological Algebra V: More Maps<a class="headerlink" href="#introduction-to-homological-algebra-v-more-maps" title="Permalink to this headline">¶</a></h1>
 <p>This is a loose script of a screencast posted to my channel on Youtube.</p>
-<div class="contents local topic" id="contents">
-<ul class="simple">
-<li><p><a class="reference internal" href="#introduction" id="id1">1. Introduction</a></p></li>
-<li><p><a class="reference internal" href="#fundamental-class-of-a-2-sphere" id="id2">2. Fundamental Class of a 2-Sphere</a></p></li>
-<li><p><a class="reference internal" href="#duality-pairing" id="id3">3. Duality Pairing</a></p></li>
-<li><p><a class="reference internal" href="#maps-out-of-disks" id="id4">4. Maps out of Disks</a></p></li>
-<li><p><a class="reference internal" href="#boundaries" id="id5">5. Boundaries</a></p></li>
-<li><p><a class="reference internal" href="#cocycles-vanish-on-boundaries" id="id6">6. Cocycles Vanish on Boundaries</a></p></li>
-<li><p><a class="reference internal" href="#coboundaries-vanish-on-cycles" id="id7">8. Coboundaries vanish on Cycles</a></p></li>
-<li><p><a class="reference internal" href="#exercise" id="id8">9. Exercise</a></p></li>
-<li><p><a class="reference internal" href="#cofiber-of-a-matrix-and-gaussian-elimination" id="id9">10. Cofiber of a Matrix and Gaussian Elimination</a></p></li>
-</ul>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>In this example, I introduce even more examples of maps.</p>
+<p>If you’re not familiar with some of the diagrams I’m watching, I’d recommend reading up on category theory. I have a few videos on it that you may find helpful. If you prefer a more organize, coherent written account, I recommend Emily Riehl’s “Category theory in context”</p>
 </div>
 <div class="section" id="introduction">
-<h2><a class="toc-backref" href="#id1">1. Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p><strong>1</strong></p>
 <p>Hello! In this lecture, we introduce even more examples of maps.</p>
 </div>
 <div class="section" id="fundamental-class-of-a-2-sphere">
-<h2><a class="toc-backref" href="#id2">2. Fundamental Class of a 2-Sphere</a><a class="headerlink" href="#fundamental-class-of-a-2-sphere" title="Permalink to this headline">¶</a></h2>
+<h2>2. Fundamental Class of a 2-Sphere<a class="headerlink" href="#fundamental-class-of-a-2-sphere" title="Permalink to this headline">¶</a></h2>
 <p>I’ll begin with a geometric example.</p>
 <p><strong>1 —&gt; 2</strong></p>
 <p>Recall that we constructed a chain complex representing the linearization of a 2-sphere, by gluing together chains on the northern hemisphere and chains on the southern hemisphere along the equator.</p>
@@ -68,7 +59,7 @@
 <p>Although this doesn’t totally make sense at this point, I recommend thinking of R[k] as a k dimensional sphere.</p>
 </div>
 <div class="section" id="duality-pairing">
-<h2><a class="toc-backref" href="#id3">3. Duality Pairing</a><a class="headerlink" href="#duality-pairing" title="Permalink to this headline">¶</a></h2>
+<h2>3. Duality Pairing<a class="headerlink" href="#duality-pairing" title="Permalink to this headline">¶</a></h2>
 <p>I’ll now describe one way you can produce ordinary numbers from this theory.</p>
 <p><strong>3 —&gt; 4</strong></p>
 <p>The necessary input will be a cycle v and a cocycle phi. We will produce a numerical invariant from this data by pairing the cocyle with the cycle.</p>
@@ -84,7 +75,7 @@
 <p>Note that this number is a “qualitative” invariant of the path, in the sense that it doensn’t change if I perturb the path.</p>
 </div>
 <div class="section" id="maps-out-of-disks">
-<h2><a class="toc-backref" href="#id4">4. Maps out of Disks</a><a class="headerlink" href="#maps-out-of-disks" title="Permalink to this headline">¶</a></h2>
+<h2>4. Maps out of Disks<a class="headerlink" href="#maps-out-of-disks" title="Permalink to this headline">¶</a></h2>
 <p>Before moving to our next class of examples, let me introduce yet another important chain complex: D bracket k.</p>
 <p><strong>7 —&gt; 8</strong></p>
 <p>This complex is just R in dimensions k and k-1, and zero everywhere else. The boundary operator is just the identity.</p>
@@ -103,7 +94,7 @@
 <p><strong>10 —&gt; 11</strong></p>
 </div>
 <div class="section" id="boundaries">
-<h2><a class="toc-backref" href="#id5">5. Boundaries</a><a class="headerlink" href="#boundaries" title="Permalink to this headline">¶</a></h2>
+<h2>5. Boundaries<a class="headerlink" href="#boundaries" title="Permalink to this headline">¶</a></h2>
 <p>Let’s say we’re given a cycle of degree k. We can endeavor to “extend” this cycle to D[k+1]. More formally we want to factor the cycle through the map from R[k] to D[k+1]. This factoring is commonly referred to as an “extension problem.”</p>
 <p>I’ll leave it as an exercise to show that this factoring is exactly the data of a vector of degree k+1 whose boundary is the original cycle.</p>
 <p>When we can solve this extension problem, we call the cycle a boundary.</p>
@@ -118,7 +109,7 @@
 <p><strong>13 —&gt; 14</strong></p>
 </div>
 <div class="section" id="cocycles-vanish-on-boundaries">
-<h2><a class="toc-backref" href="#id6">6. Cocycles Vanish on Boundaries</a><a class="headerlink" href="#cocycles-vanish-on-boundaries" title="Permalink to this headline">¶</a></h2>
+<h2>6. Cocycles Vanish on Boundaries<a class="headerlink" href="#cocycles-vanish-on-boundaries" title="Permalink to this headline">¶</a></h2>
 <p>Note that all maps from D[k+1] into R[k] are 0. Try picturing what this is saying in terms of the pictures we’ve drawn of D[k+1] and R[k].</p>
 <p>Let’s imagine we’re given a cocycle and a cycle of V of the same degree.</p>
 <p><strong>14 —&gt; 15</strong></p>
@@ -140,7 +131,7 @@ if you can find a cocyle that has a nonzero pairing with that cycle. I invite y�
 <p>Note that although the the cocycle is determined by phi tilde, the converse is not true.</p>
 </div>
 <div class="section" id="coboundaries-vanish-on-cycles">
-<h2><a class="toc-backref" href="#id7">8. Coboundaries vanish on Cycles</a><a class="headerlink" href="#coboundaries-vanish-on-cycles" title="Permalink to this headline">¶</a></h2>
+<h2>8. Coboundaries vanish on Cycles<a class="headerlink" href="#coboundaries-vanish-on-cycles" title="Permalink to this headline">¶</a></h2>
 <p><strong>17 —&gt; 18</strong></p>
 <p>Note that all maps from R[k] into D[k] are 0. Try picturing this in terms of the pictures we’ve drawn of R[k] and D[k].</p>
 <p>Let’s imagine we’re given a cocycle and a cycle of V of the same degree.</p>
@@ -150,12 +141,12 @@ if you can find a cocyle that has a nonzero pairing with that cycle. I invite y�
 <p>This derivation might feel a little queezy. I recommend showing this vanishing in a more algebraic/point-set fashion.</p>
 </div>
 <div class="section" id="exercise">
-<h2><a class="toc-backref" href="#id8">9. Exercise</a><a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<h2>9. Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p><strong>18 —&gt; 19</strong></p>
 <p>As an exercise, I suggest using a region which bounds a loop gamma in three dimensions to produce a coboundary of integrating along gamma.</p>
 </div>
 <div class="section" id="cofiber-of-a-matrix-and-gaussian-elimination">
-<h2><a class="toc-backref" href="#id9">10. Cofiber of a Matrix and Gaussian Elimination</a><a class="headerlink" href="#cofiber-of-a-matrix-and-gaussian-elimination" title="Permalink to this headline">¶</a></h2>
+<h2>10. Cofiber of a Matrix and Gaussian Elimination<a class="headerlink" href="#cofiber-of-a-matrix-and-gaussian-elimination" title="Permalink to this headline">¶</a></h2>
 <p><strong>19 —&gt; 20</strong></p>
 <p>We can use a n by n+k matrix A to construct a chain complex: the cofiber of A. For simplicty, we’ll assume that the rank of A is n.</p>
 <p>For example, A could be iota_n, a matrix in reduced row echelon form. Geometrically, this is the inclusion of an n dimensional space into a n plus k dimensional space as the first n coordinates.</p>
@@ -203,6 +194,8 @@ if you can find a cocyle that has a nonzero pairing with that cycle. I invite y�
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../physics/physics_main_page.html">Physics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../longevity/longevity_main_page.html">Longevity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/software_main_page.html">Software Stuff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../to_do.html">To Do List</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../random/random_main_page.html">Random Writing</a></li>
@@ -247,7 +240,7 @@ if you can find a cocyle that has a nonzero pairing with that cycle. I invite y�
       &copy;2020, Jeremy Mann.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
