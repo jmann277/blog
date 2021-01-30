@@ -4,6 +4,13 @@ Introduction to Homological Algebra V: More Maps
 
 This is a loose script of a screencast posted to my channel on Youtube.
 
+Description
+-----------
+
+In this example, I introduce even more examples of maps.
+
+If you're not familiar with some of the diagrams I'm watching, I'd recommend reading up on category theory. I have a few videos on it that you may find helpful. If you prefer a more organize, coherent written account, I recommend Emily Riehl's "Category theory in context"
+
 .. contents::
    :local:
 
