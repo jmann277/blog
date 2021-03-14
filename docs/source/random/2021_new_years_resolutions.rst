@@ -2,9 +2,6 @@
 --------------------------
 
 
-General Notes/Questions
-=======================
-
 .. admonition:: General Philosophy
 
     I like New Years resolutions. Although New Years day is arbitrary from the 
@@ -15,23 +12,39 @@ General Notes/Questions
    
     #. Use less proprietary software
         - Exclusively use brave
+            - As of 1/18, brave is my default browser!
         - Minimize reliance on apple messages, transition to Signal
-    #. Transition to neovim 0.5 
+    #. Transition to neovim 0.5 by end of March
         - Use built-in LSP
         - Transition to Telescope
-    #. Use Arch Linux 
+    #. Try out Arch Linux 
+        - Install arch linux on raspberry pi
         - Install/use a window manager
         - Install/use a desktop environment
+    #. Transition to gitlab.
 
-.. admonition:: Exercise
+.. admonition:: Movement
    
     #. More consistently do FP
         - 4 times a week
     #. Run 5k faster
     #. Train more zone 2
-    #. Run 7:00 minute mile on treadmill in February
-    #. Run 6:30 minute mile on treadmill in June
-    #. Run 6:00 minute mile on treadmill in December
+    #. Run a fast mile:
+        #. Run 7:00 minute mile on treadmill in February
+                - 7:10 1/17/2021
+                - 6:45 1/22/2021
+        #. Run 6:30 minute mile on treadmill in June
+        #. Run 6:00 minute mile on treadmill in December
+        
+
+.. note::
+    
+    This really requires some form of tracking, hopefully automated.
+    Unclear how I should go about doing this though.
+
+    Datetime and mile time will be recorded in personal health repo.
+
+    Train more zone 2 is not specific. I need to think about this more.
 
 .. admonition:: Feeding
 
@@ -43,6 +56,15 @@ General Notes/Questions
     #. Daily emotional/behavioral training
     #. Exercise diary
     #. Semi-monthly orthostatic videos
+
+.. admonition:: Software Development
+    
+    #. Develop Flask web app for personal health
+        - PostgreSQL database for health data
+        - Web form for logging emotions?
+    #. Figure out something with your raspberry pi.
+        - Then do it
+
     #. Semi-monthly gait videos
 
 .. admonition:: Teaching
@@ -71,15 +93,10 @@ General Notes/Questions
 .. admonition:: Art
      
     #. Make 3 full body self potraits
+        #. End of April
+        #. End of August
+        #. End of December
      
-.. admonition:: Software Development
-    
-    #. Develop Flask web app for personal health
-        - PostgreSQL database for health data
-        - Web form for logging emotions?
-    #. Figure out something with your raspberry pi.
-        - Then do it
-
 .. admonition:: Social Media
     
     #. Biweekly twitch stream
@@ -88,10 +105,6 @@ General Notes/Questions
 .. admonition:: Shopping
     
     #. Split keyboard
+        - purchased but not delivered, thanks mom!
     #. GoPro
     #. Camlink
-
-Notes
-=====
-
-

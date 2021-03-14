@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories and Relational Databases &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homotopy Theory" href="../homotopy_theory/homotopy_theory_main_page.html" />
+    <link rel="prev" title="Introduction to Categories I: The Data of a Category" href="intro_to_category_theory_i_the_data_of_a_category.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="categories-and-relational-databases">
+<h1>Categories and Relational Databases<a class="headerlink" href="#categories-and-relational-databases" title="Permalink to this headline">¶</a></h1>
+<p>To ease exposition, we assume that we have a fixed hashing of all the relevant
+datatypes. In other words, without (so much) loss of generality, we will
+assume that we are only working with a single datatype, which we’ll denote as:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{D}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Our discussion below can be augmented to include finite collections of
+datatypes without much difficulty.</p>
+</div>
+<p>Every table has a primary key, “index”, which we model as a finite set:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[I \in \mathrm{Set}\]</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If we want, we can choose an ordering so that a number is attached to each
+primary key.</p>
+</div>
+<p>A column is an association of a datatype for every primary key. In other
+words, it’s a map:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+I &amp;\overset{c}\longrightarrow \mathcal{D}  \\
+i &amp;\longmapsto c_i
+\end{align*}\end{split}\]</div>
+</div></blockquote>
+<p>A table is a finite collection of columns with a common index:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+I \overset{c_k} \longrightarrow \mathcal{D} \\
+i \longmapsto c_{i,k}
+\end{align*}\end{split}\]</div>
+</div></blockquote>
+<p>where we are indexing the columns by a different finite set of column names:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[k \in \mathcal{K}\]</div>
+</div></blockquote>
+<p>The universal property of the product allows us to see this as a single map:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+I &amp;\overset{\prod c_k} \longrightarrow
+\prod_{k \in \mathcal{K}} \mathcal{D}
+\simeq \mathcal{D}^{ \mathcal{K}} \\
+i &amp;\longmapsto (\ldots, c_i^k,  \ldots )_{k \in \mathcal{K}}
+\end{align*}\end{split}\]</div>
+</div></blockquote>
+<p>corresponding to thinking about table as a tuple of values (of the same
+cardinality) for every index value.</p>
+<p>Many of the different APIs for tabular data come from playing around with
+adjunctions.</p>
+<p>For example, the data above is equivalent to an entry for every pair of column
+and row keys:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+I \times \mathcal{K} &amp;\longrightarrow \mathcal{D} \\
+i, j &amp;\longmapsto c_i^k
+\end{align*}\end{split}\]</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the pandas, this corresponds to: <code class="docutils literal notranslate"><span class="pre">df.loc[i,</span> <span class="pre">j]</span></code></p>
+</div>
+<p>We can also see a table as a collection of columns:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{align*}
+\mathcal{K} &amp;\longrightarrow \mathcal{D}^{I}
+k &amp;\longmapsto c^k
+\end{align*}\]</div>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When we say join, we mean inner join. Missingness will be accomodated in
+later notes, where everything will become ‘pointed’.</p>
+</div>
+<div class="admonition-to-do admonition">
+<p class="admonition-title">To Do</p>
+<p>Classical sql join stament.</p>
+<p>Join statement as a where clause in sql.</p>
+<p>Join statement as a limit.</p>
+</div>
+<div class="admonition-to-do admonition">
+<p class="admonition-title">To Do</p>
+<p>Groupby’s</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Jeremy Mann's Writing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../learning/learning_main_page.html">Learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../math_main_page.html">Math</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="category_theory_main_page.html">Category Theory</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro_to_category_theory_i_the_data_of_a_category.html">Introduction to Categories I: The Data of a Category</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Categories and Relational Databases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../homotopy_theory/homotopy_theory_main_page.html">Homotopy Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../information_theory/information_theory_main_page.html">Information Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probability_theory/probability_theory_main_page.html">Probability Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/geometry_main_page.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_algebra/linear_algebra_main_page.html">Linear Algebra</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../physics/physics_main_page.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../longevity/longevity_main_page.html">Longevity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/software_main_page.html">Software Stuff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../to_do.html">To Do List</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../random/random_main_page.html">Random Writing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../math_main_page.html">Math</a><ul>
+  <li><a href="category_theory_main_page.html">Category Theory</a><ul>
+      <li>Previous: <a href="intro_to_category_theory_i_the_data_of_a_category.html" title="previous chapter">Introduction to Categories I: The Data of a Category</a></li>
+      <li>Next: <a href="../homotopy_theory/homotopy_theory_main_page.html" title="next chapter">Homotopy Theory</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Jeremy Mann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/math/category_theory/categories_rbm.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

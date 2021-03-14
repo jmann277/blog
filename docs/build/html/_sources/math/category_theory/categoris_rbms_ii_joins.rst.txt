@@ -1,0 +1,10 @@
+Categories and Relational Databases II: Joins
+=============================================
+
+We now discuss how to articulate joins in a categorical language.
+
+
+.. code-block:: sql
+     
+     select *
+     from table1

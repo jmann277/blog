@@ -66,6 +66,25 @@
 </li>
 </ul>
 </div>
+<div class="section" id="binary-classifiers">
+<h2>Binary Classifiers<a class="headerlink" href="#binary-classifiers" title="Permalink to this headline">¶</a></h2>
+<p>The accuracy is the probability your answer is correct when randomly drawing
+a sample from your observed data.</p>
+<p>The notion below require a designation of positive and negative classes. That
+is, a boolean structure on the labels.</p>
+<p>The sensitivity of the classifiers is the accuracy when one discards all the
+observations of the individuals who were not positive “in reality”.</p>
+<p>The specificity of the classifiers is the accuracy when one discards all but
+those individual who are “in reality” negative.</p>
+<p>Everything here is relative. In many cases of interest, “in reality” can not
+be given any falsifiable meaning.</p>
+<p>In practice, “in reality” means “according to some other learner”. In the case
+above, the learner is the nonparametric, unregularized MLE, aka the
+“empirical distribution”.</p>
+<p>This is something to keep in mind about these statistical assessments: they
+are always implicitly relative. Fortunately, hypothesis testing is tailored
+made for the relative situation.</p>
+</div>
 <div class="section" id="notions-of-error">
 <h2>Notions of Error<a class="headerlink" href="#notions-of-error" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-definition admonition">
@@ -89,7 +108,7 @@
 <h2>Optimism<a class="headerlink" href="#optimism" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>kdf O</p>
+<p>definition of optimism</p>
 </div>
 </div>
 <div class="section" id="the-possibility-of-learning">

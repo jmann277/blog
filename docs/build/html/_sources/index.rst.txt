@@ -17,6 +17,7 @@ Welcome to Jeremy's Writing
    physics/physics_main_page
    longevity/longevity_main_page
    software/software_main_page
+   stream/stream_main_page
    to_do
 
 .. toctree::

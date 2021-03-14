@@ -29,6 +29,7 @@ subconstituents.
         - AGILE
         - Continuous integration/delivery 
     - Version control
+    - Dependency management
     - Effective communication
     - Identification/construction of key performance indicators
     - Product sense

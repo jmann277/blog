@@ -22,4 +22,3 @@ Data science combines these technologies in order to influence decision making.
    statistical_learning/statistical_learning_main_page
    statistical_inference/statistical_inference_main_page
    data_science/data_science_main_page
-

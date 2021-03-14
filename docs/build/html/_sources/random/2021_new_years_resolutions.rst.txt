@@ -32,6 +32,7 @@
     #. Run a fast mile:
         #. Run 7:00 minute mile on treadmill in February
                 - 7:10 1/17/2021
+                - 6:45 1/22/2021
         #. Run 6:30 minute mile on treadmill in June
         #. Run 6:00 minute mile on treadmill in December
         
