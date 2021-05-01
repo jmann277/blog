@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Genetic Algorithm Notes &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Statistical Learning" href="../statistical_learning/statistical_learning_main_page.html" />
+    <link rel="prev" title="The Zen of TDA" href="zen_of_tda.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="genetic-algorithm-notes">
+<h1>Genetic Algorithm Notes<a class="headerlink" href="#genetic-algorithm-notes" title="Permalink to this headline">¶</a></h1>
+<p>Genetic algorithms are a “meta-heuristic” optimization strategy</p>
+<div class="section" id="essential-question">
+<h2>Essential Question<a class="headerlink" href="#essential-question" title="Permalink to this headline">¶</a></h2>
+<p>“How are initially unsuited structures transformed to structures suited to a
+variety of environmental niches?”</p>
+</div>
+<div class="section" id="essential-words">
+<h2>Essential Words<a class="headerlink" href="#essential-words" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Environment</p></li>
+<li><p>Adaptive plan</p></li>
+<li><p>Fitness function (for the environment)</p></li>
+<li><p>Allele</p></li>
+<li><p>Epistasis</p></li>
+<li><p>CoAdaptation</p></li>
+<li><p>Enumerative plan</p></li>
+</ul>
+</div>
+<div class="section" id="environment">
+<h2>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h2>
+<p>The environment  is just a set <span class="math notranslate nohighlight">\(E\)</span> . Implicitly in this formalism is a
+space of environments :math:` mathscr{E} `</p>
+</div>
+<div class="section" id="genotype">
+<h2>Genotype<a class="headerlink" href="#genotype" title="Permalink to this headline">¶</a></h2>
+<p>Specified by a set of “attainable structures” <span class="math notranslate nohighlight">\(\mathscr{A}\)</span>.
+This corresponds to the genotype of the state/individual.</p>
+</div>
+<div class="section" id="fitness-function">
+<h2>Fitness Function<a class="headerlink" href="#fitness-function" title="Permalink to this headline">¶</a></h2>
+<p>I am pretty sure the fitness function is a function of the . It quantifies
+the relationship between the state, <span class="math notranslate nohighlight">\(A \mathscr{A} \)</span>.</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\mathscr{E} \times \mathscr{A} \overset{\mu} \longrightarrow \mathbb{R}\]</div>
+</div></blockquote>
+<p>Note that this notion determines the fitness of a state in various
+environments.</p>
+</div>
+<div class="section" id="phenotype">
+<h2>Phenotype<a class="headerlink" href="#phenotype" title="Permalink to this headline">¶</a></h2>
+<p>Two genotypes have the same phenotype of they have the same “observable
+characteristics”.</p>
+<p>It seems implicit that at the least the notion of phenotype is an equivalence
+relation, (sets for a topos in which equivalence relations correspnd to
+surjections).</p>
+<div class="admonition-conjecture admonition">
+<p class="admonition-title">Conjecture</p>
+<p>The phenotype of the individual is the small factorization of the
+fitness function that fixes the (space of) environments?</p>
+<p>At first this felt too coarse. I can imagine two states having the
+same fitness but different “observable characteristics”. However,
+note that this is the same fitness for all environments.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>Does the phenotype of a state only depend on the genotype of the
+individual?</p>
+<p>It seems like it also depends on the environment and the fitness function.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This phenotype distinction feels like nonsense</p>
+</div>
+</div>
+<div class="section" id="adaptive-plan">
+<h2>Adaptive Plan<a class="headerlink" href="#adaptive-plan" title="Permalink to this headline">¶</a></h2>
+<p>The adaptive plan, <span class="math notranslate nohighlight">\(\tau\)</span> modifies the state.</p>
+<p>The adaptive plan gives a method for modifying a given state habitating a
+given a fixed environment.</p>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>Does the adaptive plan only depend on the fitness function?
+It seems like this is a useful assumption.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>Can I think of the fitness function as the Noether current associated to
+the adaptive plan?</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Apparently, adaptive plans of the best known GAs:</p>
+<ul class="simple">
+<li><p>do not directly affect the size of the population.</p></li>
+<li><p>Alleles that are “close” together remain “close together upon mutation”
+with high probability.</p></li>
+</ul>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>How is the “history” of the population. It seems like this is given by
+changes in the ‘closeness” of certain alleles. Were this the case,
+it seems like adaptive plans can depend upon the history of the states.</p>
+</div>
+</div>
+<div class="section" id="epistasis">
+<h2>Epistasis<a class="headerlink" href="#epistasis" title="Permalink to this headline">¶</a></h2>
+<p>Many observed characteristics (genotype) depend upon the state of multiple
+“allele”. This seems like nonlinearity/correlations/interactions
+between various “alleles”.</p>
+<p>Ensembles of alleles that are “good” (high fitness) are called “coadapted”.
+This notion clearly depends on an environment, which forms an “environmental
+niche”.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Jeremy Mann's Writing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../learning_main_page.html">Learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="machine_learning_main_page.html">Machine Learning</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="on_the_assessment_of_machine_learning_algorithms.html">On the “Assessment” of Machine Learning Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction_to_tda.html">Introduction to Topological Data Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machine_learning_researchers_suck_at_math.html">Machine Learning Researchers Suck at Math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zen_of_tda.html">The Zen of TDA</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Genetic Algorithm Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../statistical_learning/statistical_learning_main_page.html">Statistical Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../statistical_inference/statistical_inference_main_page.html">Statistical Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_science/data_science_main_page.html">Data Science</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../math/math_main_page.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../physics/physics_main_page.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../longevity/longevity_main_page.html">Longevity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/software_main_page.html">Software Stuff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stream/stream_main_page.html">Stream Main Page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../to_do.html">To Do List</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../random/random_main_page.html">Random Writing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../learning_main_page.html">Learning</a><ul>
+  <li><a href="machine_learning_main_page.html">Machine Learning</a><ul>
+      <li>Previous: <a href="zen_of_tda.html" title="previous chapter">The Zen of TDA</a></li>
+      <li>Next: <a href="../statistical_learning/statistical_learning_main_page.html" title="next chapter">Statistical Learning</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Jeremy Mann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/learning/machine_learning/genetic_algorithms.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

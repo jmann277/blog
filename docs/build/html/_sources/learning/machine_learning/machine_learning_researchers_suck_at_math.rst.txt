@@ -17,5 +17,5 @@ In comparison to e.g. theoretical physicist.
     - mainly due to laziness.
 #. They are not up-to-date on contemporary methods.
 
-    - e.g. late adoption of the totally obvious idea that NNs live in function
+    - e.g. late adoption of the totally obvious fact that NNs live in function
       spaces

@@ -13,3 +13,4 @@ This section shall remain (for the most part) empty, until I've established the 
    introduction_to_tda
    machine_learning_researchers_suck_at_math
    zen_of_tda
+   genetic_algorithms

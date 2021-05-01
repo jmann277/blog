@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>“Null” Framework for Application Development &#8212; Jeremy Mann&#39;s Writing 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="null-framework-for-application-development">
+<h1>“Null” Framework for Application Development<a class="headerlink" href="#null-framework-for-application-development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="research-and-discovery">
+<h2>Research and discovery<a class="headerlink" href="#research-and-discovery" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Market research: Play with the apps that are already out there
+- Sustainability model
+- What works
+- What doesn’t work
+- Key learnings</p></li>
+<li><p>Stakeholder research
+- Who are the key decision makers that we will have to work with?</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Consulting subject matter experts.</p></li>
+<li><p>Investors</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Interview stakeholders.</dt><dd><ul>
+<li><p>Expectations</p></li>
+<li><p>Hopes</p></li>
+<li><p>Recommendations/ideas</p></li>
+<li><p>Concerns/caveats</p></li>
+<li><p>Preferred form of communication</p></li>
+<li><p>RACI chart, are they:
+- responsible, doing the work, work-horse.
+- accountable, “own” the work, presenting the work.
+- consulted, ask their opinion about the process.
+- informed, who you present the work to.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><dl>
+<dt>User research</dt><dd><ul>
+<li><p>~5 Interviews
+- customer journey
+- hopes
+- fears
+- habits
+- mental models</p></li>
+<li><p>gain deep empathy
+- what makes them tick
+- what works for them</p></li>
+<li><p>Understand current state customer journey
+- [10 hours before, 1 hour before, 10 minutes before, during, 10</p>
+<blockquote>
+<div><p>minutes after, 1 hour after, 1 day after]</p>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Create and name persona(s) based on people spoken to</p></li>
+<li><dl>
+<dt>Ideal state customer journey exercise. Rooted in research, fill out:</dt><dd><div class="line-block">
+<div class="line">10 hours before</div>
+<div class="line">| Current: blah blah, happiness scale: baseline</div>
+<div class="line">1 hour before</div>
+<div class="line">| …</div>
+<div class="line">…</div>
+<div class="line">1 day after</div>
+<div class="line">| Current: blah blah, happiness scale: poor</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Examine dips in happiness (pain points)</p></li>
+<li><p>The team brainstorm and presents how the application can
+eliminate/improve/solve each these pain points.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>be wild in the ideation of the solution.</p></li>
+<li><p>Don’t try to anticipate constraints.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Team cooks up a unified solution to these pain points, i.e. the “ideal application’</p></li>
+<li><dl>
+<dt>Translate into the ideal state customer journey, filling out:</dt><dd><div class="line-block">
+<div class="line">10 hours before</div>
+<div class="line">| Ideal: blah blah, happiness scale: baseline</div>
+<div class="line">1 hour before</div>
+<div class="line">| …</div>
+<div class="line">…</div>
+<div class="line">1 day after</div>
+<div class="line">| Ideal: blah blah, happiness scale: amazing</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Prioritize: for each feature in ideal state:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>Value</dt><dd><ul>
+<li><p>to developers/business</p></li>
+<li><p>to the user</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Effort/Cost</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Scatter plot, feature is a point</dt><dd><ul class="simple">
+<li><p>x-axis value low -&gt; high</p></li>
+<li><p>y-axis effort low -&gt; high</p></li>
+<li><dl class="simple">
+<dt>Farther away the feature is from the origin, the higher the priority.</dt><dd><ul>
+<li><p>For example, top right quadrant is highest priority (do).</p></li>
+<li><p>For example, top left and bottom right quadrant are medium priority (maybe do)</p></li>
+<li><p>For example, bottom left quadrant is a low priority (don’t do).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Place medium and high priority features in backlog.</p></li>
+<li><p>Establish roadmap</p></li>
+<li><p>Identify metrics.</p></li>
+</ul>
+</div>
+<div class="section" id="design-and-development-phase">
+<h2>Design and Development Phase<a class="headerlink" href="#design-and-development-phase" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Establish a way of measuring metrics.</p></li>
+<li><p>Establish baseline metrics “pre-app”</p></li>
+<li><p>Refine/add metrics</p></li>
+<li><dl class="simple">
+<dt>Iteratively</dt><dd><ul>
+<li><dl class="simple">
+<dt>Develop MVP:</dt><dd><ul>
+<li><dl class="simple">
+<dt>In short iterations, while MVP is incomplete:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Prototype Phase:</dt><dd><ul>
+<li><p>Plan the sprint</p></li>
+<li><p>Design a minimal viable prototype feature chosen from the backlog</p></li>
+<li><p>Build minimal viable prototype feature</p></li>
+<li><p>Test with users</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Development Phase</dt><dd><ul>
+<li><p>Build minimal viable feature</p></li>
+<li><p>“deploy” with users</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>User test the MVP</p></li>
+<li><p>Refine/add/record metrics</p></li>
+<li><p>Update:
+- roadmap
+- ideal user journey
+- pain points
+- backlog</p></li>
+<li><p>Find investors/capital</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Jeremy Mann's Writing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../learning/learning_main_page.html">Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_main_page.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/physics_main_page.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../longevity/longevity_main_page.html">Longevity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/software_main_page.html">Software Stuff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stream/stream_main_page.html">Stream Main Page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../to_do.html">To Do List</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="random_main_page.html">Random Writing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Jeremy Mann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/random/steps_for_app_development_according_to_ana.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
