@@ -17,7 +17,6 @@ Plugins to Try out
 
 #. https://github.com/rcarriga/vim-ultest
 #. https://github.com/mfussenegger/nvim-dap
-#. https://github.com/voldikss/vim-floaterm
 #. https://github.com/tpope/vim-surround
 #. https://github.com/glacambre/firenvim
 #. https://github.com/ThePrimeagen/vim-be-good
@@ -34,8 +33,9 @@ Plugin Features
 #. Telescope writing
 #. Make lsp find reference populate quickfix list
 #. LSP autoformatting
-#. float-term lazygit
 #. LSP show docs in split
+#. Script for installing lsp 
+#. FloatTerm execute the current python file
 
 
 Keyboard
@@ -54,8 +54,6 @@ Shell Software
 
 #. git-delta
 #. broot
-#. bat
-
 
 Snippet Stuff
 ~~~~~~~~~~~~~
@@ -69,22 +67,52 @@ Snippet Stuff
 Miscellaneous
 ~~~~~~~~~~~~~
 
-#. autoformat jsons
 #. Bash script to install everything
 
-
-
-In Progress
+Doing
 ===========
 
-#. Stop using H and L instead of $ and ^
 #. git-delta
 #. broot
-#. bat
+#. autoformat jsons
+#. https://github.com/ThePrimeagen/harpoon
 
 Done
 ====
 
-#. Use folds more when viewing json docs
-#. git blame in nvim
-#. Learn to use gnc
+General Vim Stuff
+~~~~~~~~~~~~~~~~~
+
+#. Copy/paste to/from clipboard
+   - gotta nice remap for that
+#. Stop using H and L instead of $ and ^
+
+Plugins to Try out
+~~~~~~~~~~~~~~~~~~
+
+#. https://github.com/voldikss/vim-floaterm
+
+
+
+Plugin Features
+~~~~~~~~~~~~~~~
+
+#. LazyGit in a floating terminal
+
+Keyboard
+~~~~~~~~
+
+
+Shell Software
+~~~~~~~~~~~~~~
+
+#. bat
+    - love it so much
+
+Snippet Stuff
+~~~~~~~~~~~~~
+
+
+Miscellaneous
+~~~~~~~~~~~~~
+
