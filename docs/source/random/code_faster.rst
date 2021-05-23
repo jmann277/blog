@@ -98,6 +98,7 @@ Plugin Features
 ~~~~~~~~~~~~~~~
 
 #. LazyGit in a floating terminal
+#. LSP autoformatting
 
 Keyboard
 ~~~~~~~~
