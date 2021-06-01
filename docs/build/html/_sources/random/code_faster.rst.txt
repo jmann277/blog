@@ -17,36 +17,27 @@ Plugins to Try out
 
 #. https://github.com/rcarriga/vim-ultest
 #. https://github.com/mfussenegger/nvim-dap
-#. https://github.com/voldikss/vim-floaterm
 #. https://github.com/tpope/vim-surround
 #. https://github.com/glacambre/firenvim
 #. https://github.com/ThePrimeagen/vim-be-good
 #. https://github.com/tjdevries/train.nvim
-#. https://github.com/godlygeek/tabular
+#. https://github.com/kyazdani42/nvim-tree.lua
+#. https://github.com/glepnir/nvim
 
 
 Plugin Features
 ~~~~~~~~~~~~~~~~~~
 
-#. Telescope my available fixtures
 #. Telescope my remaps.
-#. Telescope my available classes
 #. Telescope writing
 #. Make lsp find reference populate quickfix list
-#. LSP autoformatting
-#. float-term lazygit
 #. LSP show docs in split
+#. Script for installing lsp 
 
 
 Keyboard
 ~~~~~~~~
 
-#. Never use command ever again:
-
-    #. Having <cmd>-v = press and hold v
-    #. Having <cmd>-c = press and hold c
-    #. Having <cmd>-l = press and hold j
-    #. Having <cmd>-p = press and hold p
 #. Build Kyria
 
 Shell Software
@@ -54,8 +45,6 @@ Shell Software
 
 #. git-delta
 #. broot
-#. bat
-
 
 Snippet Stuff
 ~~~~~~~~~~~~~
@@ -69,22 +58,66 @@ Snippet Stuff
 Miscellaneous
 ~~~~~~~~~~~~~
 
-#. autoformat jsons
 #. Bash script to install everything
 
+Doing
+=====
 
-
-In Progress
-===========
-
-#. Stop using H and L instead of $ and ^
 #. git-delta
 #. broot
-#. bat
+#. autoformat jsons
+#. <C-w> to delete words in insert mode.
 
 Done
 ====
 
-#. Use folds more when viewing json docs
-#. git blame in nvim
-#. Learn to use gnc
+
+General Vim Stuff
+~~~~~~~~~~~~~~~~~
+
+#. Copy/paste to/from clipboard
+   - gotta nice remap for that
+#. Stop using H and L instead of $ and ^
+
+Plugins to Try out
+~~~~~~~~~~~~~~~~~~
+
+#. https://github.com/voldikss/vim-floaterm
+#. https://github.com/ThePrimeagen/harpoon
+#. https://github.com/godlygeek/tabular
+
+
+
+Plugin Features
+~~~~~~~~~~~~~~~
+
+#. LazyGit in a floating terminal
+#. LSP autoformatting
+#. FloatTerm execute the current python file
+#. Telescope my available fixtures
+#. Telescope my available classes
+
+Keyboard
+~~~~~~~~
+
+#. Never use command ever again:
+
+    #. Having <cmd>-v = press and hold v
+    #. Having <cmd>-c = press and hold c
+    #. Having <cmd>-l = press and hold l
+    #. Having <cmd>-x = press and hoxd x
+
+
+Shell Software
+~~~~~~~~~~~~~~
+
+#. bat
+    - love it so much
+
+Snippet Stuff
+~~~~~~~~~~~~~
+
+
+Miscellaneous
+~~~~~~~~~~~~~
+

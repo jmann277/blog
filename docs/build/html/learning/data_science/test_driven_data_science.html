@@ -43,15 +43,134 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p>Introduce breakpoints and run the test</p></li>
 <li><p>rapid feedback</p></li>
-<li><p>pair program api schemas/test with product and engineering team</p></li>
 <li><p>reduce decision fatigue</p></li>
 <li><p>strategies
 - schemas
 - benchmark
 - parametrization</p></li>
 </ul>
+<div class="section" id="types-of-tests">
+<h2>Types of Tests:<a class="headerlink" href="#types-of-tests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Performed by users
+- Manual</p></li>
+<li><p>Performed by developers
+- Automated
+- Manual</p></li>
+</ul>
+<p>I’ll be talking about automated tests.
+The only code that’s not tested is code that’s not used.</p>
+</div>
+<div class="section" id="testing-is-a-development-tool-i">
+<h2>Testing is a development tool I<a class="headerlink" href="#testing-is-a-development-tool-i" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Scaleable tool to get empirical feedback about your software:</dt><dd><ul>
+<li><p>Whether a feature <strong>in development</strong> satisfies acceptance criterions</p></li>
+<li><p>Whether a change is breaking</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="testing-is-a-development-tool-ii">
+<h2>Testing is a development tool II<a class="headerlink" href="#testing-is-a-development-tool-ii" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Reduces decision fatigue. When overwhelmed:</dt><dd><ul>
+<li><p>Write a failing test (Red)</p></li>
+<li><p>Do whatever it takes pass (Green)</p></li>
+<li><p>Improve the quality of the code (Refactor)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Can safely refactor: you already have a test that you know
+will fail (because you saw it fail) if you mess up</p></li>
+</ul>
+</div>
+<div class="section" id="testing-is-a-development-tool-iii">
+<h2>Testing is a development tool III<a class="headerlink" href="#testing-is-a-development-tool-iii" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Forget how to use your code? Copy and paste from your tests</dt><dd><ul>
+<li><p>Test are a form documentation you know is up to date.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="why-test-before-code">
+<h2>Why Test Before Code<a class="headerlink" href="#why-test-before-code" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>For sake of argument, assume you already going to be testing the code
+you’ve written.</p></li>
+<li><p>Test later = test never or test after it breaks by production</p></li>
+</ul>
+</div>
+<div class="section" id="example-of-a-pytest-test">
+<h2>Example of a (pytest) Test:<a class="headerlink" href="#example-of-a-pytest-test" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Although this test looks silly, it at minimum tells you whether your code</p></li>
+</ul>
+<dl>
+<dt>runs.</dt><dd><ul>
+<li><p>When you’re coding in a production environment, this method of checking
+scales very well</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>when first starting writing code in production (e.g. outside of
+notebooks) it’s hard to interact with the code you’re writing.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="more-examples">
+<h2>More Examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id1">
+<h2>More Examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Fix the bug, ensure every merge to main that it won’t reappear</p>
+</div>
+<div class="section" id="id2">
+<h2>More examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">--</span><span class="n">pdb</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_foo</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span>
+    <span class="o">...</span>
+    <span class="k">assert</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>live demo</p>
+</div>
+<div class="section" id="strategies">
+<h2>Strategies<a class="headerlink" href="#strategies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Make tests as lightweight as possible:
+- Increase the “scope” of your fixtures
+- Subsample</p></li>
+<li><p>Develop off of ‘mock’ and ‘regression’ data.</p></li>
+<li><p>Be DRY with your tests (tests will evolve with your code)</p></li>
+<li><p>Parametrize when possible
+- e.g. different models and different datasets</p></li>
+<li><p>Start with end-to-end tests
+- These will be the longest living tests, will promote end-to-end development
+- Unit tests should be the ‘top of the pyramid’</p></li>
+<li><p>Embrace plugins
+- pdbpp
+- pytest-xdist
+- pycharm-pytest, vim-test</p></li>
+</ul>
+</div>
 </div>
 
 

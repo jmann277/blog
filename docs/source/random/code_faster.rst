@@ -10,7 +10,6 @@ General Vim Stuff
 #. Learn to use gnc
 #. Use folds more when viewing json docs
 #. Start playing vim games, e.g. vim-be-good
-#. Figure out how to git blame
 
 Plugins to Try out
 ~~~~~~~~~~~~~~~~~~
@@ -21,32 +20,24 @@ Plugins to Try out
 #. https://github.com/glacambre/firenvim
 #. https://github.com/ThePrimeagen/vim-be-good
 #. https://github.com/tjdevries/train.nvim
-#. https://github.com/godlygeek/tabular
-
+#. https://github.com/kyazdani42/nvim-tree.lua
+#. https://github.com/glepnir/nvim
+#. https://github.com/gyim/vim-boxdraw
 
 Plugin Features
 ~~~~~~~~~~~~~~~~~~
 
-#. Telescope my available fixtures
+#. Configure vim-startify
 #. Telescope my remaps.
-#. Telescope my available classes
 #. Telescope writing
 #. Make lsp find reference populate quickfix list
-#. LSP autoformatting
 #. LSP show docs in split
 #. Script for installing lsp 
-#. FloatTerm execute the current python file
 
 
 Keyboard
 ~~~~~~~~
 
-#. Never use command ever again:
-
-    #. Having <cmd>-v = press and hold v
-    #. Having <cmd>-c = press and hold c
-    #. Having <cmd>-l = press and hold j
-    #. Having <cmd>-p = press and hold p
 #. Build Kyria
 
 Shell Software
@@ -70,15 +61,17 @@ Miscellaneous
 #. Bash script to install everything
 
 Doing
-===========
+=====
 
 #. git-delta
 #. broot
 #. autoformat jsons
-#. https://github.com/ThePrimeagen/harpoon
+#. <C-w> to delete words in insert mode.
+#. https://github.com/mhinz/vim-startify
 
 Done
 ====
+
 
 General Vim Stuff
 ~~~~~~~~~~~~~~~~~
@@ -91,6 +84,8 @@ Plugins to Try out
 ~~~~~~~~~~~~~~~~~~
 
 #. https://github.com/voldikss/vim-floaterm
+#. https://github.com/ThePrimeagen/harpoon
+#. https://github.com/godlygeek/tabular
 
 
 
@@ -99,9 +94,22 @@ Plugin Features
 
 #. LazyGit in a floating terminal
 #. LSP autoformatting
+#. FloatTerm execute the current python file
+#. Telescope my available fixtures
+#. Telescope my available classes
+#. Copy a filepath from telescope using a custom action
+#. Figure out how to git blame
 
 Keyboard
 ~~~~~~~~
+
+#. Never use command ever again:
+
+    #. Having <cmd>-v = press and hold v
+    #. Having <cmd>-c = press and hold c
+    #. Having <cmd>-l = press and hold l
+    #. Having <cmd>-x = press and hold x
+    #. ...
 
 
 Shell Software

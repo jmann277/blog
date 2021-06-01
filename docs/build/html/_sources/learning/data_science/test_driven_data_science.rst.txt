@@ -5,11 +5,150 @@ Test Driven Data Science
 - better design
   - easier to change/refactor
     - easier to emprace change
-- Introduce breakpoints and run the test
 - rapid feedback
-- pair program api schemas/test with product and engineering team
 - reduce decision fatigue
 - strategies
   - schemas
   - benchmark 
   - parametrization
+
+
+Types of Tests:
+===============
+
+- Performed by users
+  - Manual
+- Performed by developers
+  - Automated
+  - Manual
+
+I'll be talking about automated tests.
+The only code that's not tested is code that's not used.
+
+Testing is a development tool I
+===============================
+
+- Scaleable tool to get empirical feedback about your software:
+    - Whether a feature **in development** satisfies acceptance criterions
+    - Whether a change is breaking
+
+Testing is a development tool II
+================================
+
+- Reduces decision fatigue. When overwhelmed:
+    - Write a failing test (Red)
+    - Do whatever it takes pass (Green)
+    - Improve the quality of the code (Refactor)
+- Can safely refactor: you already have a test that you know
+  will fail (because you saw it fail) if you mess up
+
+Testing is a development tool III
+=================================
+
+- Forget how to use your code? Copy and paste from your tests
+    - Test are a form documentation you know is up to date.
+
+Why Test Before Code
+====================
+
+- For sake of argument, assume you already going to be testing the code
+  you've written.
+- Test later = test never or test after it breaks by production
+
+Example of a (pytest) Test:
+===========================
+
+.. code-block:: 
+    @pytest.fixture
+    def df():
+        ...
+        return df
+
+    def test_shape(df):
+        df = wrangle_data(raw_df)
+        assert df.shape == (len(raw_df), 10)
+
+    def test_column_names(df):
+        assert df.columns.names == ['foo', 'bar']
+    
+- Although this test looks silly, it at minimum tells you whether your code
+runs.
+    - When you're coding in a production environment, this method of checking
+      scales very well
+        - when first starting writing code in production (e.g. outside of
+          notebooks) it's hard to interact with the code you're writing.
+
+More Examples
+=============
+
+.. code-block:: 
+    @pytest.fixture
+    def imputed_df(original_df, imputer):
+        imputer = imputer.fit(original_df)
+        return imputer.impute(original_df
+
+    def test_no_missing_values(imputed_df):
+        assert imputed_df.notnull().all()
+    
+    def test_not_replacing_values(imputed_df):
+        not_missing_mask = original_df.notnull().values
+        assert (
+            imputed_df.values[not_missing_mask] == original_df[missing_mask]
+        ).all()
+
+
+More Examples
+=============
+
+.. code-block:: 
+    # todo make this parametrized
+    @pytest.fixture
+    def df_with_property_you_didnt_think_was_possible(filename):
+        # load from S3 or from disk
+        ...
+        return df_with_property_you_didnt_think_was_possible
+
+    def test_df_with_property_didnt_think_was_possible_doesnt_break(schema):
+        ...
+        assert ...
+
+Fix the bug, ensure every merge to main that it won't reappear
+
+
+More examples
+=============
+
+
+.. code-block:: 
+
+    pytest --pdb
+
+.. code-block:: 
+
+    def test_foo(...):
+        ...
+        import pdb; pdb.set_trace
+        ...
+        assert ...
+
+live demo
+
+Strategies
+==========
+
+- Make tests as lightweight as possible:
+  - Increase the "scope" of your fixtures
+  - Subsample 
+- Develop off of 'mock' and 'regression' data.
+- Be DRY with your tests (tests will evolve with your code)
+- Parametrize when possible
+  - e.g. different models and different datasets
+- Start with end-to-end tests
+  - These will be the longest living tests, will promote end-to-end development
+  - Unit tests should be the 'top of the pyramid'
+- Embrace plugins
+  - pdbpp
+  - pytest-xdist
+  - pycharm-pytest, vim-test
+
+
