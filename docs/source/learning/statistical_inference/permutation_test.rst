@@ -18,7 +18,7 @@ which influence our decisions.
 In other words, we want to "make it hard" to establish that there is a
 statistically significant difference between these two subpopulations. 
 
-Therefore, **the null hypothesis of the permutation test asserts that these the
+Therefore, **the null hypothesis of the permutation test asserts that the
 difference between these two subpopulations is statistically indinstinguishable
 from randomly splitting the population into two groups**. In other words, the
 designation of whether a sample was in subpopulation A or B were completely

@@ -1,16 +1,24 @@
 Test Driven Data Science
 ------------------------
 
-- Decreases average time spent by decreasing the variance.
-- better design
-  - easier to change/refactor
-    - easier to emprace change
+- Decreases average time spent by decreasing the variance of the development 
+  process
+- easier to change/refactor the codebase
+    - better design
+    - easier to embrace change
 - rapid feedback
+    - Change code, run tests to see if you broke anything
+    - Throw a breakpoint in a test/codebase to examine state of the pipeline
 - reduce decision fatigue
+    - Not sure what to code? Write a test, get it to pass, (re)design the code.
 - strategies
-  - schemas
-  - benchmark 
-  - parametrization
+    - schemas
+        - dataframe schema
+        - json schema
+    - benchmark 
+    - parametrization
+- Don't validate, simulate deployment.
+    -  Use save datasets logged from deployment as fixtures
 
 
 Types of Tests:
@@ -53,12 +61,45 @@ Why Test Before Code
 
 - For sake of argument, assume you already going to be testing the code
   you've written.
-- Test later = test never or test after it breaks by production
+- Failing Test = manual test of the test.
+- Tests becomes harder to test when the code is working.
+- Test later = test never or test after it breaks by production.
+
+Strategies
+==========
+
+- Keep tests as lightweight as possible:
+
+    - Increase the "scope" of your fixtures
+    - Subsample from data
+- Develop off of 'mock' and 'regression' data.
+
+    - Get access to this data as early as possible in the development process,
+      either with something like SQL or synthetic data (e.g. from
+      hypothesis/schemas)
+- Be DRY with your tests 
+
+    - test suite requires maintenance, as backwards incompatible changes will
+      require changes to the test suite.
+- Parametrize when possible
+
+    - e.g. different models and different datasets
+- Start with end-to-end tests
+
+    - These will be the longest living tests, will promote end-to-end development
+    - Unit tests should be the 'top of the pyramid'
+- Embrace plugins:
+
+    - pdbpp
+    - pytest-xdist
+    - pycharm-pytest, vim-test
+    - pytest prettier
 
 Example of a (pytest) Test:
 ===========================
 
 .. code-block:: 
+
     @pytest.fixture
     def df():
         ...
@@ -81,7 +122,8 @@ runs.
 More Examples
 =============
 
-.. code-block:: 
+.. code-block:: python
+
     @pytest.fixture
     def imputed_df(original_df, imputer):
         imputer = imputer.fit(original_df)
@@ -100,7 +142,8 @@ More Examples
 More Examples
 =============
 
-.. code-block:: 
+.. code-block:: python
+
     # todo make this parametrized
     @pytest.fixture
     def df_with_property_you_didnt_think_was_possible(filename):
@@ -118,12 +161,17 @@ Fix the bug, ensure every merge to main that it won't reappear
 More examples
 =============
 
+- Test that a low bias model can overfit a subsample of data.
 
-.. code-block:: 
+
+More examples
+=============
+
+.. code-block:: bash
 
     pytest --pdb
 
-.. code-block:: 
+.. code-block:: python
 
     def test_foo(...):
         ...
@@ -132,23 +180,4 @@ More examples
         assert ...
 
 live demo
-
-Strategies
-==========
-
-- Make tests as lightweight as possible:
-  - Increase the "scope" of your fixtures
-  - Subsample 
-- Develop off of 'mock' and 'regression' data.
-- Be DRY with your tests (tests will evolve with your code)
-- Parametrize when possible
-  - e.g. different models and different datasets
-- Start with end-to-end tests
-  - These will be the longest living tests, will promote end-to-end development
-  - Unit tests should be the 'top of the pyramid'
-- Embrace plugins
-  - pdbpp
-  - pytest-xdist
-  - pycharm-pytest, vim-test
-
 

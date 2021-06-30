@@ -10,6 +10,8 @@ General Vim Stuff
 #. Learn to use gnc
 #. Use folds more when viewing json docs
 #. Start playing vim games, e.g. vim-be-good
+#. Move telescope setup to lua file, load it init.lua
+#. Break out plugin remaps to separate files
 
 Plugins to Try out
 ~~~~~~~~~~~~~~~~~~
@@ -44,7 +46,6 @@ Shell Software
 ~~~~~~~~~~~~~~
 
 #. git-delta
-#. broot
 
 Snippet Stuff
 ~~~~~~~~~~~~~
@@ -64,9 +65,8 @@ Doing
 =====
 
 #. git-delta
-#. broot
+#. ptpython
 #. autoformat jsons
-#. <C-w> to delete words in insert mode.
 #. https://github.com/mhinz/vim-startify
 
 Done
@@ -79,6 +79,8 @@ General Vim Stuff
 #. Copy/paste to/from clipboard
    - gotta nice remap for that
 #. Stop using H and L instead of $ and ^
+#. <C-w> to delete words in insert mode.
+    - amazing I love it
 
 Plugins to Try out
 ~~~~~~~~~~~~~~~~~~
@@ -116,7 +118,9 @@ Shell Software
 ~~~~~~~~~~~~~~
 
 #. bat
-    - love it so much
+   - love it so much
+#. broot
+   - wasn't a big fan, prefer fzf. didn't configure it that much though.
 
 Snippet Stuff
 ~~~~~~~~~~~~~

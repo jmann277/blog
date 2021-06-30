@@ -10,7 +10,8 @@ General Vim Stuff
 #. Learn to use gnc
 #. Use folds more when viewing json docs
 #. Start playing vim games, e.g. vim-be-good
-#. Figure out how to git blame
+#. Move telescope setup to lua file, load it init.lua
+#. Break out plugin remaps to separate files
 
 Plugins to Try out
 ~~~~~~~~~~~~~~~~~~
@@ -23,11 +24,12 @@ Plugins to Try out
 #. https://github.com/tjdevries/train.nvim
 #. https://github.com/kyazdani42/nvim-tree.lua
 #. https://github.com/glepnir/nvim
-
+#. https://github.com/gyim/vim-boxdraw
 
 Plugin Features
 ~~~~~~~~~~~~~~~~~~
 
+#. Configure vim-startify
 #. Telescope my remaps.
 #. Telescope writing
 #. Make lsp find reference populate quickfix list
@@ -44,7 +46,6 @@ Shell Software
 ~~~~~~~~~~~~~~
 
 #. git-delta
-#. broot
 
 Snippet Stuff
 ~~~~~~~~~~~~~
@@ -64,9 +65,9 @@ Doing
 =====
 
 #. git-delta
-#. broot
+#. ptpython
 #. autoformat jsons
-#. <C-w> to delete words in insert mode.
+#. https://github.com/mhinz/vim-startify
 
 Done
 ====
@@ -78,6 +79,8 @@ General Vim Stuff
 #. Copy/paste to/from clipboard
    - gotta nice remap for that
 #. Stop using H and L instead of $ and ^
+#. <C-w> to delete words in insert mode.
+    - amazing I love it
 
 Plugins to Try out
 ~~~~~~~~~~~~~~~~~~
@@ -96,6 +99,8 @@ Plugin Features
 #. FloatTerm execute the current python file
 #. Telescope my available fixtures
 #. Telescope my available classes
+#. Copy a filepath from telescope using a custom action
+#. Figure out how to git blame
 
 Keyboard
 ~~~~~~~~
@@ -105,14 +110,17 @@ Keyboard
     #. Having <cmd>-v = press and hold v
     #. Having <cmd>-c = press and hold c
     #. Having <cmd>-l = press and hold l
-    #. Having <cmd>-x = press and hoxd x
+    #. Having <cmd>-x = press and hold x
+    #. ...
 
 
 Shell Software
 ~~~~~~~~~~~~~~
 
 #. bat
-    - love it so much
+   - love it so much
+#. broot
+   - wasn't a big fan, prefer fzf. didn't configure it that much though.
 
 Snippet Stuff
 ~~~~~~~~~~~~~

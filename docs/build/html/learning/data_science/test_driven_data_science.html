@@ -33,22 +33,55 @@
             
   <div class="section" id="test-driven-data-science">
 <h1>Test Driven Data Science<a class="headerlink" href="#test-driven-data-science" title="Permalink to this headline">¶</a></h1>
-<ul>
-<li><p>Decreases average time spent by decreasing the variance.</p></li>
-<li><p>better design
-- easier to change/refactor</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>easier to emprace change</p></li>
+<ul class="simple">
+<li><p>Decreases average time spent by decreasing the variance of the development
+process</p></li>
+<li><dl class="simple">
+<dt>easier to change/refactor the codebase</dt><dd><ul>
+<li><p>better design</p></li>
+<li><p>easier to embrace change</p></li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 </li>
-<li><p>rapid feedback</p></li>
-<li><p>reduce decision fatigue</p></li>
-<li><p>strategies
-- schemas
-- benchmark
-- parametrization</p></li>
+<li><dl class="simple">
+<dt>rapid feedback</dt><dd><ul>
+<li><p>Change code, run tests to see if you broke anything</p></li>
+<li><p>Throw a breakpoint in a test/codebase to examine state of the pipeline</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>reduce decision fatigue</dt><dd><ul>
+<li><p>Not sure what to code? Write a test, get it to pass, (re)design the code.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>strategies</dt><dd><ul>
+<li><dl class="simple">
+<dt>schemas</dt><dd><ul>
+<li><p>dataframe schema</p></li>
+<li><p>json schema</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>benchmark</p></li>
+<li><p>parametrization</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Don’t validate, simulate deployment.</dt><dd><ul>
+<li><p>Use save datasets logged from deployment as fixtures</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 <div class="section" id="types-of-tests">
 <h2>Types of Tests:<a class="headerlink" href="#types-of-tests" title="Permalink to this headline">¶</a></h2>
@@ -108,11 +141,81 @@ will fail (because you saw it fail) if you mess up</p></li>
 <ul class="simple">
 <li><p>For sake of argument, assume you already going to be testing the code
 you’ve written.</p></li>
-<li><p>Test later = test never or test after it breaks by production</p></li>
+<li><p>Failing Test = manual test of the test.</p></li>
+<li><p>Tests becomes harder to test when the code is working.</p></li>
+<li><p>Test later = test never or test after it breaks by production.</p></li>
+</ul>
+</div>
+<div class="section" id="strategies">
+<h2>Strategies<a class="headerlink" href="#strategies" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Keep tests as lightweight as possible:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Increase the “scope” of your fixtures</p></li>
+<li><p>Subsample from data</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Develop off of ‘mock’ and ‘regression’ data.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Get access to this data as early as possible in the development process,
+either with something like SQL or synthetic data (e.g. from
+hypothesis/schemas)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Be DRY with your tests</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>test suite requires maintenance, as backwards incompatible changes will
+require changes to the test suite.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Parametrize when possible</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>e.g. different models and different datasets</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Start with end-to-end tests</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>These will be the longest living tests, will promote end-to-end development</p></li>
+<li><p>Unit tests should be the ‘top of the pyramid’</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Embrace plugins:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>pdbpp</p></li>
+<li><p>pytest-xdist</p></li>
+<li><p>pycharm-pytest, vim-test</p></li>
+<li><p>pytest prettier</p></li>
+</ul>
+</div></blockquote>
+</li>
 </ul>
 </div>
 <div class="section" id="example-of-a-pytest-test">
 <h2>Example of a (pytest) Test:<a class="headerlink" href="#example-of-a-pytest-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">df</span><span class="p">():</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">def</span> <span class="nf">test_shape</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">wrangle_data</span><span class="p">(</span><span class="n">raw_df</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">raw_df</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">test_column_names</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p>Although this test looks silly, it at minimum tells you whether your code</p></li>
 </ul>
@@ -133,17 +236,50 @@ notebooks) it’s hard to interact with the code you’re writing.</p></li>
 </div>
 <div class="section" id="more-examples">
 <h2>More Examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">imputed_df</span><span class="p">(</span><span class="n">original_df</span><span class="p">,</span> <span class="n">imputer</span><span class="p">):</span>
+    <span class="n">imputer</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">original_df</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">imputer</span><span class="o">.</span><span class="n">impute</span><span class="p">(</span><span class="n">original_df</span>
+
+<span class="k">def</span> <span class="nf">test_no_missing_values</span><span class="p">(</span><span class="n">imputed_df</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">imputed_df</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">test_not_replacing_values</span><span class="p">(</span><span class="n">imputed_df</span><span class="p">):</span>
+    <span class="n">not_missing_mask</span> <span class="o">=</span> <span class="n">original_df</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">imputed_df</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">not_missing_mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">original_df</span><span class="p">[</span><span class="n">missing_mask</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="id1">
 <h2>More Examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># todo make this parametrized</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">df_with_property_you_didnt_think_was_possible</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="c1"># load from S3 or from disk</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">df_with_property_you_didnt_think_was_possible</span>
+
+<span class="k">def</span> <span class="nf">test_df_with_property_didnt_think_was_possible_doesnt_break</span><span class="p">(</span><span class="n">schema</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">assert</span> <span class="o">...</span>
+</pre></div>
+</div>
 <p>Fix the bug, ensure every merge to main that it won’t reappear</p>
 </div>
 <div class="section" id="id2">
 <h2>More examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">--</span><span class="n">pdb</span>
+<ul class="simple">
+<li><p>Test that a low bias model can overfit a subsample of data.</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>More examples<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest --pdb
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_foo</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_foo</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
     <span class="o">...</span>
     <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span>
     <span class="o">...</span>
@@ -151,25 +287,6 @@ notebooks) it’s hard to interact with the code you’re writing.</p></li>
 </pre></div>
 </div>
 <p>live demo</p>
-</div>
-<div class="section" id="strategies">
-<h2>Strategies<a class="headerlink" href="#strategies" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Make tests as lightweight as possible:
-- Increase the “scope” of your fixtures
-- Subsample</p></li>
-<li><p>Develop off of ‘mock’ and ‘regression’ data.</p></li>
-<li><p>Be DRY with your tests (tests will evolve with your code)</p></li>
-<li><p>Parametrize when possible
-- e.g. different models and different datasets</p></li>
-<li><p>Start with end-to-end tests
-- These will be the longest living tests, will promote end-to-end development
-- Unit tests should be the ‘top of the pyramid’</p></li>
-<li><p>Embrace plugins
-- pdbpp
-- pytest-xdist
-- pycharm-pytest, vim-test</p></li>
-</ul>
 </div>
 </div>
 
